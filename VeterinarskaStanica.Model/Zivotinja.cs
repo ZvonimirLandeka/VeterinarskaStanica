@@ -8,8 +8,6 @@ namespace VeterinarskaStanica.Model
 {
     public class Zivotinja : BazniEntitet
     {
-
-
         public string Ime { get; set; }
         public int MyProperty { get; set; }
         public virtual VrstaZivotinje VrstaZivotinje { get; set; }
@@ -22,7 +20,7 @@ namespace VeterinarskaStanica.Model
         public string PolozajCipa { get; set; }
         public DateTime DatumCipiranja { get; set; }
         public List<Bolest> Bolesti { get; set; }
-        public Vlasnik Vlasnik { get; set; }
+        public Osoba Osoba { get; set; }
         public List<Dokument> Dokumenti { get; set; }
 
         public Zivotinja(int Id) : base(Id)

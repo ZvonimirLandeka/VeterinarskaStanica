@@ -24,6 +24,6 @@ namespace VeterinarskaStanica.Model
         public string Opis { get; set; }
         public string Iskaz { get; set; }
         public List<Zahvat> Zahvati { get; set; }
-
+        public List<Dokument> Dokumenti { get; set; }
     }
 }

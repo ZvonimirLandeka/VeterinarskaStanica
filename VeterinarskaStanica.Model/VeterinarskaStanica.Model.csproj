@@ -53,7 +53,6 @@
     <Compile Include="Spol.cs" />
     <Compile Include="StatusTermina.cs" />
     <Compile Include="Termin.cs" />
-    <Compile Include="Vlasnik.cs" />
     <Compile Include="VrstaTermina.cs" />
     <Compile Include="VrstaZaposlenika.cs" />
     <Compile Include="VrstaZivotinje.cs" />
