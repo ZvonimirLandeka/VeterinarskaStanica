@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    public class Bolest : BazniEntitet
+    public class Zahvat : BazniEntitet
     {
- 
+        
         public string Naziv { get; set; }
-        public Bolest(int Id) : base(Id)
+        public string Napomena { get; set; }
+        public List<Lijek> Lijekovi { get; set; }
+        public Zahvat(int Id) : base(Id)
         {
         }
-        public Bolest():base(-1)
+        public Zahvat() : base(-1)
         {
 
         }

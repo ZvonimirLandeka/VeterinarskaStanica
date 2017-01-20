@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    class Lijek : BazniEntitet
+    public class Lijek : BazniEntitet
     {
 
         public int Id { get; set; }

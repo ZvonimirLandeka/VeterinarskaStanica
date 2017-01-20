@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    class Zaposlenik : Osoba
+    public class Zaposlenik : Osoba
     {
         public VrstaZaposlenika VrstaZaposlenika { get; set; }
 

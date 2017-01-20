@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    class VrstaZivotinje : BazniEntitet
+    public class VrstaZivotinje : BazniEntitet
     {
 
 

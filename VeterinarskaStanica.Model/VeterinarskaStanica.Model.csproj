@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BazniEntitet.cs" />
+    <Compile Include="Dokument.cs" />
+    <Compile Include="TipZahvata.cs" />
+    <Compile Include="Zahvat.cs" />
     <Compile Include="Bolest.cs" />
     <Compile Include="KorisnickiRacun.cs" />
     <Compile Include="Lijek.cs" />
@@ -48,8 +51,10 @@
     <Compile Include="PasminaZivotinje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spol.cs" />
+    <Compile Include="StatusTermina.cs" />
     <Compile Include="Termin.cs" />
     <Compile Include="Vlasnik.cs" />
+    <Compile Include="VrstaTermina.cs" />
     <Compile Include="VrstaZaposlenika.cs" />
     <Compile Include="VrstaZivotinje.cs" />
     <Compile Include="Zaposlenik.cs" />

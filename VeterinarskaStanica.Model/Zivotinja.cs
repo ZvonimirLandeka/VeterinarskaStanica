@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    class Zivotinja : BazniEntitet
+    public class Zivotinja : BazniEntitet
     {
 
 
@@ -22,6 +22,8 @@ namespace VeterinarskaStanica.Model
         public string PolozajCipa { get; set; }
         public DateTime DatumCipiranja { get; set; }
         public List<Bolest> Bolesti { get; set; }
+        public Vlasnik Vlasnik { get; set; }
+        public List<Dokument> Dokumenti { get; set; }
 
         public Zivotinja(int Id) : base(Id)
         {
