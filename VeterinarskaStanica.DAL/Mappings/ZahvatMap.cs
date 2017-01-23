@@ -16,7 +16,7 @@ namespace VeterinarskaStanica.DAL
             Map(x => x.Naziv);
 
             Map(x => x.Napomena);
-            HasMany(x => x.Lijekovi);
+            HasMany(x => x.Lijekovi).Cascade.SaveUpdate();
 
 
         }
