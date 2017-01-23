@@ -89,6 +89,10 @@
     <Compile Include="Mappings\StatusTerminaMap.cs" />
     <Compile Include="Mappings\OsobaMap.cs" />
     <Compile Include="Mappings\LijekMap.cs" />
+    <Compile Include="Repository\TerminRepository.cs" />
+    <Compile Include="Repository\VlasnikRepository.cs" />
+    <Compile Include="Repository\ZaposlenikRepository.cs" />
+    <Compile Include="Repository\ZivotinjaRepository.cs" />
     <Compile Include="Visak\KorisnickiRacunMap.cs" />
     <Compile Include="Mappings\DokumentMap.cs" />
     <Compile Include="Mappings\BolestMap.cs" />
@@ -107,9 +111,7 @@
       <Name>VeterinarskaStanica.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

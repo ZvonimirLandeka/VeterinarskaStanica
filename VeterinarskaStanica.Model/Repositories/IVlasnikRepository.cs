@@ -12,8 +12,8 @@ namespace VeterinarskaStanica.Model.Repositories
         Vlasnik GetById(int Id);
         Vlasnik GetByOib(string OIB);
         Vlasnik GetByKorisnickoIme(string KorisnickoIme);
-        bool Add(Vlasnik zaposlenik);
-        bool Update(Vlasnik zaposlenik);
+        bool Add(Vlasnik Vlasnik);
+        bool Update(Vlasnik Vlasnik);
         bool Delete(int Id);
     }
 }

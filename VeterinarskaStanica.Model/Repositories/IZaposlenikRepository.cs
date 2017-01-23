@@ -12,14 +12,14 @@ namespace VeterinarskaStanica.Model.Repositories
         Zaposlenik GetById(int Id);
         Zaposlenik GetByOib(string OIB);
         Zaposlenik GetByKorisnickoIme(string KorisnickoIme);
-        bool Add(Zaposlenik zaposlenik);
-        bool Update(Zaposlenik zaposlenik);
+        bool Add(Zaposlenik Zaposlenik);
+        bool Update(Zaposlenik Zaposlenik);
         bool Delete(int Id);
 
         List<VrstaZaposlenika> GetAllVrstaZaposlenika();
         VrstaZaposlenika GetVrstaZaposlenikaById(int Id);
-        bool AddVrstaZaposlenika(VrstaZaposlenika zaposlenik);
-        bool UpdateVrstaZaposlenika(VrstaZaposlenika zaposlenik);
+        bool AddVrstaZaposlenika(VrstaZaposlenika VrstaZaposlenika);
+        bool UpdateVrstaZaposlenika(VrstaZaposlenika VrstaZaposlenika);
         bool DeleteVrstaZaposlenika(int Id);
 
     }

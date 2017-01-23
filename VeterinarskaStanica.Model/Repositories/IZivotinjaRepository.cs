@@ -10,12 +10,12 @@ namespace VeterinarskaStanica.Model.Repositories
     {
         List<Zivotinja> GetAll();
         Zivotinja GetById(int Id);
-        bool Add(Zivotinja zaposlenik);
-        bool Update(Zivotinja zaposlenik);
+        bool Add(Zivotinja Zivotinja);
+        bool Update(Zivotinja Zivotinja);
         bool Delete(int Id);
 
         List<Zivotinja> GetAllByVlasnikId(int Id);
-        Zivotinja GetByBrojCipa(int BrojCipa);
+        Zivotinja GetByBrojCipa(string BrojCipa);
 
         List<VrstaZivotinje> GetAllVrstaZivotinje();
         VrstaZivotinje GetVrstaZivotinjeById(int Id);
