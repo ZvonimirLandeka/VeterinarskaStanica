@@ -124,9 +124,47 @@ namespace VeterinarskaStanica.DAL
                         Naziv = "Ovcar",
                         VrstaZivotinje = vz
                     };
-                    session.Save(pz);
+                    
+                    ////transaction.Commit();
+
+                    var lijek1 = new Lijek()
+                    {
+                        Naziv="test1"
+                    };
+                    var lijek2 = new Lijek()
+                    {
+                        Naziv = "lijek2"
+                    };
+                    var lijek3 = new Lijek()
+                    {
+                        Naziv = "lijek3"
+                    };
+                    var lijek4 = new Lijek()
+                    {
+                        Naziv = "lijek4"
+                    };
+                    IList<Lijek> lijekovi= new List<Lijek>();
+                    lijekovi.Add(lijek1);
+                    lijekovi.Add(lijek2);
+                    lijekovi.Add(lijek3);
+                    lijekovi.Add(lijek4);
+                    session.Save(lijek1);
+                    session.Save(lijek2);
+                    session.Save(lijek3);
+                    session.Save(lijek4);
+
                     transaction.Commit();
-                    Console.WriteLine();
+                    var Zahvat = new Zahvat()
+                    {
+                        Lijekovi = lijekovi,
+                        Napomena = "nista",
+                        Naziv = "Testni zahvat"
+                    };
+                    session.Save(Zahvat);
+                    transaction.Commit();
+
+
+
                 }
             }
 
