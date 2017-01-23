@@ -11,7 +11,7 @@ using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.DAL
 {
-    class NHibernateHelper
+    public class NHibernateHelper
     {
         private static ISessionFactory _sessionFactory;
 
@@ -124,7 +124,7 @@ namespace VeterinarskaStanica.DAL
                         Naziv = "Ovcar",
                         VrstaZivotinje = vz
                     };
-                    
+                    session.Save(pz);
                     ////transaction.Commit();
 
                     var lijek1 = new Lijek()
@@ -153,7 +153,7 @@ namespace VeterinarskaStanica.DAL
                     session.Save(lijek3);
                     session.Save(lijek4);
 
-                    transaction.Commit();
+                   
                     var Zahvat = new Zahvat()
                     {
                         Lijekovi = lijekovi,
