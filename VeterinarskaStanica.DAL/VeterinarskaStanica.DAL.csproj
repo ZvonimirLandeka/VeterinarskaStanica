@@ -78,23 +78,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ZivotinjaMap.cs" />
-    <Compile Include="ZaposlenikMap.cs" />
-    <Compile Include="ZahvatMap.cs" />
-    <Compile Include="VrstaZaposlenikaMap.cs" />
-    <Compile Include="VrstaTerminaMap.cs" />
-    <Compile Include="TipZahvataMap.cs" />
-    <Compile Include="TerminMap.cs" />
-    <Compile Include="StatusTerminaMap.cs" />
-    <Compile Include="OsobaMap.cs" />
-    <Compile Include="LijekMap.cs" />
-    <Compile Include="KorisnickiRacunMap.cs" />
-    <Compile Include="DokumentMap.cs" />
-    <Compile Include="BolestMap.cs" />
-    <Compile Include="NHibernateHelper.cs" />
-    <Compile Include="PasminaZivotinjeMap.cs" />
+    <Compile Include="Mappings\VlasnikMap.cs" />
+    <Compile Include="Mappings\ZivotinjaMap.cs" />
+    <Compile Include="Mappings\ZaposlenikMap.cs" />
+    <Compile Include="Mappings\ZahvatMap.cs" />
+    <Compile Include="Mappings\VrstaZaposlenikaMap.cs" />
+    <Compile Include="Mappings\VrstaTerminaMap.cs" />
+    <Compile Include="Mappings\VrstaZahvataMap.cs" />
+    <Compile Include="Mappings\TerminMap.cs" />
+    <Compile Include="Mappings\StatusTerminaMap.cs" />
+    <Compile Include="Mappings\OsobaMap.cs" />
+    <Compile Include="Mappings\LijekMap.cs" />
+    <Compile Include="Visak\KorisnickiRacunMap.cs" />
+    <Compile Include="Mappings\DokumentMap.cs" />
+    <Compile Include="Mappings\BolestMap.cs" />
+    <Compile Include="Mappings\NHibernateHelper.cs" />
+    <Compile Include="Mappings\PasminaZivotinjeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VrstaZivotinjeMap.cs" />
+    <Compile Include="Mappings\VrstaZivotinjeMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -105,6 +106,9 @@
       <Project>{b4cf7ecc-2fea-4ddf-881b-8f53b4441547}</Project>
       <Name>VeterinarskaStanica.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets')" />

@@ -8,16 +8,14 @@ using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.DAL
 {
-    class OsobaMap : ClassMap<Osoba>
+    class VrstaZahvataMap : ClassMap<VrstaZahvata>
     {
-        public OsobaMap()
+        public VrstaZahvataMap()
         {
             Id(x => x.Id);
-            Map(x => x.Ime);
-            Map(x => x.Adresa);
-            Map(x => x.OIB);
-            Map(x => x.Prezime);
-            Map(x => x.Spol);
+            Map(x => x.Naziv);
+            Map(x => x.Opis);
+
 
         }
     }

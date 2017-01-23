@@ -50,10 +50,14 @@
   <ItemGroup>
     <Compile Include="Model\BazniEntitet.cs" />
     <Compile Include="Model\Dokument.cs" />
-    <Compile Include="Model\TipZahvata.cs" />
+    <Compile Include="Model\VrstaZahvata.cs" />
     <Compile Include="Model\Zahvat.cs" />
     <Compile Include="Model\Bolest.cs" />
     <Compile Include="Model\Vlasnik.cs" />
+    <Compile Include="Repositories\ITerminRepository.cs" />
+    <Compile Include="Repositories\IZivotinjaRepository.cs" />
+    <Compile Include="Repositories\IVlasnikRepository.cs" />
+    <Compile Include="Repositories\IZaposlenikRepository.cs" />
     <Compile Include="Visak\KorisnickiRacun.cs" />
     <Compile Include="Model\Lijek.cs" />
     <Compile Include="Model\Osoba.cs" />
@@ -71,6 +75,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

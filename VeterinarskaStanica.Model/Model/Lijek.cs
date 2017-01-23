@@ -9,7 +9,7 @@ namespace VeterinarskaStanica.Model
     public class Lijek : BazniEntitet
     {
 
-        public virtual int Id { get; set; }
+        
         public virtual string Naziv { get; set; }
         public Lijek(int Id) : base(Id)
         {

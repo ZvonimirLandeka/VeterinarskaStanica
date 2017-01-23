@@ -8,15 +8,12 @@ using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.DAL
 {
-    class TipZahvataMap : ClassMap<TipZahvata>
+    class BolestMap : ClassMap<Bolest>
     {
-        public TipZahvataMap()
+        public BolestMap()
         {
             Id(x => x.Id);
             Map(x => x.Naziv);
-            Map(x => x.Opis);
-
-
         }
     }
 }
