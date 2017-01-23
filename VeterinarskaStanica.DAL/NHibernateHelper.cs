@@ -148,12 +148,11 @@ namespace VeterinarskaStanica.DAL
                     lijekovi.Add(lijek2);
                     lijekovi.Add(lijek3);
                     lijekovi.Add(lijek4);
-                    session.Save(lijek1);
-                    session.Save(lijek2);
-                    session.Save(lijek3);
-                    session.Save(lijek4);
+                    //session.Save(lijek1);
+                    //session.Save(lijek2);
+                    //session.Save(lijek3);
+                    //session.Save(lijek4);
 
-                    transaction.Commit();
                     var Zahvat = new Zahvat()
                     {
                         Lijekovi = lijekovi,
@@ -163,7 +162,7 @@ namespace VeterinarskaStanica.DAL
                     session.Save(Zahvat);
                     transaction.Commit();
 
-
+                    Console.ReadKey();
 
                 }
             }

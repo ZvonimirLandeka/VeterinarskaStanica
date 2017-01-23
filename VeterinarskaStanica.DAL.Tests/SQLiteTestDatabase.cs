@@ -60,7 +60,7 @@ namespace VeterinarskaStanica.DAL.Tests
             {
                 new SchemaExport(nhConfiguration).Execute(useStdOut: true,
                                                             execute: true,
-                                                            justDrop: false,
+                                                            justDrop: true,
                                                             connection: Session.Connection,
                                                             exportOutput: Console.Out);
                 tx.Commit();
