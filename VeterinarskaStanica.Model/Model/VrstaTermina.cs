@@ -8,12 +8,13 @@ namespace VeterinarskaStanica.Model
 {
     public class VrstaTermina : BazniEntitet
     {
+        public virtual string Naziv { get; set; }
+
         public VrstaTermina(int Id) : base(Id)
         {
         }
         public VrstaTermina() : base(-1)
         {
         }
-        public virtual string Naziv { get; set; }
     }
 }

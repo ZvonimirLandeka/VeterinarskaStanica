@@ -14,6 +14,10 @@ namespace VeterinarskaStanica.Model
         public virtual string OIB { get; set; }
         public virtual string Adresa { get; set; }
         public virtual Spol Spol { get; set; }
+        public virtual string KorisnickoIme { get; set; }
+        public virtual string Lozinka { get; set; }
+        public virtual IList<Dokument> Dokumenti { get; set; }
+
 
         public Osoba(int Id) : base(Id)
         {

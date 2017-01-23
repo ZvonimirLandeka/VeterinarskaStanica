@@ -53,7 +53,8 @@
     <Compile Include="Model\TipZahvata.cs" />
     <Compile Include="Model\Zahvat.cs" />
     <Compile Include="Model\Bolest.cs" />
-    <Compile Include="Model\KorisnickiRacun.cs" />
+    <Compile Include="Model\Vlasnik.cs" />
+    <Compile Include="Visak\KorisnickiRacun.cs" />
     <Compile Include="Model\Lijek.cs" />
     <Compile Include="Model\Osoba.cs" />
     <Compile Include="Model\PasminaZivotinje.cs" />

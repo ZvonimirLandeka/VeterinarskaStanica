@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    public class Zaposlenik : Osoba
+    public class Vlasnik : Osoba
     {
-        public virtual VrstaZaposlenika VrstaZaposlenika { get; set; }
-
-        public Zaposlenik(int Id) : base(Id)
+        public Vlasnik(int Id) : base(Id)
         {
         }
-        public Zaposlenik() : base(-1)
+        public Vlasnik() : base(-1)
         {
-
         }
+
     }
 }

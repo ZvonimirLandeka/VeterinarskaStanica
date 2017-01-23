@@ -8,13 +8,6 @@ namespace VeterinarskaStanica.Model
 {
     public class Termin : BazniEntitet
     {
-        public Termin(int Id) : base(Id)
-        {
-        }
-        public Termin() : base(-1)
-        {
-        }
-
         public virtual StatusTermina Status { get; set; }
         public virtual DateTime Datum { get; set; }
         public virtual VrstaTermina VrstaTermina { get; set; }
@@ -25,5 +18,14 @@ namespace VeterinarskaStanica.Model
         public virtual string Iskaz { get; set; }
         public virtual IList<Zahvat> Zahvati { get; set; }
         public virtual IList<Dokument> Dokumenti { get; set; }
+
+        public Termin(int Id) : base(Id)
+        {
+        }
+        public Termin() : base(-1)
+        {
+        }
+
+
     }
 }

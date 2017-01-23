@@ -19,7 +19,7 @@ namespace VeterinarskaStanica.Model
         public virtual string PolozajCipa { get; set; }
         public virtual DateTime DatumCipiranja { get; set; }
         public virtual IList<Bolest> Bolesti { get; set; }
-        public virtual Osoba Vlasnik { get; set; }
+        public virtual Vlasnik Vlasnik { get; set; }
         public virtual IList<Dokument> Dokumenti { get; set; }
 
         public Zivotinja(int Id) : base(Id)

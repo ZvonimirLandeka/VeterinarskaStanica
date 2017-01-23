@@ -8,6 +8,9 @@ namespace VeterinarskaStanica.Model
 {
     public class StatusTermina : BazniEntitet
     {
+        public virtual string Naziv { get; set; }
+
+
         public StatusTermina(int Id) : base(Id)
         {
         }
@@ -15,7 +18,7 @@ namespace VeterinarskaStanica.Model
         {
         }
 
-        public virtual string Naziv { get; set; }
+        
 
     }
 }
