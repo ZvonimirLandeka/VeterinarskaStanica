@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarskaStanica.DAL", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarskaStanica.Model", "VeterinarskaStanica.Model\VeterinarskaStanica.Model.csproj", "{B4CF7ECC-2FEA-4DDF-881B-8F53B4441547}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarskaStanica.DAL.Tests", "VeterinarskaStanica.DAL.Tests\VeterinarskaStanica.DAL.Tests.csproj", "{F90F2DFC-106F-436E-8F4E-3B9089DFDA80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B4CF7ECC-2FEA-4DDF-881B-8F53B4441547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4CF7ECC-2FEA-4DDF-881B-8F53B4441547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4CF7ECC-2FEA-4DDF-881B-8F53B4441547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90F2DFC-106F-436E-8F4E-3B9089DFDA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90F2DFC-106F-436E-8F4E-3B9089DFDA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90F2DFC-106F-436E-8F4E-3B9089DFDA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90F2DFC-106F-436E-8F4E-3B9089DFDA80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

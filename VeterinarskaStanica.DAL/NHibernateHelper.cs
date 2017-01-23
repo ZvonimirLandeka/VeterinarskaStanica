@@ -39,8 +39,8 @@ namespace VeterinarskaStanica.DAL
             {
                 var fluentConfig = Fluently.Configure()
                                     .Database(SQLiteConfiguration.Standard
-                                        .ConnectionString("Data Source=VeterinarskaStanicaTest1.db;Version=3")
-                                        .AdoNetBatchSize(100))
+                                    .ConnectionString("Data Source=VeterinarskaStanicaTest1.db;Version=3")
+                                    .AdoNetBatchSize(100))
                                     .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PasminaZivotinjeMap>());
 
                 var nhConfig = fluentConfig.BuildConfiguration();
