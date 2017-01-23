@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    public abstract class BazniEntitet
+    public class Zaposlenik : Osoba
     {
-        public int Id { get; set; }
-
-        public BazniEntitet(int Id)
-        {
-            this.Id = Id;
-        }
+        public virtual VrstaZaposlenika VrstaZaposlenika { get; set; }
 
     }
 }

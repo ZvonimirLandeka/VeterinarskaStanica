@@ -9,8 +9,8 @@ namespace VeterinarskaStanica.Model
     public class PasminaZivotinje : BazniEntitet
     {
 
-        public string Naziv { get; set; }
-        public VrstaZivotinje VrstaZivotinje { get; set; }
+        public virtual string Naziv { get; set; }
+        public virtual VrstaZivotinje VrstaZivotinje { get; set; }
 
         public PasminaZivotinje(int Id) : base(Id)
         {

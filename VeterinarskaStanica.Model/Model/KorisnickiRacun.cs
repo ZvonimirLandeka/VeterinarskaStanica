@@ -8,8 +8,8 @@ namespace VeterinarskaStanica.Model
 {
     public class KorisnickiRacun : BazniEntitet
     {
-        public string KorisnickoIme { get; set; }
-        public string Lozinka { get; set; }
+        public virtual string KorisnickoIme { get; set; }
+        public virtual string Lozinka { get; set; }
 
 
         public KorisnickiRacun(int Id) : base(Id)

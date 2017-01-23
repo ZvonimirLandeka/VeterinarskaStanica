@@ -8,8 +8,8 @@ namespace VeterinarskaStanica.Model
 {
     public class Dokument : BazniEntitet
     {
-        public string Ime { get; set; }
-        public byte[] Datoteka { get; set; }
+        public virtual string Ime { get; set; }
+        public virtual byte[] Datoteka { get; set; }
         public Dokument(int Id) : base(Id)
         {
         }

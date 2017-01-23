@@ -8,8 +8,8 @@ namespace VeterinarskaStanica.Model
 {
     public class TipZahvata : BazniEntitet
     {
-        public string Naziv { get; set; }
-        public string Opis { get; set; }
+        public virtual string Naziv { get; set; }
+        public virtual string Opis { get; set; }
         public TipZahvata(int Id) : base(Id)
         {
         }

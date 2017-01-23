@@ -8,10 +8,10 @@ namespace VeterinarskaStanica.Model
 {
     public class Zahvat : BazniEntitet
     {
-        
-        public string Naziv { get; set; }
-        public string Napomena { get; set; }
-        public List<Lijek> Lijekovi { get; set; }
+
+        public virtual string Naziv { get; set; }
+        public virtual string Napomena { get; set; }
+        public virtual IList<Lijek> Lijekovi { get; set; }
         public Zahvat(int Id) : base(Id)
         {
         }
