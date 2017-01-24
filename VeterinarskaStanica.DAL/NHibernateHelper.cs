@@ -34,6 +34,19 @@ namespace VeterinarskaStanica.DAL
             }
         }
 
+        public static ISession CurrentSession
+        {
+            get
+            {
+                if(_session == null)
+                {
+                    _session = OpenSession();
+                }
+
+                return _session;
+            }
+        }
+
         public static ISessionFactory OpenSessionFactory()
         {
             try

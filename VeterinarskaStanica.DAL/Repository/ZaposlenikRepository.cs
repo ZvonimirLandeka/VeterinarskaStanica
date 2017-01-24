@@ -12,11 +12,12 @@ namespace VeterinarskaStanica.DAL.Repository
 {
     public class ZaposlenikRepository : IZaposlenikRepository
     {
-        ISession _session = null;
-        public ZaposlenikRepository(ISession Session)
+        private ISession _session
         {
-            _session = Session;
+            get { return NHibernateHelper.CurrentSession; }
         }
+        public ZaposlenikRepository() { }
+
         public bool Add(Zaposlenik Zaposlenik)
         {
             try
