@@ -45,11 +45,13 @@ namespace VeterinarskaStanica.Web.Controllers
             AccountService AccountService = new AccountService();
             var exists = AccountService.CheckLogin(AccountModel.KorisnickoIme, AccountModel.Lozinka);
             exists = true;
-            if (AccountModel.KorisnickoIme.Equals("a"))
+            if (AccountModel.KorisnickoIme.Equals("baba"))
             {
-                FormsAuthentication.SetAuthCookie(AccountModel.KorisnickoIme, true);
+                FormsAuthentication.SetAuthCookie(AccountModel.KorisnickoIme, false);
+                string dasd = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
                 return RedirectToAction("Index", "Home");
             }
+            string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
             HomeController HomeController = new HomeController();
             return RedirectToAction("Login", this);
 
@@ -59,7 +61,6 @@ namespace VeterinarskaStanica.Web.Controllers
         [Authorize]
         public ActionResult Logoff()
         {
-            
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
