@@ -20,6 +20,13 @@ namespace VeterinarskaStanica.Desktop
             InitializeComponent();
 
             zaposlenikService = new ZaposlenikService();
+            DebugAutoLogin();
+        }
+
+        private void DebugAutoLogin()
+        {
+            Username.Text = "imarlovic";
+            Password.Text = "1234";
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

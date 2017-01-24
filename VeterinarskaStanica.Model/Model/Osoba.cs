@@ -18,6 +18,7 @@ namespace VeterinarskaStanica.Model
         public virtual string Lozinka { get; set; }
         public virtual IList<Dokument> Dokumenti { get; set; }
 
+        public virtual string ImePrezimeOib { get { return $"{Ime} {Prezime} ({OIB})"; } }
 
         public Osoba(int Id) : base(Id)
         {
