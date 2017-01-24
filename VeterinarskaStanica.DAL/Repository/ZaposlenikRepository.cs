@@ -18,7 +18,7 @@ namespace VeterinarskaStanica.DAL.Repository
         }
         public ZaposlenikRepository()
         {
-
+            NHibernateHelper.SetDatabaseType(DatabaseType.InMemory);
         }
 
         public bool Add(Zaposlenik Zaposlenik)
@@ -102,7 +102,7 @@ namespace VeterinarskaStanica.DAL.Repository
         {
             return _session.Query<Zaposlenik>().FirstOrDefault(x => x.KorisnickoIme == KorisnickoIme);
 
-        }
+        }   
 
         public Zaposlenik GetByOib(string OIB)
         {
