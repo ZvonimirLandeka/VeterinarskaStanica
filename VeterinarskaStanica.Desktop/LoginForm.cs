@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VeterinarskaStanica.BLL;
+using System.Threading;
 
 namespace VeterinarskaStanica.Desktop
 {
@@ -22,7 +23,7 @@ namespace VeterinarskaStanica.Desktop
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
-        {
+        {          
             string KorisnickoIme = Username.Text;
             string LozinkaHash = Password.Text.GetHashCode().ToString();
 
@@ -30,12 +31,21 @@ namespace VeterinarskaStanica.Desktop
 
             if (loginSuccess)
             {
+                Thread t = new Thread(new ThreadStart(OpenApplication));
 
+                t.Start();
+
+                Close();
             }
             else
             {
                 MessageBox.Show("Uneseno pogrešno korisničko ime ili lozinka");
             }
+        }
+
+        private void OpenApplication()
+        {
+            Application.Run(new MainForm());
         }
     }
 }

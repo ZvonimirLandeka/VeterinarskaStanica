@@ -18,7 +18,7 @@ namespace VeterinarskaStanica.DAL.Repository
         }
         public ZaposlenikRepository()
         {
-            NHibernateHelper.SetDatabaseType(DatabaseType.InMemory);
+
         }
 
         public bool Add(Zaposlenik Zaposlenik)

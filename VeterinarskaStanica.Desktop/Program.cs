@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeterinarskaStanica.BLL;
 
 namespace VeterinarskaStanica.Desktop
 {
@@ -14,6 +15,8 @@ namespace VeterinarskaStanica.Desktop
         [STAThread]
         static void Main()
         {
+            DbHelper.UseFileDatabase();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
