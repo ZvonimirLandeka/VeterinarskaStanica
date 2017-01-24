@@ -181,7 +181,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TerminController.cs" />
     <Compile Include="Controllers\VrstaZivotinjeController.cs" />
+    <Compile Include="Controllers\ZivotinjaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +231,16 @@
     <Content Include="Views\VrstaZivotinje\Details.cshtml" />
     <Content Include="Views\VrstaZivotinje\Index.cshtml" />
     <Content Include="Views\VrstaZivotinje\Create.cshtml" />
+    <Content Include="Views\Zivotinja\ZivotinjaList.cshtml" />
+    <Content Include="Views\Zivotinja\ZivotinjaEdit.cshtml" />
+    <Content Include="Views\Zivotinja\ZivotinjaCreate.cshtml" />
+    <Content Include="Views\Zivotinja\ZivotinjaDetails.cshtml" />
+    <Content Include="Views\Zivotinja\ZivotinjaDelete.cshtml" />
+    <Content Include="Views\Termin\TerminList.cshtml" />
+    <Content Include="Views\Termin\TerminCreate.cshtml" />
+    <Content Include="Views\Termin\TerminDelete.cshtml" />
+    <Content Include="Views\Termin\TerminDetails.cshtml" />
+    <Content Include="Views\Termin\TerminEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

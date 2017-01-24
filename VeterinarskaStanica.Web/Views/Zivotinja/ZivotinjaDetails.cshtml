@@ -1,0 +1,74 @@
+﻿@model VeterinarskaStanica.Model.Zivotinja
+
+@{
+    ViewBag.Title = "ZivotinjaDetails";
+}
+
+<h2>ZivotinjaDetails</h2>
+
+<div>
+    <h4>Zivotinja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumRodenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumRodenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumSmrti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumSmrti)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Boja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojCipa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojCipa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolozajCipa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolozajCipa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumCipiranja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumCipiranja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
