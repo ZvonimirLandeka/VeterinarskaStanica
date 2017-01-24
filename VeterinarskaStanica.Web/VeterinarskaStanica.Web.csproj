@@ -254,6 +254,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VeterinarskaStanica.BLL\VeterinarskaStanica.BLL.csproj">
+      <Project>{5c12a6dd-3fb8-4f54-93b7-489d30604d86}</Project>
+      <Name>VeterinarskaStanica.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VeterinarskaStanica.DAL\VeterinarskaStanica.DAL.csproj">
       <Project>{6871b1ee-6898-453d-9a24-71ee7fea26c0}</Project>
       <Name>VeterinarskaStanica.DAL</Name>
