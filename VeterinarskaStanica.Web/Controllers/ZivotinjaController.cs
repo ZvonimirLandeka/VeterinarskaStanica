@@ -14,6 +14,7 @@ namespace VeterinarskaStanica.Web.Controllers
     public class ZivotinjaController : Controller
     {
         // GET: Zivotinja
+        [Authorize]
         public ActionResult Index()
         {
             var service = new ZivotinjaService();
@@ -22,6 +23,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Zivotinja/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             var service = new ZivotinjaService();
@@ -30,6 +32,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Zivotinja/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -37,6 +40,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Zivotinja/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Zivotinja Zivotinja)
         {
             try
@@ -52,6 +56,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Zivotinja/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             return View();
@@ -59,6 +64,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Zivotinja/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
