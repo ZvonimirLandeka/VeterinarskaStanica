@@ -13,9 +13,18 @@ namespace VeterinarskaStanica.DAL
 {
     public class NHibernateHelper
     {
+        private static NHibernate.Cfg.Configuration _config;
+
         private static ISessionFactory _sessionFactory;
 
         private static ISession _session;
+
+        private static DatabaseType DatabaseDataLocation = DatabaseType.File;
+
+        public static void SetDatabaseType(DatabaseType type)
+        {
+            DatabaseDataLocation = type;
+        }
 
         public static ISession OpenSession()
         {
@@ -26,6 +35,12 @@ namespace VeterinarskaStanica.DAL
                     _sessionFactory = OpenSessionFactory();
                 }
                 ISession session = _sessionFactory.OpenSession();
+
+                if(DatabaseDataLocation == DatabaseType.InMemory)
+                {
+                    BuildSchema(session);
+                }
+
                 return session;
             }
             catch (Exception e)
@@ -51,13 +66,26 @@ namespace VeterinarskaStanica.DAL
         {
             try
             {
-                var fluentConfig = Fluently.Configure()
-                                    .Database(SQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("VeterinarskaStanicaDatabase")).AdoNetBatchSize(100))
-                                    .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PasminaZivotinjeMap>());
+                if (DatabaseDataLocation == DatabaseType.InMemory)
+                {
+                    _sessionFactory = Fluently.Configure()
+                    .Database(SQLiteConfiguration.Standard.InMemory().ShowSql().FormatSql())
+                    .Mappings(mapper => { mapper.FluentMappings.AddFromAssemblyOf<PasminaZivotinjeMap>(); })
+                    .ExposeConfiguration(c => { _config = c; })
+                    .BuildSessionFactory();
 
-                var nhConfig = fluentConfig.BuildConfiguration();
+                }
 
-                _sessionFactory = nhConfig.BuildSessionFactory();
+                if(DatabaseDataLocation == DatabaseType.File)
+                {
+                    var fluentConfig = Fluently.Configure()
+                                   .Database(SQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("VeterinarskaStanicaDatabase")).AdoNetBatchSize(100))
+                                   .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PasminaZivotinjeMap>());
+
+                    var nhConfig = fluentConfig.BuildConfiguration();
+
+                    _sessionFactory = nhConfig.BuildSessionFactory();
+                }
 
                 // this is for rebuilding the database
                 //ISession Session = _sessionFactory.OpenSession();
@@ -81,6 +109,12 @@ namespace VeterinarskaStanica.DAL
             }
 
             return _sessionFactory;
+        }
+
+        private static void BuildSchema(ISession session)
+        {
+            var export = new SchemaExport(_config);
+            export.Execute(true, true, false, session.Connection, null);
         }
         /*
          *    //public IDatabase Database { private get; set; }
@@ -178,6 +212,12 @@ namespace VeterinarskaStanica.DAL
             }
 
         }
+    }
+
+    public enum DatabaseType
+    {
+        InMemory,
+        File
     }
 
 }

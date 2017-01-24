@@ -57,15 +57,15 @@ namespace VeterinarskaStanica.DAL.Tests
 
             _session = sessionFactory.OpenSession();
 
-            using (var tx = Session.BeginTransaction())
-            {
-                new SchemaExport(nhConfiguration).Execute(useStdOut: true,
-                                                            execute: true,
-                                                            justDrop: true,
-                                                            connection: Session.Connection,
-                                                            exportOutput: Console.Out);
-                tx.Commit();
-            }
+            //using (var tx = Session.BeginTransaction())
+            //{
+            //    new SchemaExport(nhConfiguration).Execute(useStdOut: true,
+            //                                                execute: true,
+            //                                                justDrop: true,
+            //                                                connection: Session.Connection,
+            //                                                exportOutput: Console.Out);
+            //    tx.Commit();
+            //}
 
         }
 
