@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VeterinarskaStanica.BLL;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
@@ -11,7 +12,9 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: Zivotinja
         public ActionResult Index()
         {
-            return View();
+            var service = new ZivotinjaService();
+            var zivotinje = service.GetAll();
+            return View(zivotinje);
         }
 
         // GET: Zivotinja/Details/5
