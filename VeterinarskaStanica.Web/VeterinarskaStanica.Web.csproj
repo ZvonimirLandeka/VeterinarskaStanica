@@ -226,11 +226,11 @@
     <Content Include="Views\VrstaZivotinje\Details.cshtml" />
     <Content Include="Views\VrstaZivotinje\Index.cshtml" />
     <Content Include="Views\VrstaZivotinje\Create.cshtml" />
-    <Content Include="Views\Zivotinja\ZivotinjaList.cshtml" />
-    <Content Include="Views\Zivotinja\ZivotinjaEdit.cshtml" />
-    <Content Include="Views\Zivotinja\ZivotinjaCreate.cshtml" />
-    <Content Include="Views\Zivotinja\ZivotinjaDetails.cshtml" />
-    <Content Include="Views\Zivotinja\ZivotinjaDelete.cshtml" />
+    <Content Include="Views\Zivotinja\Index.cshtml" />
+    <Content Include="Views\Zivotinja\Edit.cshtml" />
+    <Content Include="Views\Zivotinja\Create.cshtml" />
+    <Content Include="Views\Zivotinja\Details.cshtml" />
+    <Content Include="Views\Zivotinja\Delete.cshtml" />
     <Content Include="Views\Termin\TerminList.cshtml" />
     <Content Include="Views\Termin\TerminCreate.cshtml" />
     <Content Include="Views\Termin\TerminDelete.cshtml" />

@@ -171,6 +171,17 @@ namespace VeterinarskaStanica.DAL
                         VrstaZivotinje = vz
                     };
                     session.Save(pz);
+
+                    var pero = new Zivotinja()
+                    {
+                        Boja = "Crna",
+                        BrojCipa = "123",
+                        Ime = "Pero",
+                        PasminaZivotinje = pz,
+                        VrstaZivotinje = vz,
+                        Spol=Spol.Muško
+                    };
+
                     ////transaction.Commit();
 
                     var lijek1 = new Lijek()
@@ -207,6 +218,22 @@ namespace VeterinarskaStanica.DAL
                         Naziv = "Testni zahvat"
                     };
                     session.Save(Zahvat);
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     transaction.Commit();
                 }
             }
