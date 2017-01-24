@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VeterinarskaStanica.DAL;
+using VeterinarskaStanica.Model;
 using NHibernate;
 
 using VeterinarskaStanica.DAL.Repository;
@@ -12,15 +13,13 @@ namespace VeterinarskaStanica.Web.Controllers
 {
     public class VrstaZivotinjeController : Controller
     {
-        private ZivotinjaRepository rep;
-
         // GET: VrstaZivotinje
         public ActionResult Index()
         {
             ISession session = NHibernateHelper.OpenSession();
             ZivotinjaRepository rep = new ZivotinjaRepository(session);
-            var lista = rep.GetAllVrstaZivotinje();
-            return View("VrstaZivotinjeList", lista);
+            var vrsteZivotinja = rep.GetAllVrstaZivotinje();
+            return View(vrsteZivotinja);
         }
 
         // GET: VrstaZivotinje/Details/5
@@ -32,16 +31,24 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: VrstaZivotinje/Create
         public ActionResult Create()
         {
-            return View();
+            var newVrstaZivotinje = new VrstaZivotinje();
+
+            return View(newVrstaZivotinje);
         }
 
         // POST: VrstaZivotinje/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(VrstaZivotinje vrstaZivotinje)
         {
             try
             {
-                // TODO: Add insert logic here
+                ISession session = NHibernateHelper.OpenSession();
+                ZivotinjaRepository repo = new ZivotinjaRepository(session);
+                using(var transaction = session.BeginTransaction())
+                {
+                    repo.AddVrstaZivotinje(vrstaZivotinje);
+                    transaction.Commit();
+                }
 
                 return RedirectToAction("Index");
             }

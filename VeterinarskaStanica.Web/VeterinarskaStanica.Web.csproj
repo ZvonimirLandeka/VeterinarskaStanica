@@ -226,8 +226,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\VrstaZivotinje\VrstaZivotinjeDisplay.cshtml" />
-    <Content Include="Views\VrstaZivotinje\VrstaZivotinjeList.cshtml" />
+    <Content Include="Views\VrstaZivotinje\Details.cshtml" />
+    <Content Include="Views\VrstaZivotinje\Index.cshtml" />
+    <Content Include="Views\VrstaZivotinje\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
