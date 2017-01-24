@@ -16,8 +16,7 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: VrstaZivotinje
         public ActionResult Index()
         {
-            ISession session = NHibernateHelper.OpenSession();
-            ZivotinjaRepository rep = new ZivotinjaRepository(session);
+            ZivotinjaRepository rep = new ZivotinjaRepository();
             var vrsteZivotinja = rep.GetAllVrstaZivotinje();
             return View(vrsteZivotinja);
         }
@@ -42,8 +41,8 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             try
             {
-                ISession session = NHibernateHelper.OpenSession();
-                ZivotinjaRepository repo = new ZivotinjaRepository(session);
+                ISession session = NHibernateHelper.CurrentSession;
+                ZivotinjaRepository repo = new ZivotinjaRepository();
                 using(var transaction = session.BeginTransaction())
                 {
                     repo.AddVrstaZivotinje(vrstaZivotinje);

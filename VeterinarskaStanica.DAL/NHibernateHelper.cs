@@ -128,11 +128,11 @@ namespace VeterinarskaStanica.DAL
                     var vz = new VrstaZivotinje()
                     {
                         Naziv = "Pas"
-                        
+
                     };
                     var pz = new PasminaZivotinje()
                     {
-                        
+
                         Naziv = "Ovcar",
                         VrstaZivotinje = vz
                     };
@@ -141,7 +141,7 @@ namespace VeterinarskaStanica.DAL
 
                     var lijek1 = new Lijek()
                     {
-                        Naziv="test1"
+                        Naziv = "test1"
                     };
                     var lijek2 = new Lijek()
                     {
@@ -155,7 +155,7 @@ namespace VeterinarskaStanica.DAL
                     {
                         Naziv = "lijek4"
                     };
-                    IList<Lijek> lijekovi= new List<Lijek>();
+                    IList<Lijek> lijekovi = new List<Lijek>();
                     lijekovi.Add(lijek1);
                     lijekovi.Add(lijek2);
                     lijekovi.Add(lijek3);
@@ -165,7 +165,7 @@ namespace VeterinarskaStanica.DAL
                     session.Save(lijek3);
                     session.Save(lijek4);
 
-                   
+
                     var Zahvat = new Zahvat()
                     {
                         Lijekovi = lijekovi,
@@ -174,9 +174,6 @@ namespace VeterinarskaStanica.DAL
                     };
                     session.Save(Zahvat);
                     transaction.Commit();
-
-
-
                 }
             }
 

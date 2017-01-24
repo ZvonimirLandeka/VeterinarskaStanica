@@ -76,6 +76,7 @@
             this.LoginButton.TabIndex = 2;
             this.LoginButton.Text = "Prijava";
             this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // LoginForm
             // 

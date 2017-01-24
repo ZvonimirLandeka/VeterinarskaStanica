@@ -89,6 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VeterinarskaStanica.BLL\VeterinarskaStanica.BLL.csproj">
+      <Project>{5c12a6dd-3fb8-4f54-93b7-489d30604d86}</Project>
+      <Name>VeterinarskaStanica.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VeterinarskaStanica.Model\VeterinarskaStanica.Model.csproj">
       <Project>{b4cf7ecc-2fea-4ddf-881b-8f53b4441547}</Project>
       <Name>VeterinarskaStanica.Model</Name>
