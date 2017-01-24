@@ -100,13 +100,13 @@ namespace VeterinarskaStanica.DAL.Repository
 
         public Zaposlenik GetByKorisnickoIme(string KorisnickoIme)
         {
-            return _session.Query<Zaposlenik>().First(x => x.KorisnickoIme == KorisnickoIme);
+            return _session.Query<Zaposlenik>().FirstOrDefault(x => x.KorisnickoIme == KorisnickoIme);
 
         }
 
         public Zaposlenik GetByOib(string OIB)
         {
-            return _session.Query<Zaposlenik>().First(x => x.OIB == OIB);
+            return _session.Query<Zaposlenik>().FirstOrDefault(x => x.OIB == OIB);
         }
 
         public VrstaZaposlenika GetVrstaZaposlenikaById(int Id)
