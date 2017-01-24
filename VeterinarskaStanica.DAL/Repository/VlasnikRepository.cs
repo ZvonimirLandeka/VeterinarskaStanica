@@ -63,7 +63,7 @@ namespace VeterinarskaStanica.DAL.Repository
 
         public Vlasnik GetByKorisnickoIme(string KorisnickoIme)
         {
-            return _session.Query<Vlasnik>().First(x=>x.KorisnickoIme==KorisnickoIme);
+            return _session.Query<Vlasnik>().FirstOrDefault(x=>x.KorisnickoIme==KorisnickoIme);
         }
 
         public Vlasnik GetByOib(string OIB)

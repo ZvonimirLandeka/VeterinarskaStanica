@@ -1,9 +1,13 @@
-﻿using System;
+﻿using NHibernate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VeterinarskaStanica.BLL;
+using VeterinarskaStanica.DAL;
+using VeterinarskaStanica.DAL.Repository;
+using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
@@ -20,7 +24,9 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: Zivotinja/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var service = new ZivotinjaService();
+            var zivotinja = service.GetById(id);
+            return View(zivotinja);
         }
 
         // GET: Zivotinja/Create
@@ -31,12 +37,12 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Zivotinja/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Zivotinja Zivotinja)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                var service = new ZivotinjaService();
+                var zivotinje = service.Add(Zivotinja);
                 return RedirectToAction("Index");
             }
             catch
@@ -57,7 +63,7 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction("Index");
             }
@@ -79,7 +85,8 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                var service = new ZivotinjaService();
+                var zivotinje = service.Delete(id);
 
                 return RedirectToAction("Index");
             }

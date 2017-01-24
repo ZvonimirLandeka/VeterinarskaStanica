@@ -90,14 +90,14 @@ namespace VeterinarskaStanica.DAL
                 // this is for rebuilding the database
                 //ISession Session = _sessionFactory.OpenSession();
 
-                //using (var tx = Session.BeginTransaction())
+              //  using (var tx = Session.BeginTransaction())
                 //{
-                //    new SchemaExport(nhConfig).Execute(useStdOut: true,
-                //                                                execute: true,
-                //                                                justDrop: false,
-                //                                                connection: Session.Connection,
-                //                                                exportOutput: Console.Out);
-                //    tx.Commit();
+                  //  new SchemaExport(nhConfig).Execute(useStdOut: true,
+                      //                                          execute: true,
+                    //                                            justDrop: false,
+                        //                                        connection: Session.Connection,
+                          //                                      exportOutput: Console.Out);
+               //     tx.Commit();
                 //}
 
 
