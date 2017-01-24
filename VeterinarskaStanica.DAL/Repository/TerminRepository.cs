@@ -13,10 +13,13 @@ namespace VeterinarskaStanica.DAL.Repository
 {
     public class TerminRepository : ITerminRepository
     {
-        ISession _session = null;
-        public TerminRepository(ISession Session)
+        private ISession _session
         {
-            _session = Session;
+            get { return NHibernateHelper.CurrentSession; }
+        }
+        public TerminRepository()
+        {
+
         }
         public bool Add(Termin Termin)
         {

@@ -12,10 +12,13 @@ namespace VeterinarskaStanica.DAL.Repository
 {
     public class VlasnikRepository : IVlasnikRepository
     {
-        ISession _session = null;
-        public VlasnikRepository(ISession Session)
+        private ISession _session
         {
-            _session = Session;
+            get { return NHibernateHelper.CurrentSession; }
+        }
+        public VlasnikRepository()
+        {
+
         }
 
         public bool Add(Vlasnik Vlasnik)

@@ -12,10 +12,13 @@ namespace VeterinarskaStanica.DAL.Repository
 {
     public class ZivotinjaRepository : IZivotinjaRepository
     {
-        ISession _session = null;
-        public ZivotinjaRepository(ISession Session)
+        private ISession _session
         {
-            _session = Session;
+            get { return NHibernateHelper.CurrentSession; }
+        }
+        public ZivotinjaRepository()
+        {
+
         }
         public bool Add(Zivotinja Zivotinja)
         {

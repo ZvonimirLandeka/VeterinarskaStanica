@@ -16,7 +16,10 @@ namespace VeterinarskaStanica.DAL.Repository
         {
             get { return NHibernateHelper.CurrentSession; }
         }
-        public ZaposlenikRepository() { }
+        public ZaposlenikRepository()
+        {
+
+        }
 
         public bool Add(Zaposlenik Zaposlenik)
         {
