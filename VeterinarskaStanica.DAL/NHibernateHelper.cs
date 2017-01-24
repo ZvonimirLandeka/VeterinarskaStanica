@@ -15,6 +15,7 @@ namespace VeterinarskaStanica.DAL
     {
         private static ISessionFactory _sessionFactory;
 
+        private static ISession _session;
 
         public static ISession OpenSession()
         {
@@ -30,6 +31,19 @@ namespace VeterinarskaStanica.DAL
             catch (Exception e)
             {
                 throw e.InnerException ?? e;
+            }
+        }
+
+        public static ISession CurrentSession
+        {
+            get
+            {
+                if(_session == null)
+                {
+                    _session = OpenSession();
+                }
+
+                return _session;
             }
         }
 
