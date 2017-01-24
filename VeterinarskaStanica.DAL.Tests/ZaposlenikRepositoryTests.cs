@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VeterinarskaStanica.DAL.Repository;
 using VeterinarskaStanica.Model;
 using System.Data.SQLite;
+using NHibernate;
 
 namespace VeterinarskaStanica.DAL.Tests
 {
@@ -10,17 +11,20 @@ namespace VeterinarskaStanica.DAL.Tests
     public class ZaposlenikRepositoryTests
     {   
         private SQLiteTestDatabase database;
+        private ZaposlenikRepository zaposlenikRepo;
+        private ISession session { get { return NHibernateHelper.CurrentSession; } }
+        
 
         public ZaposlenikRepositoryTests()
         {
             database = new SQLiteTestDatabase();
+            zaposlenikRepo = new ZaposlenikRepository();
         }
 
         [TestMethod]
         public void AddZaposlenik_Test()
         {
-            ZaposlenikRepository zaposlenikRepo = new ZaposlenikRepository(database.Session);
-                
+           
             Zaposlenik zaposlenik = new Zaposlenik() { Ime = "Marko", Prezime = "Markovic", OIB = "51683824666" };
             
             zaposlenikRepo.Add(zaposlenik);
@@ -40,7 +44,7 @@ namespace VeterinarskaStanica.DAL.Tests
         [TestMethod]
         public void DeleteZaposlenik_Test()
         {
-            ZaposlenikRepository zaposlenikRepo = new ZaposlenikRepository(database.Session);
+            ZaposlenikRepository zaposlenikRepo = new ZaposlenikRepository();
 
             Zaposlenik zaposlenik = new Zaposlenik() { Ime = "Marko", Prezime = "Markovic", OIB = "51683824666" };
 

@@ -14,6 +14,7 @@ namespace VeterinarskaStanica.DAL.Tests
     class SQLiteTestDatabase : IDisposable
     {
         protected Configuration config;
+        private ISession _session;
         protected ISessionFactory sessionFactory;
         public SQLiteTestDatabase()
         {
@@ -54,7 +55,7 @@ namespace VeterinarskaStanica.DAL.Tests
             var nhConfiguration = fluentConfig.BuildConfiguration();
             sessionFactory = nhConfiguration.BuildSessionFactory();
 
-            Session = sessionFactory.OpenSession();
+            _session = sessionFactory.OpenSession();
 
             using (var tx = Session.BeginTransaction())
             {
@@ -68,7 +69,16 @@ namespace VeterinarskaStanica.DAL.Tests
 
         }
 
-        public ISession Session { get; set; }
+        public ISession Session {
+            get
+            {
+                if(_session == null)
+                {
+                    _session = sessionFactory.OpenSession();
+                }
+                return _session;
+            }
+        }
         public void Dispose()
         {
             Session.Dispose();
