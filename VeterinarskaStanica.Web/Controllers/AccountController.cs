@@ -61,7 +61,7 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
 
