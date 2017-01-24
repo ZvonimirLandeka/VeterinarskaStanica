@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using VeterinarskaStanica.BLL;
 using VeterinarskaStanica.DAL;
 
 namespace VeterinarskaStanica.Web
@@ -13,11 +14,12 @@ namespace VeterinarskaStanica.Web
     {
         protected void Application_Start()
         {
+            DbHelper.UseFileDatabase();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //NHibernateHelper.OpenSessionFactory();
         }
     }
 }

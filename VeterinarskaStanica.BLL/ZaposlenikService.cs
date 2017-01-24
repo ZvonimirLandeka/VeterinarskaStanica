@@ -13,6 +13,7 @@ namespace VeterinarskaStanica.BLL
     public class ZaposlenikService
     {
         private ZaposlenikRepository repository;
+        private ISession ActiveSession { get { return NHibernateHelper.CurrentSession; } }
 
         public ZaposlenikService()
         {
@@ -21,9 +22,7 @@ namespace VeterinarskaStanica.BLL
 
         public bool CheckLogin(string KorisnickoIme, string Lozinka)
         {
-            ISession session = NHibernateHelper.CurrentSession;
-
-            using (var transaction = session.BeginTransaction())
+            using (var transaction = ActiveSession.BeginTransaction())
             {
                 Zaposlenik zaposlenik = repository.GetByKorisnickoIme(KorisnickoIme);
 
@@ -38,5 +37,40 @@ namespace VeterinarskaStanica.BLL
             }
         }
 
+        public void Create(Zaposlenik noviZaposlenik)
+        {
+            using(var transaction = ActiveSession.BeginTransaction())
+            {
+                try
+                {
+                    var postojeciZaposlenici = repository.GetAll();
+
+                    if(postojeciZaposlenici.Exists(x => x.KorisnickoIme == noviZaposlenik.KorisnickoIme))
+                    {
+                        throw new Exception("Zaposlenik sa zadanim korisničkim imenom već postoji.");
+                    }
+                    
+                    if(noviZaposlenik.Lozinka != null)
+                    {
+                        noviZaposlenik.Lozinka = noviZaposlenik.Lozinka.GetHashCode().ToString();
+                    }
+
+                    repository.Add(noviZaposlenik);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public List<Zaposlenik> GetAll()
+        {
+            var postojeciZaposlenici = repository.GetAll();
+
+            return postojeciZaposlenici;
+        }
     }
 }

@@ -47,7 +47,7 @@
             this.Password.Location = new System.Drawing.Point(12, 80);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(232, 20);
-            this.Password.TabIndex = 0;
+            this.Password.TabIndex = 1;
             this.Password.UseSystemPasswordChar = true;
             // 
             // UsernameLabel
@@ -88,6 +88,8 @@
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Username);
+            this.MaximumSize = new System.Drawing.Size(272, 206);
+            this.MinimumSize = new System.Drawing.Size(272, 206);
             this.Name = "LoginForm";
             this.Text = "Prijava";
             this.ResumeLayout(false);
