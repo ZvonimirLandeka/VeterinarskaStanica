@@ -15,6 +15,7 @@ namespace VeterinarskaStanica.DAL
     {
         private static ISessionFactory _sessionFactory;
 
+        private static ISession _session;
 
         public static ISession OpenSession()
         {
