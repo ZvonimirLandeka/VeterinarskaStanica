@@ -38,7 +38,7 @@ namespace VeterinarskaStanica.BLL
             }
         }
 
-        public void Create(Zaposlenik noviZaposlenik)
+        public void Add(Zaposlenik noviZaposlenik)
         {
             using(var transaction = ActiveSession.BeginTransaction())
             {

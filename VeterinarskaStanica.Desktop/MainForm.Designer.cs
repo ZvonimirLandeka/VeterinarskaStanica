@@ -54,15 +54,19 @@
             this.SearchZaposlenik = new System.Windows.Forms.TextBox();
             this.ZaposleniciList = new System.Windows.Forms.ListBox();
             this.zaposleniciBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ZivotinjaTab = new System.Windows.Forms.TabPage();
+            this.zivotinjaControl1 = new VeterinarskaStanica.Desktop.ZivotinjaControl();
             this.TabControl.SuspendLayout();
             this.ZaposleniciTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zaposleniciBindingSource)).BeginInit();
+            this.ZivotinjaTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.Termini);
             this.TabControl.Controls.Add(this.ZaposleniciTab);
+            this.TabControl.Controls.Add(this.ZivotinjaTab);
             this.TabControl.Location = new System.Drawing.Point(12, 12);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
@@ -298,6 +302,24 @@
             // 
             this.zaposleniciBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
             // 
+            // ZivotinjaTab
+            // 
+            this.ZivotinjaTab.Controls.Add(this.zivotinjaControl1);
+            this.ZivotinjaTab.Location = new System.Drawing.Point(4, 22);
+            this.ZivotinjaTab.Name = "ZivotinjaTab";
+            this.ZivotinjaTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ZivotinjaTab.Size = new System.Drawing.Size(835, 700);
+            this.ZivotinjaTab.TabIndex = 2;
+            this.ZivotinjaTab.Text = "Životinja";
+            this.ZivotinjaTab.UseVisualStyleBackColor = true;
+            // 
+            // zivotinjaControl1
+            // 
+            this.zivotinjaControl1.Location = new System.Drawing.Point(6, 6);
+            this.zivotinjaControl1.Name = "zivotinjaControl1";
+            this.zivotinjaControl1.Size = new System.Drawing.Size(823, 688);
+            this.zivotinjaControl1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +332,7 @@
             this.ZaposleniciTab.ResumeLayout(false);
             this.ZaposleniciTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zaposleniciBindingSource)).EndInit();
+            this.ZivotinjaTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -341,5 +364,7 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ObrisiButton;
         private System.Windows.Forms.Button UrediButton;
+        private System.Windows.Forms.TabPage ZivotinjaTab;
+        private ZivotinjaControl zivotinjaControl1;
     }
 }

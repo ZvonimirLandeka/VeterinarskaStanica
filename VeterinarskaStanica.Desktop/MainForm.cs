@@ -140,7 +140,7 @@ namespace VeterinarskaStanica.Desktop
 
             if (AktivniZaposlenik != null && AktivniZaposlenik.Id == -1) // novi zaposlenik
             {
-                zaposlenikService.Create(AktivniZaposlenik);
+                zaposlenikService.Add(AktivniZaposlenik);
             }
             else if (AktivniZaposlenik != null && AktivniZaposlenik.Id != -1) // postojeći zaposlenik
             {

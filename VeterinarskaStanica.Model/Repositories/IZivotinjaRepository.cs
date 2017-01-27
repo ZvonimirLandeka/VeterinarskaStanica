@@ -24,6 +24,7 @@ namespace VeterinarskaStanica.Model.Repositories
         bool DeleteVrstaZivotinje(int Id);
 
         List<PasminaZivotinje> GetAllPasminaZivotinje();
+        List<PasminaZivotinje> GetAllPasminaZivotinjeByVrstaZivotinje(VrstaZivotinje VrstaZivotinje);
         PasminaZivotinje GetPasminaZivotinjeById(int Id);
         bool AddPasminaZivotinje(PasminaZivotinje PasminaZivotinje);
         bool UpdatePasminaZivotinje(PasminaZivotinje PasminaZivotinje);

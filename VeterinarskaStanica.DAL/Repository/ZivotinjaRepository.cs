@@ -160,6 +160,11 @@ namespace VeterinarskaStanica.DAL.Repository
             return _session.Query<PasminaZivotinje>().ToList();
         }
 
+        public List<PasminaZivotinje> GetAllPasminaZivotinjeByVrstaZivotinje(VrstaZivotinje VrstaZivotinje)
+        {
+            return _session.Query<PasminaZivotinje>().Where(x => x.VrstaZivotinje.Id == VrstaZivotinje.Id).ToList();
+        }
+
         public List<VrstaZivotinje> GetAllVrstaZivotinje()
         {
             return _session.Query<VrstaZivotinje>().ToList();
