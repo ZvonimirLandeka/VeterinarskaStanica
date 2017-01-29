@@ -80,19 +80,46 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ObrišiVlasnikaButton = new System.Windows.Forms.Button();
+            this.UrediVlasnikaButton = new System.Windows.Forms.Button();
+            this.NoviVlasnikButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.VlasniciList = new System.Windows.Forms.ListBox();
+            this.vlasnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabControl.SuspendLayout();
             this.ZaposleniciTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zaposleniciBindingSource)).BeginInit();
             this.ZivotinjaTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.Termini);
-            this.TabControl.Controls.Add(this.ZaposleniciTab);
+            this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.ZivotinjaTab);
+            this.TabControl.Controls.Add(this.ZaposleniciTab);
             this.TabControl.Location = new System.Drawing.Point(12, 12);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
@@ -112,6 +139,7 @@
             // 
             // ZaposleniciTab
             // 
+            this.ZaposleniciTab.Controls.Add(this.label4);
             this.ZaposleniciTab.Controls.Add(this.ObrisiZaposlenikaButton);
             this.ZaposleniciTab.Controls.Add(this.UrediZaposlenikaButton);
             this.ZaposleniciTab.Controls.Add(this.AddNewButton);
@@ -338,6 +366,7 @@
             this.ZivotinjaTab.Controls.Add(this.BojaLabel);
             this.ZivotinjaTab.Controls.Add(this.PasminaLabel);
             this.ZivotinjaTab.Controls.Add(this.VrstaLabel);
+            this.ZivotinjaTab.Controls.Add(this.label3);
             this.ZivotinjaTab.Controls.Add(this.label2);
             this.ZivotinjaTab.Controls.Add(this.PolozajCipa);
             this.ZivotinjaTab.Controls.Add(this.textBox9);
@@ -553,7 +582,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 18);
+            this.textBox1.Location = new System.Drawing.Point(17, 25);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(144, 20);
             this.textBox1.TabIndex = 32;
@@ -596,6 +625,239 @@
             this.textBox9.Size = new System.Drawing.Size(143, 20);
             this.textBox9.TabIndex = 69;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "Filtriraj životinje";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 13);
+            this.label4.TabIndex = 69;
+            this.label4.Text = "Filtriraj zaposlenike";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.ObrišiVlasnikaButton);
+            this.tabPage1.Controls.Add(this.UrediVlasnikaButton);
+            this.tabPage1.Controls.Add(this.NoviVlasnikButton);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.textBox10);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.textBox11);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.textBox12);
+            this.tabPage1.Controls.Add(this.textBox13);
+            this.tabPage1.Controls.Add(this.textBox14);
+            this.tabPage1.Controls.Add(this.textBox15);
+            this.tabPage1.Controls.Add(this.textBox16);
+            this.tabPage1.Controls.Add(this.textBox17);
+            this.tabPage1.Controls.Add(this.VlasniciList);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(835, 700);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Vlasnici";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.TabIndex = 89;
+            this.label5.Text = "Filtriraj vlasnike";
+            // 
+            // ObrišiVlasnikaButton
+            // 
+            this.ObrišiVlasnikaButton.Enabled = false;
+            this.ObrišiVlasnikaButton.Location = new System.Drawing.Point(289, 83);
+            this.ObrišiVlasnikaButton.Name = "ObrišiVlasnikaButton";
+            this.ObrišiVlasnikaButton.Size = new System.Drawing.Size(96, 23);
+            this.ObrišiVlasnikaButton.TabIndex = 88;
+            this.ObrišiVlasnikaButton.Text = "Obriši";
+            this.ObrišiVlasnikaButton.UseVisualStyleBackColor = true;
+            // 
+            // UrediVlasnikaButton
+            // 
+            this.UrediVlasnikaButton.Enabled = false;
+            this.UrediVlasnikaButton.Location = new System.Drawing.Point(153, 83);
+            this.UrediVlasnikaButton.Name = "UrediVlasnikaButton";
+            this.UrediVlasnikaButton.Size = new System.Drawing.Size(96, 23);
+            this.UrediVlasnikaButton.TabIndex = 87;
+            this.UrediVlasnikaButton.Text = "Uredi";
+            this.UrediVlasnikaButton.UseVisualStyleBackColor = true;
+            // 
+            // NoviVlasnikButton
+            // 
+            this.NoviVlasnikButton.Location = new System.Drawing.Point(16, 83);
+            this.NoviVlasnikButton.Name = "NoviVlasnikButton";
+            this.NoviVlasnikButton.Size = new System.Drawing.Size(96, 23);
+            this.NoviVlasnikButton.TabIndex = 86;
+            this.NoviVlasnikButton.Text = "Novi vlasnik";
+            this.NoviVlasnikButton.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(430, 389);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 80;
+            this.label6.Text = "Lozinka";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(430, 350);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 13);
+            this.label7.TabIndex = 79;
+            this.label7.Text = "Korisničko ime";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(430, 311);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 13);
+            this.label8.TabIndex = 78;
+            this.label8.Text = "OIB";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(430, 240);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 81;
+            this.label9.Text = "Adresa";
+            // 
+            // textBox10
+            // 
+            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Lozinka", true));
+            this.textBox10.Location = new System.Drawing.Point(433, 405);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            this.textBox10.Size = new System.Drawing.Size(302, 20);
+            this.textBox10.TabIndex = 85;
+            this.textBox10.UseSystemPasswordChar = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(430, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 77;
+            this.label10.Text = "Spol";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(430, 161);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 13);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "Prezime";
+            // 
+            // textBox11
+            // 
+            this.textBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "KorisnickoIme", true));
+            this.textBox11.Location = new System.Drawing.Point(433, 366);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(302, 20);
+            this.textBox11.TabIndex = 84;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(430, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 13);
+            this.label12.TabIndex = 75;
+            this.label12.Text = "Ime";
+            // 
+            // textBox12
+            // 
+            this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "OIB", true));
+            this.textBox12.Location = new System.Drawing.Point(433, 327);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(302, 20);
+            this.textBox12.TabIndex = 83;
+            // 
+            // textBox13
+            // 
+            this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Adresa", true));
+            this.textBox13.Location = new System.Drawing.Point(433, 256);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(302, 51);
+            this.textBox13.TabIndex = 82;
+            // 
+            // textBox14
+            // 
+            this.textBox14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Spol", true));
+            this.textBox14.Location = new System.Drawing.Point(433, 216);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(302, 20);
+            this.textBox14.TabIndex = 74;
+            // 
+            // textBox15
+            // 
+            this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Prezime", true));
+            this.textBox15.Location = new System.Drawing.Point(433, 177);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(302, 20);
+            this.textBox15.TabIndex = 73;
+            // 
+            // textBox16
+            // 
+            this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Ime", true));
+            this.textBox16.Location = new System.Drawing.Point(433, 138);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(302, 20);
+            this.textBox16.TabIndex = 71;
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(16, 40);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(144, 20);
+            this.textBox17.TabIndex = 72;
+            // 
+            // VlasniciList
+            // 
+            this.VlasniciList.FormattingEnabled = true;
+            this.VlasniciList.Location = new System.Drawing.Point(16, 122);
+            this.VlasniciList.Name = "VlasniciList";
+            this.VlasniciList.Size = new System.Drawing.Size(369, 550);
+            this.VlasniciList.TabIndex = 70;
+            // 
+            // vlasnikBindingSource
+            // 
+            this.vlasnikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Vlasnik);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,6 +874,9 @@
             this.ZivotinjaTab.ResumeLayout(false);
             this.ZivotinjaTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -669,5 +934,29 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button ObrišiVlasnikaButton;
+        private System.Windows.Forms.Button UrediVlasnikaButton;
+        private System.Windows.Forms.Button NoviVlasnikButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.ListBox VlasniciList;
+        private System.Windows.Forms.BindingSource vlasnikBindingSource;
     }
 }

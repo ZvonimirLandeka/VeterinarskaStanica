@@ -127,6 +127,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.PasminaZivotinje.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Vlasnik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zivotinja.datasource" />
