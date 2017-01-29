@@ -86,7 +86,6 @@
     <Compile Include="Mappings\VrstaTerminaMap.cs" />
     <Compile Include="Mappings\VrstaZahvataMap.cs" />
     <Compile Include="Mappings\TerminMap.cs" />
-    <Compile Include="Mappings\StatusTerminaMap.cs" />
     <Compile Include="Mappings\OsobaMap.cs" />
     <Compile Include="Mappings\LijekMap.cs" />
     <Compile Include="Repository\TerminRepository.cs" />

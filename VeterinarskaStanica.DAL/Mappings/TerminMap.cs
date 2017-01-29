@@ -20,7 +20,7 @@ namespace VeterinarskaStanica.DAL
             References(x => x.VrstaTermina);
             References(x => x.Zivotinja);
             References(x => x.Zaposlenik);
-            References(x => x.Status);
+            Map(x => x.Status);
             HasMany(x => x.Zahvati);
             HasMany(x => x.Dokumenti);
 

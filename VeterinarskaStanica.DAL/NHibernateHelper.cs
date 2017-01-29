@@ -85,22 +85,20 @@ namespace VeterinarskaStanica.DAL
                     var nhConfig = fluentConfig.BuildConfiguration();
 
                     _sessionFactory = nhConfig.BuildSessionFactory();
+
+                    //// this is for rebuilding the database
+                    //ISession Session = _sessionFactory.OpenSession();
+
+                    //using (var tx = Session.BeginTransaction())
+                    //{
+                    //    new SchemaExport(nhConfig).Execute(useStdOut: true,
+                    //                                                execute: true,
+                    //                                                justDrop: false,
+                    //                                                connection: Session.Connection,
+                    //                                                exportOutput: Console.Out);
+                    //    tx.Commit();
+                    //}
                 }
-
-                // this is for rebuilding the database
-                //ISession Session = _sessionFactory.OpenSession();
-
-              //  using (var tx = Session.BeginTransaction())
-                //{
-                  //  new SchemaExport(nhConfig).Execute(useStdOut: true,
-                      //                                          execute: true,
-                    //                                            justDrop: false,
-                        //                                        connection: Session.Connection,
-                          //                                      exportOutput: Console.Out);
-               //     tx.Commit();
-                //}
-
-
             }
             catch (Exception)
             {

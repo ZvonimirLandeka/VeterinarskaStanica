@@ -45,36 +45,21 @@ namespace VeterinarskaStanica.Desktop
             Vrsta.SelectedItem = zivotinja.VrstaZivotinje;
             Pasmina.SelectedItem = zivotinja.PasminaZivotinje;
             Spol.SelectedItem = zivotinja.Spol;
-
-            //Ime.Text = zivotinja?.Ime;
-            //Boja.Text = zivotinja?.Boja;
-            //Spol.SelectedItem = zivotinja?.Spol;
-            //BrojCipa.Text = zivotinja?.BrojCipa;
-            //PolozajCipa.Text = zivotinja?.PolozajCipa;
-            //DatumCipiranja.Value = zivotinja.DatumCipiranja;
-            //DatumRodenja.Value = zivotinja.DatumRodenja;
-            //DatumSmrti.Value = zivotinja.DatumSmrti;
-
         }
 
         private void Spremi(object sender, EventArgs e)
         {
-            //AktivnaZivotinja.Ime = Ime.Text;
-            //AktivnaZivotinja.Boja = Boja.Text;
+
             AktivnaZivotinja.VrstaZivotinje = Vrsta.SelectedItem as VrstaZivotinje;
             AktivnaZivotinja.PasminaZivotinje = Pasmina.SelectedItem as PasminaZivotinje;
             AktivnaZivotinja.Spol = (Spol)Spol.SelectedItem;
-            //AktivnaZivotinja.BrojCipa = BrojCipa.Text;
-            //AktivnaZivotinja.PolozajCipa = PolozajCipa.Text;
-            //AktivnaZivotinja.DatumCipiranja = DatumCipiranja.Value;
-            //AktivnaZivotinja.DatumRodenja = DatumRodenja.Value;
-            //AktivnaZivotinja.DatumSmrti = DatumSmrti.Value;
 
-            if (AktivnaZivotinja != null && AktivnaZivotinja.Id == -1) // novi zaposlenik
+
+            if (AktivnaZivotinja != null && AktivnaZivotinja.Id == -1) // nova zivotinja
             {
                 zivotinjaService.Add(AktivnaZivotinja);
             }
-            else if (AktivnaZivotinja != null && AktivnaZivotinja.Id != -1) // postojeći zaposlenik
+            else if (AktivnaZivotinja != null && AktivnaZivotinja.Id != -1) // postojeća zivotinja
             {
                 zivotinjaService.Update(AktivnaZivotinja);
             }
