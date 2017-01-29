@@ -83,6 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZivotinjaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZivotinjaControl.Designer.cs">
+      <DependentUpon>ZivotinjaControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,7 +104,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ZivotinjaControl.resx">
+      <DependentUpon>ZivotinjaControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.PasminaZivotinje.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

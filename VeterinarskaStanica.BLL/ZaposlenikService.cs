@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using VeterinarskaStanica.DAL;
 using VeterinarskaStanica.DAL.Repository;
 using VeterinarskaStanica.Model;
+using VeterinarskaStanica.Model.Repositories;
 
 namespace VeterinarskaStanica.BLL
 {
     public class ZaposlenikService
     {
-        private ZaposlenikRepository repository;
+        private IZaposlenikRepository repository;
         private ISession ActiveSession { get { return NHibernateHelper.CurrentSession; } }
 
         public ZaposlenikService()
@@ -37,15 +38,16 @@ namespace VeterinarskaStanica.BLL
             }
         }
 
-        public void Create(Zaposlenik noviZaposlenik)
+        public void Add(Zaposlenik noviZaposlenik)
         {
             using(var transaction = ActiveSession.BeginTransaction())
             {
                 try
                 {
                     var postojeciZaposlenici = repository.GetAll();
+                    var ZauzetoKorisnickoIme = postojeciZaposlenici.Exists(x => x.KorisnickoIme == noviZaposlenik.KorisnickoIme);
 
-                    if(postojeciZaposlenici.Exists(x => x.KorisnickoIme == noviZaposlenik.KorisnickoIme))
+                    if (noviZaposlenik.KorisnickoIme?.Length > 0 && ZauzetoKorisnickoIme)
                     {
                         throw new Exception("Zaposlenik sa zadanim korisničkim imenom već postoji.");
                     }
@@ -56,6 +58,55 @@ namespace VeterinarskaStanica.BLL
                     }
 
                     repository.Add(noviZaposlenik);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public void Update(Zaposlenik zaposlenik)
+        {
+            using (var transaction = ActiveSession.BeginTransaction())
+            {
+                try
+                {
+                    var stariZaposlenik = repository.GetById(zaposlenik.Id);
+
+                    var postojeciZaposlenici = repository.GetAll().Where(x => x.Id != zaposlenik.Id).ToList();
+                    var ZauzetoKorisnickoIme = postojeciZaposlenici.Exists(x => x.KorisnickoIme == zaposlenik.KorisnickoIme);
+
+                    if (zaposlenik.KorisnickoIme?.Length > 0 && ZauzetoKorisnickoIme)
+                    {
+                        throw new Exception("Zaposlenik sa zadanim korisničkim imenom već postoji.");
+                    }
+
+                    if (zaposlenik.Lozinka?.Length > 0)
+                    {
+                        zaposlenik.Lozinka = zaposlenik.Lozinka.GetHashCode().ToString();
+                    }
+
+                    repository.Update(zaposlenik);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public void Delete(int Id)
+        {
+            using (var transaction = ActiveSession.BeginTransaction())
+            {
+                try
+                {
+                    repository.Delete(Id);
                     transaction.Commit();
                 }
                 catch (Exception)
