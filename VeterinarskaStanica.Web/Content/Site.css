@@ -1,8 +1,30 @@
 ﻿body {
+    background-image: url('https://images7.alphacoders.com/323/thumb-1920-323376.jpg' ) ;
+    
+    background-repeat: no-repeat;
+    background-color:transparent;
+    background-size: cover;
     padding-top: 50px;
     padding-bottom: 20px;
 }
+.jumbotron{
+            background-size: 100%;
+     
+        opacity: 1.0;
+    filter: alpha(opacity=10);
+}
 
+.body-content{
+    background-color:white;
+    opacity: 0.9;
+}
+.text{
+    color:black;
+    opacity:1.0;
+}
+table.text:hover{
+    opacity:1.0;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

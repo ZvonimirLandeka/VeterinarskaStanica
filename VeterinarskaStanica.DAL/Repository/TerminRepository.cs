@@ -60,6 +60,11 @@ namespace VeterinarskaStanica.DAL.Repository
             return true;
         }
 
+        public VrstaTermina GetVrstaTerminaById(int idVrstaTermina)
+        {
+            return _session.Get<VrstaTermina>(idVrstaTermina);
+        }
+
         public bool Delete(int Id)
         {
             try
@@ -188,6 +193,16 @@ namespace VeterinarskaStanica.DAL.Repository
                 return false;
             }
             return true;
+        }
+
+        public List<VrstaTermina> GetAllVrstaTermina()
+        {
+            return _session.Query<VrstaTermina>().ToList();
+        }
+
+        public List<Termin> GetAllByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x=>x.Zivotinja.Vlasnik.Id==idVlasnik).ToList();
         }
     }
 }

@@ -190,6 +190,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\animal.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -237,20 +238,18 @@
     <Content Include="Views\Zivotinja\Create.cshtml" />
     <Content Include="Views\Zivotinja\Details.cshtml" />
     <Content Include="Views\Zivotinja\Delete.cshtml" />
-    <Content Include="Views\Termin\TerminList.cshtml" />
-    <Content Include="Views\Termin\TerminCreate.cshtml" />
-    <Content Include="Views\Termin\TerminDelete.cshtml" />
-    <Content Include="Views\Termin\TerminDetails.cshtml" />
-    <Content Include="Views\Termin\TerminEdit.cshtml" />
+    <Content Include="Views\Termin\Index.cshtml" />
+    <Content Include="Views\Termin\Create.cshtml" />
+    <Content Include="Views\Termin\Delete.cshtml" />
+    <Content Include="Views\Termin\Details.cshtml" />
+    <Content Include="Views\Termin\Edit.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Pasmina\Index.cshtml" />
     <Content Include="Views\Pasmina\Create.cshtml" />
     <Content Include="Views\Zivotinja\View.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

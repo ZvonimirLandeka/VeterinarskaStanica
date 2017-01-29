@@ -8,41 +8,40 @@ using VeterinarskaStanica.DAL;
 using VeterinarskaStanica.DAL.Repository;
 using VeterinarskaStanica.Model;
 using VeterinarskaStanica.Model.Repositories;
+using System.Collections;
 
 namespace VeterinarskaStanica.BLL
 {
-    public class ZivotinjaService
+    public class TerminService
     {
-        private IZivotinjaRepository repository;
+        private ITerminRepository repository;
         private ISession ActiveSession { get { return NHibernateHelper.CurrentSession; } }
 
-
-        public ZivotinjaService()
+        public TerminService()
         {
-            repository = new ZivotinjaRepository();
+            repository = new TerminRepository();
         }
 
-        public List<Zivotinja> GetAll()
+        public List<Termin> GetAll()
         {
             return repository.GetAll();
         }
 
-        public List<PasminaZivotinje> GetPasmineByIdVrsta(int Id)
+        public List<Termin> GetAllByVlasnikId(int IdVlasnik)
         {
-            ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
-            return ZivotinjaRepository.GetPasmineByIdVrste(Id);
+            return repository.GetAllByVlasnikId(IdVlasnik);
         }
-        public bool Add(Zivotinja Zivotinja)
+
+        public bool Add(Termin Termin)
         {
             try
             {
                 ISession session = NHibernateHelper.CurrentSession;
-                
+
                 using (var transaction = session.BeginTransaction())
                 {
-                    
-                    repository.Add(Zivotinja);
-                    
+                    repository.Add(Termin);
+
                     transaction.Commit();
                 }
             }
@@ -53,22 +52,23 @@ namespace VeterinarskaStanica.BLL
             return true;
         }
 
-        public void Update(Zivotinja zivotinja)
+        public List<VrstaTermina> GetAllVrstaTermina()
+        {
+            return repository.GetAllVrstaTermina();
+        }
+
+        public VrstaTermina GetVrstaTerminaById(int idVrstaTermina)
+        {
+            return repository.GetVrstaTerminaById(idVrstaTermina);
+        }
+
+        public void Update(Termin Termin)
         {
             using (var transaction = ActiveSession.BeginTransaction())
             {
                 try
                 {
-
-                    var postojeceZivotinje = repository.GetAll().Where(x => x.Id != zivotinja.Id).ToList();
-                    var BrojCipaZauzet = postojeceZivotinje.Exists(x => x.BrojCipa == zivotinja.BrojCipa);
-
-                    if (BrojCipaZauzet)
-                    {
-                        throw new Exception($"Životinja sa brojem čipa: {zivotinja.BrojCipa} već postoji.");
-                    }
-
-                    repository.Update(zivotinja);
+                    repository.Update(Termin);
                     transaction.Commit();
                 }
                 catch (Exception)
@@ -79,21 +79,13 @@ namespace VeterinarskaStanica.BLL
             }
         }
 
-        public Zivotinja GetById(int Id)
+        public Termin GetById(int Id)
         {
             return repository.GetById(Id);
-            
+
         }
 
-        public List<VrstaZivotinje> GetAllVrstaZivotinje()
-        {
-            return repository.GetAllVrstaZivotinje();
-        }
 
-        public List<PasminaZivotinje> GetAllPasminaZivotinjeByVrstaZivotinje(VrstaZivotinje vrstaZivotinje)
-        {
-            return repository.GetAllPasminaZivotinjeByVrstaZivotinje(vrstaZivotinje);
-        }
         public bool Delete(int Id)
         {
             try
@@ -113,9 +105,6 @@ namespace VeterinarskaStanica.BLL
             }
             return true;
         }
-        public List<Zivotinja> GetAllByVlasnikId(int IdVlasnik)
-        {
-            return repository.GetAllByVlasnikId(IdVlasnik);
-        }
+
     }
 }

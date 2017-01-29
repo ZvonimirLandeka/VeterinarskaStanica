@@ -26,8 +26,9 @@ namespace VeterinarskaStanica.Model.Repositories
         VrstaZahvata GetVrstaZahvataById(int Id);
         bool AddVrstaZahvata(VrstaZahvata VrstaZahvata);
         bool UpdateVrstaZahvata(VrstaZahvata VrstaZahvata);
+        List<Termin> GetAllByVlasnikId(int idVlasnik);
         bool DeleteVrstaZahvata(int Id);
-
-
+        List<VrstaTermina> GetAllVrstaTermina();
+        VrstaTermina GetVrstaTerminaById(int idVrstaTermina);
     }
 }

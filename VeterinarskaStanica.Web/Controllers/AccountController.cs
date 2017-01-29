@@ -44,8 +44,8 @@ namespace VeterinarskaStanica.Web.Controllers
             }
             AccountService AccountService = new AccountService();
             var exists = AccountService.CheckLogin(AccountModel.KorisnickoIme, AccountModel.Lozinka);
-            exists = true;
-            if (AccountModel.KorisnickoIme.Equals("baba"))
+            
+            if (exists)
             {
                 FormsAuthentication.SetAuthCookie(AccountModel.KorisnickoIme, false);
                 return RedirectToAction("Index", "Home");

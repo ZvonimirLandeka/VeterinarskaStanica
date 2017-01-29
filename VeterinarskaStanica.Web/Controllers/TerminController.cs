@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VeterinarskaStanica.BLL;
+using VeterinarskaStanica.DAL.Repository;
+using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
@@ -11,7 +14,13 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: Termin
         public ActionResult Index()
         {
-            return View();
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllByVlasnikId(Vlasik.Id);
+            return View(Termini);
         }
 
         // GET: Termin/Details/5
@@ -21,19 +30,29 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Termin/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            TerminService TerminService = new TerminService();
+            ViewBag.IdVrstaTermina = new SelectList(TerminService.GetAllVrstaTermina(), "Id", "Naziv");
+            ViewBag.IdZivotinje = id;
             return View();
         }
 
         // POST: Termin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "Datum,Iskaz,Napomena,Opis,VrstaTermina_Id")] Termin Termin, int IdZivotinje)
         {
+
             try
             {
-                // TODO: Add insert logic here
+                var IdVrstaTermina = int.Parse(Request.Form.GetValues("IdVrstaTermina")[0]);
+                TerminService TerminService = new TerminService();
+                Termin.VrstaTermina = TerminService.GetVrstaTerminaById(IdVrstaTermina);
 
+                ZivotinjaService ZivotinjaService = new ZivotinjaService();
+                Termin.Zivotinja= ZivotinjaService.GetById(IdZivotinje);
+                
+                TerminService.Add(Termin);
                 return RedirectToAction("Index");
             }
             catch

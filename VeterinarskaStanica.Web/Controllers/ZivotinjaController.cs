@@ -20,8 +20,13 @@ namespace VeterinarskaStanica.Web.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var service = new ZivotinjaService();
-            var zivotinje = service.GetAll();
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+
+            var ZivotinjaService = new ZivotinjaService();
+            var zivotinje = ZivotinjaService.GetAllByVlasnikId(Vlasik.Id);
             return View(zivotinje);
         }
 
@@ -63,6 +68,14 @@ namespace VeterinarskaStanica.Web.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "Ime,DatumRodenja,DatumSmrti,Boja,BrojCipa,PolozajCipa,DatumCipiranja")] Zivotinja Zivotinja, HttpPostedFileBase file)
         {
+            var service = new ZivotinjaService();
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasnik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+            Zivotinja.Vlasnik = Vlasnik;
+
+            var zivotinje = service.Add(Zivotinja);
+            return RedirectToAction("Index");
             try
             {
 
@@ -79,8 +92,8 @@ namespace VeterinarskaStanica.Web.Controllers
                 ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
                 Zivotinja.VrstaZivotinje = ZivotinjaRepository.GetVrstaZivotinjeById(IdVrstaZivotinje);
                 Zivotinja.PasminaZivotinje = ZivotinjaRepository.GetPasminaZivotinjeById(IdPasminaZivotinje);
-                var service = new ZivotinjaService();
-                var zivotinje = service.Add(Zivotinja);
+                //var service = new ZivotinjaService();
+                //var zivotinje = service.Add(Zivotinja);
                 return RedirectToAction("Index");
             }
             catch
