@@ -10,34 +10,29 @@ using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.BLL
 {
-    public class ZivotinjaService
+    public class PasminaZivotinjeService
     {
-        private ZivotinjaRepository repository;
-
-        public ZivotinjaService()
+        private ZivotinjaRepository ZivotinjaRepository;
+        public PasminaZivotinjeService()
         {
-            repository = new ZivotinjaRepository();
+            ZivotinjaRepository = new ZivotinjaRepository();
         }
 
-        public List<Zivotinja> GetAll()
-        {
-            return repository.GetAll();
-        }
 
-        public List<PasminaZivotinje> GetPasmineByIdVrsta(int Id)
+        public List<PasminaZivotinje> GetAll()
         {
-            return repository.GetPasmineByIdVrste(Id);
+            return ZivotinjaRepository.GetAllPasminaZivotinje();
         }
-        public bool Add(Zivotinja Zivotinja)
+        public bool Add(PasminaZivotinje PasminaZivotinje)
         {
             try
             {
                 ISession session = NHibernateHelper.CurrentSession;
-                
+
                 using (var transaction = session.BeginTransaction())
                 {
-                    repository.Add(Zivotinja);
-                    
+                    ZivotinjaRepository.AddPasminaZivotinje(PasminaZivotinje);
+
                     transaction.Commit();
                 }
             }
@@ -48,10 +43,10 @@ namespace VeterinarskaStanica.BLL
             return true;
         }
 
-        public Zivotinja GetById(int Id)
+        public PasminaZivotinje GetById(int Id)
         {
-            return repository.GetById(Id);
-            
+            return ZivotinjaRepository.GetPasminaZivotinjeById(Id);
+
         }
         public bool Delete(int Id)
         {
@@ -61,7 +56,7 @@ namespace VeterinarskaStanica.BLL
 
                 using (var transaction = session.BeginTransaction())
                 {
-                    repository.Delete(Id);
+                    ZivotinjaRepository.DeletePasminaZivotinje(Id);
 
                     transaction.Commit();
                 }
@@ -72,6 +67,5 @@ namespace VeterinarskaStanica.BLL
             }
             return true;
         }
-
     }
 }

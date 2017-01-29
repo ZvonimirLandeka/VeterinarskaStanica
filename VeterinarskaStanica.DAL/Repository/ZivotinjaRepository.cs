@@ -155,6 +155,12 @@ namespace VeterinarskaStanica.DAL.Repository
             return _session.Query<Zivotinja>().Where(x=>x.Vlasnik.Id==Id).ToList();
         }
 
+        public List<PasminaZivotinje> GetPasmineByIdVrste(int Id)
+        {
+            return _session.Query<PasminaZivotinje>().Where(x => x.VrstaZivotinje.Id==Id).ToList();
+        }
+
+
         public List<PasminaZivotinje> GetAllPasminaZivotinje()
         {
             return _session.Query<PasminaZivotinje>().ToList();

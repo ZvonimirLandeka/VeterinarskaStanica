@@ -1,13 +1,16 @@
 ﻿using NHibernate;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using VeterinarskaStanica.BLL;
 using VeterinarskaStanica.DAL;
 using VeterinarskaStanica.DAL.Repository;
 using VeterinarskaStanica.Model;
+using VeterinarskaStanica.Web.Models;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
@@ -22,6 +25,18 @@ namespace VeterinarskaStanica.Web.Controllers
             return View(zivotinje);
         }
 
+        // GET: Zivotinja
+        [Authorize]
+        [HttpPost]
+        public ActionResult GetPasmineByIdVrsta(int id)
+        {
+            var service = new ZivotinjaService();
+            var pasmine = service.GetPasmineByIdVrsta(id);
+
+            SelectList slist = new SelectList(pasmine, "Id", "Naziv", 0);
+            return Json(slist);
+        }
+        
         // GET: Zivotinja/Details/5
         [Authorize]
         public ActionResult Details(int id)
@@ -35,16 +50,35 @@ namespace VeterinarskaStanica.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ZivotinjaRepository zr = new ZivotinjaRepository();
+            
+
+            ViewBag.IdVrstaZivotinje = new SelectList(zr.GetAllVrstaZivotinje(), "Id", "Naziv");
+            ViewBag.IdPasminaZivotinje = new SelectList(zr.GetAllPasminaZivotinje(), "Id", "Naziv");
             return View();
         }
 
         // POST: Zivotinja/Create
         [HttpPost]
         [Authorize]
-        public ActionResult Create(Zivotinja Zivotinja)
+        public ActionResult Create([Bind(Include = "Ime,DatumRodenja,DatumSmrti,Boja,BrojCipa,PolozajCipa,DatumCipiranja")] Zivotinja Zivotinja, HttpPostedFileBase file)
         {
             try
             {
+
+                
+                
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                    file.SaveAs(path);
+                }
+                var IdVrstaZivotinje = int.Parse(Request.Form.GetValues("IdVrstaZivotinje")[0]);
+                var IdPasminaZivotinje = int.Parse(Request.Form.GetValues("IdPasminaZivotinje")[0]);
+                ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
+                Zivotinja.VrstaZivotinje = ZivotinjaRepository.GetVrstaZivotinjeById(IdVrstaZivotinje);
+                Zivotinja.PasminaZivotinje = ZivotinjaRepository.GetPasminaZivotinjeById(IdPasminaZivotinje);
                 var service = new ZivotinjaService();
                 var zivotinje = service.Add(Zivotinja);
                 return RedirectToAction("Index");
