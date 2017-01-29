@@ -76,15 +76,15 @@ namespace VeterinarskaStanica.BLL
                 {
                     var stariVlasnik = repository.GetById(Vlasnik.Id);
 
-                    var postojeciZaposlenici = repository.GetAll().Where(x => x.Id != Vlasnik.Id).ToList();
-                    var ZauzetoKorisnickoIme = postojeciZaposlenici.Exists(x => x.KorisnickoIme == Vlasnik.KorisnickoIme);
+                    var postojeciVlasnici = repository.GetAll().Where(x => x.Id != Vlasnik.Id).ToList();
+                    var ZauzetoKorisnickoIme = postojeciVlasnici.Exists(x => x.KorisnickoIme == Vlasnik.KorisnickoIme);
 
                     if (Vlasnik.KorisnickoIme?.Length > 0 && ZauzetoKorisnickoIme)
                     {
                         throw new Exception("Zaposlenik sa zadanim korisničkim imenom već postoji.");
                     }
 
-                    if (Vlasnik.Lozinka?.Length > 0)
+                    if (Vlasnik.Lozinka?.Length > 0 && Vlasnik.Lozinka != stariVlasnik.Lozinka)
                     {
                         Vlasnik.Lozinka = Vlasnik.Lozinka.GetHashCode().ToString();
                     }

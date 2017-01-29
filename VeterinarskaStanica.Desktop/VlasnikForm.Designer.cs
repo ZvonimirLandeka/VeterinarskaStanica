@@ -1,6 +1,6 @@
 ﻿namespace VeterinarskaStanica.Desktop
 {
-    partial class ZaposlenikForm
+    partial class VlasnikForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.KorisnickoImeLabel = new System.Windows.Forms.Label();
             this.OIBLabel = new System.Windows.Forms.Label();
             this.AdresaLabel = new System.Windows.Forms.Label();
-            this.Lozinka = new System.Windows.Forms.TextBox();
             this.SpolLabel = new System.Windows.Forms.Label();
             this.PrezimeLabel = new System.Windows.Forms.Label();
             this.KorisnickoIme = new System.Windows.Forms.TextBox();
@@ -45,7 +44,10 @@
             this.Adresa = new System.Windows.Forms.TextBox();
             this.Prezime = new System.Windows.Forms.TextBox();
             this.Ime = new System.Windows.Forms.TextBox();
+            this.vlasnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zaposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Lozinka = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,8 +73,8 @@
             // 
             // Spol
             // 
-            this.Spol.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.zaposlenikBindingSource, "Spol", true));
-            this.Spol.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.zaposlenikBindingSource, "Spol", true));
+            this.Spol.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.vlasnikBindingSource, "Spol", true));
+            this.Spol.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.vlasnikBindingSource, "Spol", true));
             this.Spol.FormattingEnabled = true;
             this.Spol.Location = new System.Drawing.Point(12, 111);
             this.Spol.Name = "Spol";
@@ -115,15 +117,6 @@
             this.AdresaLabel.TabIndex = 17;
             this.AdresaLabel.Text = "Adresa";
             // 
-            // Lozinka
-            // 
-            this.Lozinka.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "Lozinka", true));
-            this.Lozinka.Location = new System.Drawing.Point(12, 312);
-            this.Lozinka.Name = "Lozinka";
-            this.Lozinka.Size = new System.Drawing.Size(289, 20);
-            this.Lozinka.TabIndex = 24;
-            this.Lozinka.UseSystemPasswordChar = true;
-            // 
             // SpolLabel
             // 
             this.SpolLabel.AutoSize = true;
@@ -144,7 +137,7 @@
             // 
             // KorisnickoIme
             // 
-            this.KorisnickoIme.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "KorisnickoIme", true));
+            this.KorisnickoIme.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "KorisnickoIme", true));
             this.KorisnickoIme.Location = new System.Drawing.Point(12, 273);
             this.KorisnickoIme.Name = "KorisnickoIme";
             this.KorisnickoIme.Size = new System.Drawing.Size(289, 20);
@@ -161,7 +154,7 @@
             // 
             // OIB
             // 
-            this.OIB.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "OIB", true));
+            this.OIB.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "OIB", true));
             this.OIB.Location = new System.Drawing.Point(12, 227);
             this.OIB.Name = "OIB";
             this.OIB.Size = new System.Drawing.Size(289, 20);
@@ -169,7 +162,7 @@
             // 
             // Adresa
             // 
-            this.Adresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "Adresa", true));
+            this.Adresa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Adresa", true));
             this.Adresa.Location = new System.Drawing.Point(12, 156);
             this.Adresa.Multiline = true;
             this.Adresa.Name = "Adresa";
@@ -178,7 +171,7 @@
             // 
             // Prezime
             // 
-            this.Prezime.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "Prezime", true));
+            this.Prezime.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Prezime", true));
             this.Prezime.Location = new System.Drawing.Point(12, 68);
             this.Prezime.Name = "Prezime";
             this.Prezime.Size = new System.Drawing.Size(289, 20);
@@ -186,17 +179,30 @@
             // 
             // Ime
             // 
-            this.Ime.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zaposlenikBindingSource, "Ime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Ime.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Ime", true));
             this.Ime.Location = new System.Drawing.Point(12, 23);
             this.Ime.Name = "Ime";
             this.Ime.Size = new System.Drawing.Size(289, 20);
             this.Ime.TabIndex = 11;
             // 
+            // vlasnikBindingSource
+            // 
+            this.vlasnikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Vlasnik);
+            // 
             // zaposlenikBindingSource
             // 
             this.zaposlenikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
             // 
-            // ZaposlenikForm
+            // Lozinka
+            // 
+            this.Lozinka.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vlasnikBindingSource, "Lozinka", true));
+            this.Lozinka.Location = new System.Drawing.Point(12, 312);
+            this.Lozinka.Name = "Lozinka";
+            this.Lozinka.Size = new System.Drawing.Size(289, 20);
+            this.Lozinka.TabIndex = 24;
+            this.Lozinka.UseSystemPasswordChar = true;
+            // 
+            // VlasnikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,8 +223,9 @@
             this.Controls.Add(this.Adresa);
             this.Controls.Add(this.Prezime);
             this.Controls.Add(this.Ime);
-            this.Name = "ZaposlenikForm";
-            this.Text = "ZaposlenikForm";
+            this.Name = "VlasnikForm";
+            this.Text = "Vlasnik";
+            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,7 +241,6 @@
         private System.Windows.Forms.Label KorisnickoImeLabel;
         private System.Windows.Forms.Label OIBLabel;
         private System.Windows.Forms.Label AdresaLabel;
-        private System.Windows.Forms.TextBox Lozinka;
         private System.Windows.Forms.Label SpolLabel;
         private System.Windows.Forms.Label PrezimeLabel;
         private System.Windows.Forms.TextBox KorisnickoIme;
@@ -244,5 +250,7 @@
         private System.Windows.Forms.TextBox Prezime;
         private System.Windows.Forms.TextBox Ime;
         private System.Windows.Forms.BindingSource zaposlenikBindingSource;
+        private System.Windows.Forms.BindingSource vlasnikBindingSource;
+        private System.Windows.Forms.TextBox Lozinka;
     }
 }

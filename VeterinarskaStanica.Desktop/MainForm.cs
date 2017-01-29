@@ -72,12 +72,17 @@ namespace VeterinarskaStanica.Desktop
         #region Zaposlenici
         private void DohvatiZaposlenike()
         {
+            var stari = AktivniZaposlenik;
+
             DohvaceniZaposlenici = zaposlenikService.GetAll();
             FiltrirajZaposlenike();
+
+            if (stari != null)
+                ZaposleniciList.SelectedItem = Zaposlenici.FirstOrDefault(x => x.Id == stari.Id);
         }
         private void FiltrirajZaposlenike(object sender = null, EventArgs e = null)
         {
-            Zaposlenici = new BindingList<Zaposlenik>(DohvaceniZaposlenici.Where(x => x.ImePrezimeOib.Contains(SearchZaposlenik.Text)).ToList());
+            Zaposlenici = new BindingList<Zaposlenik>(DohvaceniZaposlenici.Where(x => x.ToString().Contains(SearchZaposlenik.Text)).ToList());
             ZaposleniciList.DataSource = Zaposlenici;
         }
         private void DodajZaposlenika(object sender, EventArgs e)
@@ -121,19 +126,26 @@ namespace VeterinarskaStanica.Desktop
         #region Zivotinje
         private void DohvatiZivotinje()
         {
+            var stara = AktivnaZivotinja;
+
             DohvaceneZivotinje = zivotinjaService.GetAll();
             FiltrirajZivotinje();
+
+            if (stara != null)
+                ZivotinjeList.SelectedItem = Zivotinje.FirstOrDefault(x => x.Id == stara.Id);
         }
 
         private void FiltrirajZivotinje(object sender = null, EventArgs e = null)
         {
-            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.Ime.Contains(SearchZaposlenik.Text)).ToList());
+            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.ToString().Contains(SearchZivotinje.Text)).ToList());
             ZivotinjeList.DataSource = Zivotinje;
         }
 
         private void DodajZivotinju(object sender, EventArgs e)
         {
-            var ZivotinjaForm = new ZivotinjaForm(new Zivotinja());
+            var NovaZivotinja = new Zivotinja() { Vlasnik = AktivniVlasnik };
+
+            var ZivotinjaForm = new ZivotinjaForm(NovaZivotinja);
             var result = ZivotinjaForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
@@ -171,48 +183,53 @@ namespace VeterinarskaStanica.Desktop
         #region Vlasnici
         private void DohvatiVlasnike()
         {
-            DohvaceneZivotinje = zivotinjaService.GetAll();
+            var stari = AktivniVlasnik;
+
+            DohvaceniVlasnici = vlasnikService.GetAll();
             FiltrirajVlasnike();
+
+            if (stari != null)
+                VlasniciList.SelectedItem = Vlasnici.FirstOrDefault(x => x.Id == stari.Id);
         }
 
         private void FiltrirajVlasnike(object sender = null, EventArgs e = null)
         {
-            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.Ime.Contains(SearchZaposlenik.Text)).ToList());
-            ZivotinjeList.DataSource = Zivotinje;
+            Vlasnici = new BindingList<Vlasnik>(DohvaceniVlasnici.Where(x => x.ToString().Contains(SearchVlasnici.Text)).ToList());
+            VlasniciList.DataSource = Vlasnici;
         }
 
         private void DodajVlasnika(object sender, EventArgs e)
         {
-            var ZivotinjaForm = new ZivotinjaForm(new Zivotinja());
-            var result = ZivotinjaForm.ShowDialog(this);
+            var VlasnikForm = new VlasnikForm(new Vlasnik());
+            var result = VlasnikForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                DohvatiZivotinje();
+                DohvatiVlasnike();
             }
         }
         private void UrediVlasnika(object sender, EventArgs e)
         {
-            var ZivotinjaForm = new ZivotinjaForm(AktivnaZivotinja);
-            var result = ZivotinjaForm.ShowDialog(this);
+            var VlasnikForm = new VlasnikForm(AktivniVlasnik);
+            var result = VlasnikForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                DohvatiZivotinje();
+                DohvatiVlasnike();
             }
         }
         private void ObrisiVlasnika(object sender, EventArgs e)
         {
-            zivotinjaService.Delete(AktivnaZivotinja.Id);
-            DohvatiZivotinje();
+            vlasnikService.Delete(AktivniVlasnik.Id);
+            DohvatiVlasnike();
         }
 
-        private void VlasnikaOdabran(object sender, EventArgs e)
+        private void VlasnikOdabran(object sender, EventArgs e)
         {
-            if (AktivnaZivotinja != null)
+            if (AktivniVlasnik != null)
             {
-                zivotinjaBindingSource.DataSource = AktivnaZivotinja;
+                vlasnikBindingSource.DataSource = AktivniVlasnik;
 
-                UrediZivotinjuButton.Enabled = true;
-                ObrisiZivotinjuButton.Enabled = true;
+                UrediVlasnikaButton.Enabled = true;
+                ObrisiVlasnikaButton.Enabled = true;
             }
         }
         #endregion
