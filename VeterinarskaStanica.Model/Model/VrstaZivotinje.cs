@@ -18,5 +18,10 @@ namespace VeterinarskaStanica.Model
         public VrstaZivotinje() : base(-1)
         {
         }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

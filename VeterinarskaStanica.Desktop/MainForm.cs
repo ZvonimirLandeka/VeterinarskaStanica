@@ -15,9 +15,13 @@ namespace VeterinarskaStanica.Desktop
     public partial class MainForm : Form
     {
         private ZaposlenikService zaposlenikService;
+        private ZivotinjaService zivotinjaService;
 
         private List<Zaposlenik> DohvaceniZaposlenici;
         private BindingList<Zaposlenik> Zaposlenici;
+
+        private List<Zivotinja> DohvaceneZivotinje;
+        private BindingList<Zivotinja> Zivotinje;
 
         private Stanje StanjeForme;
 
@@ -26,9 +30,12 @@ namespace VeterinarskaStanica.Desktop
         public MainForm()
         {
             zaposlenikService = new ZaposlenikService();
+            zivotinjaService = new ZivotinjaService();
             InitializeComponent();
 
             DohvatiZaposlenike();
+            DohvatiZivotinje();
+
             InicijalizirajFormu();
         }
 
@@ -93,6 +100,18 @@ namespace VeterinarskaStanica.Desktop
         {
             DohvaceniZaposlenici = zaposlenikService.GetAll();
             FiltrirajZaposlenike();
+        }
+
+        private void DohvatiZivotinje()
+        {
+            DohvaceneZivotinje = zivotinjaService.GetAll();
+            FiltrirajZivotinje();
+        }
+
+        private void FiltrirajZivotinje(object sender = null, EventArgs e = null)
+        {
+            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.Ime.Contains(SearchZaposlenik.Text)).ToList());
+            ZivotinjeList.DataSource = Zivotinje;
         }
 
         private void FiltrirajZaposlenike(object sender = null, EventArgs e = null)
@@ -192,6 +211,31 @@ namespace VeterinarskaStanica.Desktop
         {
             zaposlenikService.Delete(AktivniZaposlenik.Id);
             DohvatiZaposlenike();
+        }
+
+        private void UrediZivotinju(object sender, EventArgs e)
+        {
+            var ZivotinjaForm = new ZivotinjaForm(ZivotinjeList.SelectedItem as Zivotinja);
+            var result = ZivotinjaForm.ShowDialog(this);
+            if(result == DialogResult.OK)
+            {
+                DohvatiZivotinje();
+            }
+        }
+
+        private void DodajZivotinju(object sender, EventArgs e)
+        {
+            var ZivotinjaForm = new ZivotinjaForm(new Zivotinja());
+            var result = ZivotinjaForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiZivotinje();
+            }
+        }
+
+        private void ZivotinjaSelected(object sender, EventArgs e)
+        {
+            zivotinjaBindingSource.DataSource = ZivotinjeList.SelectedItem as Zivotinja;
         }
     }
 }

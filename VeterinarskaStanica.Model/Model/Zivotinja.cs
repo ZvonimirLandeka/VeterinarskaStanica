@@ -29,6 +29,9 @@ namespace VeterinarskaStanica.Model
         {
         }
 
-
+        public override string ToString()
+        {
+            return $"{Ime} - {VrstaZivotinje} - ({BrojCipa})";
+        }
     }
 }

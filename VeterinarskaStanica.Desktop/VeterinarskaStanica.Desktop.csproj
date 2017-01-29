@@ -89,6 +89,12 @@
     <Compile Include="ZivotinjaControl.Designer.cs">
       <DependentUpon>ZivotinjaControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZivotinjaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZivotinjaForm.Designer.cs">
+      <DependentUpon>ZivotinjaForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,10 +113,14 @@
     <EmbeddedResource Include="ZivotinjaControl.resx">
       <DependentUpon>ZivotinjaControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ZivotinjaForm.resx">
+      <DependentUpon>ZivotinjaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.PasminaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zivotinja.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
