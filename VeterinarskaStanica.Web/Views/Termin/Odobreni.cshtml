@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<VeterinarskaStanica.Model.Termin>
 
 @{
-    ViewBag.Title = "TerminList";
+    ViewBag.Title = "Odobreni";
 }
 
-<h2>TerminList</h2>
+<h2>Odobreni</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -43,7 +43,7 @@
         </td>
 
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.Id }) |
             @Html.ActionLink("Otkaži", "Otkazi", new { id=item.Id })
         </td>
     </tr>

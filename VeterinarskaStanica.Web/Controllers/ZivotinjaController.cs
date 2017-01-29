@@ -48,6 +48,9 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             var service = new ZivotinjaService();
             var zivotinja = service.GetById(id);
+
+            TerminService TerminService = new TerminService();
+            ViewBag.Termini = TerminService.GetAllByIdZivotinja(zivotinja.Id);
             return View(zivotinja);
         }
 

@@ -160,7 +160,7 @@ namespace VeterinarskaStanica.DAL.Repository
         {
             try
             {
-                _session.Update(Termin);
+                _session.SaveOrUpdate(Termin);
             }
             catch
             {
@@ -210,6 +210,11 @@ namespace VeterinarskaStanica.DAL.Repository
         public List<Termin> GetAllOdobreniByVlasnikId(int idVlasnik)
         {
             return _session.Query<Termin>().Where(x => x.Zivotinja.Vlasnik.Id == idVlasnik && x.Status == StatusTermina.Odobren).OrderBy(x=>x.Datum).ToList();
+        }
+
+        public List<Termin> GetAllByIdZivotinja(int Id)
+        {
+            return _session.Query<Termin>().Where(x=>x.Zivotinja.Id==Id).ToList();
         }
     }
 }

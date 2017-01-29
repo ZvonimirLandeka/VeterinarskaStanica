@@ -58,7 +58,9 @@ namespace VeterinarskaStanica.Web.Controllers
         // GET: Termin/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            TerminService TerminService = new TerminService();
+            Termin Termin = TerminService.GetById(id);
+            return View(Termin);
         }
 
         // GET: Termin/Create
@@ -129,7 +131,8 @@ namespace VeterinarskaStanica.Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                TerminService TerminService = new TerminService();
+                TerminService.Delete(id);
                 return RedirectToAction("Index");
             }
             catch

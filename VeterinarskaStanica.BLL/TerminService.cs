@@ -60,6 +60,11 @@ namespace VeterinarskaStanica.BLL
             return true;
         }
 
+        public List<Termin> GetAllByIdZivotinja(int Id)
+        {
+            return repository.GetAllByIdZivotinja(Id);
+        }
+
         public List<VrstaTermina> GetAllVrstaTermina()
         {
             return repository.GetAllVrstaTermina();
@@ -85,6 +90,19 @@ namespace VeterinarskaStanica.BLL
                     throw;
                 }
             }
+            //using (var transaction = ActiveSession.BeginTransaction())
+            //{
+            //    try
+            //    {
+            //        repository.Update(Termin);
+            //        transaction.Commit();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        transaction.Rollback();
+            //        throw;
+            //    }
+            //}
         }
 
         public Termin GetById(int Id)

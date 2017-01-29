@@ -32,5 +32,6 @@ namespace VeterinarskaStanica.Model.Repositories
         bool DeleteVrstaZahvata(int Id);
         List<VrstaTermina> GetAllVrstaTermina();
         VrstaTermina GetVrstaTerminaById(int idVrstaTermina);
+        List<Termin> GetAllByIdZivotinja(int Id);
     }
 }
