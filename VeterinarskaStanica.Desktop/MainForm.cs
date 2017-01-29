@@ -15,14 +15,8 @@ namespace VeterinarskaStanica.Desktop
     public partial class MainForm : Form
     {
         private ZaposlenikService zaposlenikService;
-        private ZivotinjaService zivotinjaService;
-
         private List<Zaposlenik> DohvaceniZaposlenici;
         private BindingList<Zaposlenik> Zaposlenici;
-
-        private List<Zivotinja> DohvaceneZivotinje;
-        private BindingList<Zivotinja> Zivotinje;
-
         private Zaposlenik AktivniZaposlenik
         {
             get
@@ -30,11 +24,28 @@ namespace VeterinarskaStanica.Desktop
                 return ZaposleniciList.SelectedItem as Zaposlenik;
             }
         }
+
+
+        private ZivotinjaService zivotinjaService;
+        private List<Zivotinja> DohvaceneZivotinje;
+        private BindingList<Zivotinja> Zivotinje;
         private Zivotinja AktivnaZivotinja
         {
             get
             {
                 return ZivotinjeList.SelectedItem as Zivotinja;
+            }
+        }
+
+
+        private VlasnikService vlasnikService;
+        private List<Vlasnik> DohvaceniVlasnici;
+        private BindingList<Vlasnik> Vlasnici;
+        private Vlasnik AktivniVlasnik
+        {
+            get
+            {
+                return VlasniciList.SelectedItem as Vlasnik;
             }
         }
 
@@ -48,38 +59,32 @@ namespace VeterinarskaStanica.Desktop
         private void InicijalizirajFormu()
         {
             zaposlenikService = new ZaposlenikService();
-            zivotinjaService = new ZivotinjaService();
-
             DohvatiZaposlenike();
+
+            zivotinjaService = new ZivotinjaService();
             DohvatiZivotinje();
+
+            vlasnikService = new VlasnikService();
+            DohvatiVlasnike();
         }
 
-        
 
+        #region Zaposlenici
         private void DohvatiZaposlenike()
         {
+            var stari = AktivniZaposlenik;
+
             DohvaceniZaposlenici = zaposlenikService.GetAll();
             FiltrirajZaposlenike();
-        }
 
-        private void DohvatiZivotinje()
-        {
-            DohvaceneZivotinje = zivotinjaService.GetAll();
-            FiltrirajZivotinje();
+            if (stari != null)
+                ZaposleniciList.SelectedItem = Zaposlenici.FirstOrDefault(x => x.Id == stari.Id);
         }
-
-        private void FiltrirajZivotinje(object sender = null, EventArgs e = null)
-        {
-            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.Ime.Contains(SearchZaposlenik.Text)).ToList());
-            ZivotinjeList.DataSource = Zivotinje;
-        }
-
         private void FiltrirajZaposlenike(object sender = null, EventArgs e = null)
         {
-            Zaposlenici = new BindingList<Zaposlenik>(DohvaceniZaposlenici.Where(x => x.ImePrezimeOib.Contains(SearchZaposlenik.Text)).ToList());
+            Zaposlenici = new BindingList<Zaposlenik>(DohvaceniZaposlenici.Where(x => x.ToString().Contains(SearchZaposlenik.Text)).ToList());
             ZaposleniciList.DataSource = Zaposlenici;
         }
-
         private void DodajZaposlenika(object sender, EventArgs e)
         {
             var ZaposlenikForm = new ZaposlenikForm(new Zaposlenik());
@@ -105,27 +110,57 @@ namespace VeterinarskaStanica.Desktop
             zaposlenikService.Delete(AktivniZaposlenik.Id);
             DohvatiZaposlenike();
         }
-
-        private void UrediZivotinju(object sender, EventArgs e)
+        private void ZaposlenikOdabran(object sender, EventArgs e)
         {
-            var ZivotinjaForm = new ZivotinjaForm(AktivnaZivotinja);
-            var result = ZivotinjaForm.ShowDialog(this);
-            if(result == DialogResult.OK)
+            if (AktivniZaposlenik != null)
             {
-                DohvatiZivotinje();
+                zaposlenikBindingSource.DataSource = AktivniZaposlenik;
+
+                UrediZaposlenikaButton.Enabled = true;
+                ObrisiZaposlenikaButton.Enabled = true;
             }
+        }
+
+        #endregion
+
+        #region Zivotinje
+        private void DohvatiZivotinje()
+        {
+            var stara = AktivnaZivotinja;
+
+            DohvaceneZivotinje = zivotinjaService.GetAll();
+            FiltrirajZivotinje();
+
+            if (stara != null)
+                ZivotinjeList.SelectedItem = Zivotinje.FirstOrDefault(x => x.Id == stara.Id);
+        }
+
+        private void FiltrirajZivotinje(object sender = null, EventArgs e = null)
+        {
+            Zivotinje = new BindingList<Zivotinja>(DohvaceneZivotinje.Where(x => x.ToString().Contains(SearchZivotinje.Text)).ToList());
+            ZivotinjeList.DataSource = Zivotinje;
         }
 
         private void DodajZivotinju(object sender, EventArgs e)
         {
-            var ZivotinjaForm = new ZivotinjaForm(new Zivotinja());
+            var NovaZivotinja = new Zivotinja() { Vlasnik = AktivniVlasnik };
+
+            var ZivotinjaForm = new ZivotinjaForm(NovaZivotinja);
             var result = ZivotinjaForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
                 DohvatiZivotinje();
             }
         }
-
+        private void UrediZivotinju(object sender, EventArgs e)
+        {
+            var ZivotinjaForm = new ZivotinjaForm(AktivnaZivotinja);
+            var result = ZivotinjaForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiZivotinje();
+            }
+        }
         private void ObrisiZivotinju(object sender, EventArgs e)
         {
             zivotinjaService.Delete(AktivnaZivotinja.Id);
@@ -143,15 +178,60 @@ namespace VeterinarskaStanica.Desktop
             }
         }
 
-        private void ZaposlenikOdabran(object sender, EventArgs e)
-        {
-            if (AktivniZaposlenik != null)
-            {
-                zaposlenikBindingSource.DataSource = AktivniZaposlenik;
+        #endregion
 
-                UrediZaposlenikaButton.Enabled = true;
-                ObrisiZaposlenikaButton.Enabled = true;
+        #region Vlasnici
+        private void DohvatiVlasnike()
+        {
+            var stari = AktivniVlasnik;
+
+            DohvaceniVlasnici = vlasnikService.GetAll();
+            FiltrirajVlasnike();
+
+            if (stari != null)
+                VlasniciList.SelectedItem = Vlasnici.FirstOrDefault(x => x.Id == stari.Id);
+        }
+
+        private void FiltrirajVlasnike(object sender = null, EventArgs e = null)
+        {
+            Vlasnici = new BindingList<Vlasnik>(DohvaceniVlasnici.Where(x => x.ToString().Contains(SearchVlasnici.Text)).ToList());
+            VlasniciList.DataSource = Vlasnici;
+        }
+
+        private void DodajVlasnika(object sender, EventArgs e)
+        {
+            var VlasnikForm = new VlasnikForm(new Vlasnik());
+            var result = VlasnikForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiVlasnike();
             }
         }
+        private void UrediVlasnika(object sender, EventArgs e)
+        {
+            var VlasnikForm = new VlasnikForm(AktivniVlasnik);
+            var result = VlasnikForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiVlasnike();
+            }
+        }
+        private void ObrisiVlasnika(object sender, EventArgs e)
+        {
+            vlasnikService.Delete(AktivniVlasnik.Id);
+            DohvatiVlasnike();
+        }
+
+        private void VlasnikOdabran(object sender, EventArgs e)
+        {
+            if (AktivniVlasnik != null)
+            {
+                vlasnikBindingSource.DataSource = AktivniVlasnik;
+
+                UrediVlasnikaButton.Enabled = true;
+                ObrisiVlasnikaButton.Enabled = true;
+            }
+        }
+        #endregion
     }
 }
