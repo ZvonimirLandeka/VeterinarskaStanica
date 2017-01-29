@@ -84,7 +84,7 @@ namespace VeterinarskaStanica.BLL
                         throw new Exception("Zaposlenik sa zadanim korisničkim imenom već postoji.");
                     }
 
-                    if (zaposlenik.Lozinka?.Length > 0)
+                    if (zaposlenik.Lozinka?.Length > 0 && zaposlenik.Lozinka != stariZaposlenik.Lozinka)
                     {
                         zaposlenik.Lozinka = zaposlenik.Lozinka.GetHashCode().ToString();
                     }

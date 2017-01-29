@@ -55,8 +55,8 @@
             this.BojaLabel = new System.Windows.Forms.Label();
             this.PasminaLabel = new System.Windows.Forms.Label();
             this.Vrsta = new System.Windows.Forms.ComboBox();
-            this.Pasmina = new System.Windows.Forms.ComboBox();
             this.vrstaZivotinjeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Pasmina = new System.Windows.Forms.ComboBox();
             this.pasminaZivotinjeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.vrstaZivotinjeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pasminaZivotinjeBindingSource)).BeginInit();
@@ -73,7 +73,7 @@
             // 
             // ObrisiButton
             // 
-            this.ObrisiButton.Location = new System.Drawing.Point(287, 73);
+            this.ObrisiButton.Location = new System.Drawing.Point(286, 73);
             this.ObrisiButton.Name = "ObrisiButton";
             this.ObrisiButton.Size = new System.Drawing.Size(96, 23);
             this.ObrisiButton.TabIndex = 30;
@@ -82,7 +82,7 @@
             // 
             // UrediButton
             // 
-            this.UrediButton.Location = new System.Drawing.Point(151, 73);
+            this.UrediButton.Location = new System.Drawing.Point(150, 73);
             this.UrediButton.Name = "UrediButton";
             this.UrediButton.Size = new System.Drawing.Size(96, 23);
             this.UrediButton.TabIndex = 29;
@@ -91,7 +91,7 @@
             // 
             // AddNewButton
             // 
-            this.AddNewButton.Location = new System.Drawing.Point(14, 73);
+            this.AddNewButton.Location = new System.Drawing.Point(13, 73);
             this.AddNewButton.Name = "AddNewButton";
             this.AddNewButton.Size = new System.Drawing.Size(96, 23);
             this.AddNewButton.TabIndex = 28;
@@ -201,7 +201,7 @@
             // 
             // SearchZaposlenik
             // 
-            this.SearchZaposlenik.Location = new System.Drawing.Point(14, 30);
+            this.SearchZaposlenik.Location = new System.Drawing.Point(13, 30);
             this.SearchZaposlenik.Name = "SearchZaposlenik";
             this.SearchZaposlenik.Size = new System.Drawing.Size(144, 20);
             this.SearchZaposlenik.TabIndex = 13;
@@ -210,7 +210,7 @@
             // 
             this.ZivotinjeList.DisplayMember = "ImePrezimeOib";
             this.ZivotinjeList.FormattingEnabled = true;
-            this.ZivotinjeList.Location = new System.Drawing.Point(14, 112);
+            this.ZivotinjeList.Location = new System.Drawing.Point(13, 112);
             this.ZivotinjeList.Name = "ZivotinjeList";
             this.ZivotinjeList.Size = new System.Drawing.Size(369, 550);
             this.ZivotinjeList.TabIndex = 11;
@@ -285,6 +285,10 @@
             this.Vrsta.ValueMember = "Id";
             this.Vrsta.SelectedIndexChanged += new System.EventHandler(this.Vrsta_SelectedIndexChanged);
             // 
+            // vrstaZivotinjeBindingSource
+            // 
+            this.vrstaZivotinjeBindingSource.DataSource = typeof(VeterinarskaStanica.Model.VrstaZivotinje);
+            // 
             // Pasmina
             // 
             this.Pasmina.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pasminaZivotinjeBindingSource, "Id", true));
@@ -297,10 +301,6 @@
             this.Pasmina.Size = new System.Drawing.Size(144, 21);
             this.Pasmina.TabIndex = 33;
             this.Pasmina.ValueMember = "Id";
-            // 
-            // vrstaZivotinjeBindingSource
-            // 
-            this.vrstaZivotinjeBindingSource.DataSource = typeof(VeterinarskaStanica.Model.VrstaZivotinje);
             // 
             // pasminaZivotinjeBindingSource
             // 
