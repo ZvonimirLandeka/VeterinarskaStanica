@@ -15,7 +15,7 @@ namespace VeterinarskaStanica.DAL
         {
             Id(x => x.Id);
             Map(x => x.Naziv);
-            References(x=>x.VrstaZivotinje).Cascade.All();
+            References(x=>x.VrstaZivotinje);
         }
     }
 }

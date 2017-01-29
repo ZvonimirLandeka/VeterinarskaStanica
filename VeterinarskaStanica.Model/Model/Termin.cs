@@ -26,6 +26,19 @@ namespace VeterinarskaStanica.Model
         {
         }
 
+        public override string ToString()
+        {
+            string DatumString;
+            if(Datum == null)
+            {
+                DatumString = "Neodređeno";
+            }
+            else
+            {
+                DatumString = Datum.Value.ToLongDateString();
+            }
 
+            return $"{Zivotinja.VrstaZivotinje} - {Zivotinja.Ime} ({Zivotinja.BrojCipa}) - {DatumString}";
+        }
     }
 }

@@ -83,6 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TerminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerminForm.Designer.cs">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VlasnikForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TerminForm.resx">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VlasnikForm.resx">
       <DependentUpon>VlasnikForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +136,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.PasminaZivotinje.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Termin1.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Vlasnik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />

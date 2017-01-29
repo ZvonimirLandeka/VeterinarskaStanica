@@ -20,7 +20,7 @@ namespace VeterinarskaStanica.DAL
             Map(x => x.Spol);
             Map(x => x.KorisnickoIme);
             Map(x => x.Lozinka);
-            HasMany(x => x.Dokumenti);
+            HasMany(x => x.Dokumenti).Cascade.All();
 
         }
     }

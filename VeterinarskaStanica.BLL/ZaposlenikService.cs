@@ -38,6 +38,11 @@ namespace VeterinarskaStanica.BLL
             }
         }
 
+        public Zaposlenik GetByKorisnickoIme(string KorisnickoIme)
+        {
+            return repository.GetByKorisnickoIme(KorisnickoIme);
+        }
+
         public void Add(Zaposlenik noviZaposlenik)
         {
             using(var transaction = ActiveSession.BeginTransaction())

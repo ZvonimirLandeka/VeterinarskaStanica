@@ -14,6 +14,8 @@ namespace VeterinarskaStanica.Desktop
 {
     public partial class MainForm : Form
     {
+        private Zaposlenik PrijavljeniZaposlenik;
+
         private ZaposlenikService zaposlenikService;
         private List<Zaposlenik> DohvaceniZaposlenici;
         private BindingList<Zaposlenik> Zaposlenici;
@@ -49,10 +51,26 @@ namespace VeterinarskaStanica.Desktop
             }
         }
 
-        public MainForm()
+        private TerminService terminService;
+        private List<Model.Termin> DohvaceniTermini;
+        private BindingList<Model.Termin> Termini;
+        private Termin AktivniTermin
+        {
+            get
+            {
+                return TerminiList.SelectedItem as Termin;
+            }
+        }
+
+
+
+
+
+        public MainForm(Zaposlenik PrijavljeniZaposlenik)
         {
             InitializeComponent();
 
+            this.PrijavljeniZaposlenik = PrijavljeniZaposlenik;
             InicijalizirajFormu();
         }
 
@@ -66,10 +84,17 @@ namespace VeterinarskaStanica.Desktop
 
             vlasnikService = new VlasnikService();
             DohvatiVlasnike();
+
+            terminService = new TerminService();
+            DohvatiTermine();
+            VrijemeTermin.Format = DateTimePickerFormat.Time;
+
+            DohvatiNaslovnicu();
         }
 
 
         #region Zaposlenici
+
         private void DohvatiZaposlenike()
         {
             var stari = AktivniZaposlenik;
@@ -118,6 +143,11 @@ namespace VeterinarskaStanica.Desktop
 
                 UrediZaposlenikaButton.Enabled = true;
                 ObrisiZaposlenikaButton.Enabled = true;
+            }
+            else
+            {
+                UrediZaposlenikaButton.Enabled = false;
+                ObrisiZaposlenikaButton.Enabled = false;
             }
         }
 
@@ -176,6 +206,11 @@ namespace VeterinarskaStanica.Desktop
                 UrediZivotinjuButton.Enabled = true;
                 ObrisiZivotinjuButton.Enabled = true;
             }
+            else
+            {
+                UrediZivotinjuButton.Enabled = false;
+                ObrisiZivotinjuButton.Enabled = false;
+            }
         }
 
         #endregion
@@ -231,6 +266,136 @@ namespace VeterinarskaStanica.Desktop
                 UrediVlasnikaButton.Enabled = true;
                 ObrisiVlasnikaButton.Enabled = true;
             }
+            else
+            {
+                UrediVlasnikaButton.Enabled = false;
+                ObrisiVlasnikaButton.Enabled = false;
+            }
+        }
+        #endregion
+
+        #region Termini
+
+        private void MakniTerminFiltere()
+        {
+            VlasniciFilterCombobox.SelectedIndex = -1;
+            VlasniciFilterCombobox.SelectedItem = null;
+            SearchTermin.ResetText();
+        }
+        private void DohvatiTermine()
+        {
+            var stari = AktivniTermin;
+            DohvaceniVlasnici = vlasnikService.GetAll();
+            DohvaceniTermini = terminService.GetAll();
+            FiltrirajTermine();
+
+            if (stari != null)
+            {
+                TerminiList.SelectedItem = Termini.FirstOrDefault(x => x.Id == stari.Id);
+                TerminOdabran(null, null);
+            }
+
+            VlasniciFilterCombobox.DataSource = DohvaceniVlasnici;
+            VlasniciFilterCombobox.SelectedIndex = -1;
+            VlasniciFilterCombobox.SelectedItem = null;
+            VlasniciFilterCombobox.AutoCompleteCustomSource.AddRange(DohvaceniVlasnici.Select(x => x.ToString()).ToArray());
+        }
+
+        private void FiltrirajTermine(object sender = null, EventArgs e = null)
+        {
+            var VlasnikForFiler = VlasniciFilterCombobox.SelectedItem as Vlasnik;
+            if (VlasnikForFiler != null)
+            {
+                SearchTermin.ResetText();
+                Termini = new BindingList<Termin>(DohvaceniTermini.Where(x => x.Zivotinja.Vlasnik.Id == VlasnikForFiler.Id).ToList());
+            }
+            else
+            {
+                Termini = new BindingList<Termin>(DohvaceniTermini.Where(x => x.ToString().Contains(SearchTermin.Text)).ToList());
+            }
+
+            TerminiList.DataSource = Termini;
+        }
+
+        private void DodajTermin(object sender, EventArgs e)
+        {
+            var NoviTermin = new Termin() { Zivotinja = AktivnaZivotinja, Zaposlenik = PrijavljeniZaposlenik };
+            var TerminForm = new TerminForm(NoviTermin);
+            var result = TerminForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiTermine();
+            }
+        }
+        private void UrediTermin(object sender, EventArgs e)
+        {
+            var TerminForm = new TerminForm(AktivniTermin);
+            var result = TerminForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiTermine();
+            }
+        }
+        private void ObrisiTermin(object sender, EventArgs e)
+        {
+            terminService.Delete(AktivniTermin.Id);
+            DohvatiTermine();
+        }
+
+        private void TerminOdabran(object sender, EventArgs e)
+        {
+            if (AktivniTermin != null)
+            {
+                terminBindingSource.DataSource = AktivniTermin;
+
+                UrediTerminButton.Enabled = true;
+                ObrisiTerminButton.Enabled = true;
+            }
+            else
+            {
+                UrediTerminButton.Enabled = false;
+                ObrisiTerminButton.Enabled = false;
+            }
+        }
+        #endregion
+
+        #region Naslovnica
+        private void DohvatiNaslovnicu()
+        {
+            var DanasnjiTermini = terminService.GetAll().Where(x => x.Zaposlenik.Id == PrijavljeniZaposlenik.Id && x.Datum.HasValue && x.Datum.Value.Date == DateTime.Now.Date && x.Status == Model.StatusTermina.Odobren).ToList();
+            DanasnjiTerminiList.DataSource = DanasnjiTermini;
+
+            var ZatrazeniTermini = terminService.GetAll().Where(x => x.Status == Model.StatusTermina.Zatražen).ToList();
+            ZatrazeniTerminiList.DataSource = ZatrazeniTermini;
+        }
+
+        private void UrediZatrazeniTermin_Click(object sender, EventArgs e)
+        {
+            var OdabraniZatrazeniTermin = ZatrazeniTerminiList.SelectedItem as Termin;
+
+            var TerminForm = new TerminForm(OdabraniZatrazeniTermin);
+            var result = TerminForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiNaslovnicu();
+            }
+        }
+
+        private void UrediDanasnjiTermin_Click(object sender, EventArgs e)
+        {
+            var OdabraniDanasnjiTermin = DanasnjiTerminiList.SelectedItem as Termin;
+
+            var TerminForm = new TerminForm(OdabraniDanasnjiTermin);
+            var result = TerminForm.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                DohvatiNaslovnicu();
+            }
+        }
+
+        private void OsvjeziTermine(object sender, EventArgs e)
+        {
+            DohvatiNaslovnicu();
         }
         #endregion
     }

@@ -18,12 +18,12 @@ namespace VeterinarskaStanica.DAL
             Map(x => x.Napomena);
             Map(x => x.Opis);
             Map(x => x.Status);
-            References(x => x.VrstaTermina).Cascade.All(); 
-            References(x => x.Zivotinja).Cascade.All(); 
-            References(x => x.Zaposlenik).Cascade.All();
+            References(x => x.VrstaTermina);
+            References(x => x.Zivotinja);
+            References(x => x.Zaposlenik);
            
-            HasMany(x => x.Zahvati).Cascade.All(); ;
-            HasMany(x => x.Dokumenti).Cascade.SaveUpdate(); ;
+            HasMany(x => x.Zahvati).Cascade.All();
+            HasMany(x => x.Dokumenti).Cascade.All();
 
         }
     }

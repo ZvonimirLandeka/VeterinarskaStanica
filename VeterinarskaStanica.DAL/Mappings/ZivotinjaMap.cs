@@ -26,8 +26,8 @@ namespace VeterinarskaStanica.DAL
             References(x => x.VrstaZivotinje);
             References(x => x.Vlasnik);
 
-            HasMany(x => x.Dokumenti);
-            HasMany(x => x.Bolesti);
+            HasMany(x => x.Dokumenti).Cascade.All();
+            HasMany(x => x.Bolesti).Cascade.SaveUpdate();
 
 
 
