@@ -5,6 +5,10 @@
 }
 
 <h2>TerminList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -12,9 +16,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VrstaTermina.Naziv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Napomena)
@@ -32,14 +33,13 @@
             @Html.DisplayFor(modelItem => item.VrstaTermina.Naziv)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Napomena)
         </td>
 
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

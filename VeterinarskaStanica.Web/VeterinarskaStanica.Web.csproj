@@ -248,6 +248,8 @@
     <Content Include="Views\Pasmina\Index.cshtml" />
     <Content Include="Views\Pasmina\Create.cshtml" />
     <Content Include="Views\Zivotinja\View.cshtml" />
+    <Content Include="Views\Termin\Odobreni.cshtml" />
+    <Content Include="Views\Termin\Zatrazeni.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

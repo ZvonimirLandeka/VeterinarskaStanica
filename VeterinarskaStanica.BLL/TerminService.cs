@@ -27,6 +27,14 @@ namespace VeterinarskaStanica.BLL
             return repository.GetAll();
         }
 
+        public List<Termin> GetAllZatrazeniByVlasnikId(int IdVlasnik)
+        {
+            return repository.GetAllZatrazeniByVlasnikId(IdVlasnik);
+        }
+        public List<Termin> GetAllOdobreniByVlasnikId(int IdVlasnik)
+        {
+            return repository.GetAllOdobreniByVlasnikId(IdVlasnik);
+        }
         public List<Termin> GetAllByVlasnikId(int IdVlasnik)
         {
             return repository.GetAllByVlasnikId(IdVlasnik);

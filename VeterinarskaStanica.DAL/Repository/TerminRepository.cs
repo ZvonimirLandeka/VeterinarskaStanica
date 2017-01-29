@@ -199,10 +199,17 @@ namespace VeterinarskaStanica.DAL.Repository
         {
             return _session.Query<VrstaTermina>().ToList();
         }
-
         public List<Termin> GetAllByVlasnikId(int idVlasnik)
         {
-            return _session.Query<Termin>().Where(x=>x.Zivotinja.Vlasnik.Id==idVlasnik).ToList();
+            return _session.Query<Termin>().Where(x => x.Zivotinja.Vlasnik.Id == idVlasnik).ToList();
+        }
+        public List<Termin> GetAllZatrazeniByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x=>x.Zivotinja.Vlasnik.Id==idVlasnik && x.Status== StatusTermina.Zatražen).ToList();
+        }
+        public List<Termin> GetAllOdobreniByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x => x.Zivotinja.Vlasnik.Id == idVlasnik && x.Status == StatusTermina.Odobren).OrderBy(x=>x.Datum).ToList();
         }
     }
 }

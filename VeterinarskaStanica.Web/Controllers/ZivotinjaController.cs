@@ -60,13 +60,14 @@ namespace VeterinarskaStanica.Web.Controllers
 
             ViewBag.IdVrstaZivotinje = new SelectList(zr.GetAllVrstaZivotinje(), "Id", "Naziv");
             ViewBag.IdPasminaZivotinje = new SelectList(zr.GetAllPasminaZivotinje(), "Id", "Naziv");
+            ViewBag.Spol= new SelectList(Enum.GetValues(typeof(Spol)));
             return View();
         }
 
         // POST: Zivotinja/Create
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Ime,DatumRodenja,DatumSmrti,Boja,BrojCipa,PolozajCipa,DatumCipiranja")] Zivotinja Zivotinja, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Ime,Spol,DatumRodenja,DatumSmrti,Boja,BrojCipa,PolozajCipa,DatumCipiranja")] Zivotinja Zivotinja, HttpPostedFileBase file)
         {
             var service = new ZivotinjaService();
             VlasnikService VlasnikService = new VlasnikService();
@@ -76,6 +77,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
             var zivotinje = service.Add(Zivotinja);
             return RedirectToAction("Index");
+            //ovo dolje je bio pokusaj dokumenata
             try
             {
 

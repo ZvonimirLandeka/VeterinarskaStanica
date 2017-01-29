@@ -12,6 +12,7 @@ namespace VeterinarskaStanica.Web.Controllers
     public class TerminController : Controller
     {
         // GET: Termin
+        // Zatrazeni termini
         public ActionResult Index()
         {
             VlasnikService VlasnikService = new VlasnikService();
@@ -21,6 +22,37 @@ namespace VeterinarskaStanica.Web.Controllers
             var TerminService = new TerminService();
             var Termini = TerminService.GetAllByVlasnikId(Vlasik.Id);
             return View(Termini);
+        }
+
+        public ActionResult Zatrazeni()
+        {
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllZatrazeniByVlasnikId(Vlasik.Id);
+            return View(Termini);
+        }
+
+        public ActionResult Odobreni()
+        {
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllOdobreniByVlasnikId(Vlasik.Id);
+            return View(Termini);
+        }
+        // GET: Termin/Details/5
+        public ActionResult Otkazi(int id)
+        {
+            var TerminService = new TerminService();
+            Termin Termin = TerminService.GetById(id);
+            Termin.Status = StatusTermina.Otkazan;
+            TerminService.Update(Termin);
+            return RedirectToAction("Index"); ;
         }
 
         // GET: Termin/Details/5
@@ -51,7 +83,8 @@ namespace VeterinarskaStanica.Web.Controllers
 
                 ZivotinjaService ZivotinjaService = new ZivotinjaService();
                 Termin.Zivotinja= ZivotinjaService.GetById(IdZivotinje);
-                
+                Termin.Status = StatusTermina.Zatražen;
+
                 TerminService.Add(Termin);
                 return RedirectToAction("Index");
             }

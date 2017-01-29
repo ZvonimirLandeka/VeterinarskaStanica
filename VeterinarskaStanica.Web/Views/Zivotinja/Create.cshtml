@@ -61,7 +61,7 @@
             @Html.LabelFor(model => model.DatumRodenja, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumRodenja, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumRodenja, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumRodenja, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -69,7 +69,7 @@
             @Html.LabelFor(model => model.DatumSmrti, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumSmrti, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumSmrti, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumSmrti, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -102,9 +102,16 @@
             @Html.LabelFor(model => model.DatumCipiranja, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumCipiranja, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumCipiranja, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumCipiranja, "", new { @class = "text-danger" })*@
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Spol, "Spol", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Spol", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
         @*<div class="form-group">
             @Html.LabelFor(model => model.VrstaZivotinje, "IdVrstaZivotinje", htmlAttributes: new { @class = "control-label col-md-2", @onchange = "javascript:alert()" })
             <div class="col-md-10">

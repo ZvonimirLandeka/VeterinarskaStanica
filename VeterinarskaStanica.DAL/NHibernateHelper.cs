@@ -87,17 +87,22 @@ namespace VeterinarskaStanica.DAL
                     _sessionFactory = nhConfig.BuildSessionFactory();
                 }
 
-                // this is for rebuilding the database
+                //this is for rebuilding the database
+
                 //ISession Session = _sessionFactory.OpenSession();
 
-              //  using (var tx = Session.BeginTransaction())
+                //using (var tx = Session.BeginTransaction())
                 //{
-                  //  new SchemaExport(nhConfig).Execute(useStdOut: true,
-                      //                                          execute: true,
-                    //                                            justDrop: false,
-                        //                                        connection: Session.Connection,
-                          //                                      exportOutput: Console.Out);
-               //     tx.Commit();
+                //    var fluentConfig = Fluently.Configure()
+                //                   .Database(SQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("VeterinarskaStanicaDatabase")).AdoNetBatchSize(100))
+                //                   .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PasminaZivotinjeMap>());
+                //    var nhConfig = fluentConfig.BuildConfiguration();
+                //    new SchemaExport(nhConfig).Execute(useStdOut: true,
+                //                                                execute: true,
+                //                                                justDrop: false,
+                //                                                connection: Session.Connection,
+                //                                                exportOutput: Console.Out);
+                //    tx.Commit();
                 //}
 
 
