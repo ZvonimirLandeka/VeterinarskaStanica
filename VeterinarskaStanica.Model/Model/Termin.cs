@@ -9,7 +9,7 @@ namespace VeterinarskaStanica.Model
     public class Termin : BazniEntitet
     {
         public virtual StatusTermina Status { get; set; }
-        public virtual DateTime Datum { get; set; }
+        public virtual DateTime? Datum { get; set; }
         public virtual VrstaTermina VrstaTermina { get; set; }
         public virtual Zivotinja Zivotinja { get; set; }
         public virtual Zaposlenik Zaposlenik { get; set; }
@@ -26,6 +26,19 @@ namespace VeterinarskaStanica.Model
         {
         }
 
+        public override string ToString()
+        {
+            string DatumString;
+            if(Datum == null)
+            {
+                DatumString = "Neodređeno";
+            }
+            else
+            {
+                DatumString = Datum.Value.ToLongDateString();
+            }
 
+            return $"{Zivotinja.VrstaZivotinje} - {Zivotinja.Ime} ({Zivotinja.BrojCipa}) - {DatumString}";
+        }
     }
 }

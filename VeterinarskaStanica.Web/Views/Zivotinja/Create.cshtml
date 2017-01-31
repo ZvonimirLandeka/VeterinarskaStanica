@@ -1,10 +1,44 @@
 ﻿@model VeterinarskaStanica.Model.Zivotinja
-
 @{
-    ViewBag.Title = "ZivotinjaCreate";
+    ViewBag.Title = "Dodaj novu životinju";
 }
 
-<h2>ZivotinjaCreate</h2>
+<h2>Dodaj novu životinju</h2>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        var procemessage = "<option value='0'> Please wait...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Zivotinja/GetPasmineByIdVrsta/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select City</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+
+
 
 
 @using (Html.BeginForm()) 
@@ -14,7 +48,7 @@
     <div class="form-horizontal">
         <h4>Zivotinja</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -27,7 +61,7 @@
             @Html.LabelFor(model => model.DatumRodenja, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumRodenja, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumRodenja, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumRodenja, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -35,7 +69,7 @@
             @Html.LabelFor(model => model.DatumSmrti, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumSmrti, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumSmrti, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumSmrti, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -64,23 +98,65 @@
         </div>
 
         <div class="form-group">
+            
             @Html.LabelFor(model => model.DatumCipiranja, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DatumCipiranja, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumCipiranja, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.DatumCipiranja, "", new { @class = "text-danger" })*@
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Spol, "Spol", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Spol", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.VrstaZivotinje, "IdVrstaZivotinje", htmlAttributes: new { @class = "control-label col-md-2", @onchange = "javascript:alert()" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdVrstaZivotinje", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PasminaZivotinje, "IdPAsminaZivotinje", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdPAsminaZivotinje", null, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Dokumenti, "Dokumenti", htmlAttributes: new { @class = "control-label col-md-2", @onchange = "javascript:alert();" })
+
+            <div class="col-md-10">
+                <InPUT type=file multiple=multiple id=File1 name=File1 runat=server />
+            </div>
+
+
+        </div>*@
+        @*<div class="form-group">
+            @Html.DropDownListFor(model => model.VrstaZivotinje, new SelectList(ViewBag.IdVrstaZivotinje, "IdVrstaZivotinje"), new { @id = "ddlstate", @style = "width:200px;", @onchange = "javascript:GetCity(this.value);" })
+            <br />
+            <br />
+            <select id="ddlcity" name="ddlcity" style="width: 200px"></select>
+
+            <br /><br />
+
+        </div>*@
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Spremi" enctype="multipart/form-data" class="btn btn-default"   />
             </div>
         </div>
     </div>
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Vrati se na listu", "Index")
 </div>
 
 @section Scripts {

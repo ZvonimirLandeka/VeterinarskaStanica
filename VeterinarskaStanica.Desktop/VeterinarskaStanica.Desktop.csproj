@@ -83,11 +83,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZivotinjaControl.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="TerminForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZivotinjaControl.Designer.cs">
-      <DependentUpon>ZivotinjaControl.cs</DependentUpon>
+    <Compile Include="TerminForm.Designer.cs">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VlasnikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VlasnikForm.Designer.cs">
+      <DependentUpon>VlasnikForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZaposlenikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZaposlenikForm.Designer.cs">
+      <DependentUpon>ZaposlenikForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZivotinjaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZivotinjaForm.Designer.cs">
+      <DependentUpon>ZivotinjaForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -104,13 +122,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ZivotinjaControl.resx">
-      <DependentUpon>ZivotinjaControl.cs</DependentUpon>
+    <EmbeddedResource Include="TerminForm.resx">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VlasnikForm.resx">
+      <DependentUpon>VlasnikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZaposlenikForm.resx">
+      <DependentUpon>ZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZivotinjaForm.resx">
+      <DependentUpon>ZivotinjaForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.PasminaZivotinje.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Termin1.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Vlasnik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zivotinja.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace VeterinarskaStanica.Model
 {
-    public class StatusTermina : BazniEntitet
+    public enum StatusTermina
     {
-        public virtual string Naziv { get; set; }
-
-
-        public StatusTermina(int Id) : base(Id)
-        {
-        }
-        public StatusTermina() : base(-1)
-        {
-        }
-
-        
-
+        Zatražen,
+        Odobren,
+        Otkazan,
+        Izvršen
     }
 }

@@ -20,11 +20,12 @@ namespace VeterinarskaStanica.BLL
         public bool CheckLogin(string KorisnickoIme, string Lozinka)
         {
             var Vlasnik= VlasnikRepository.GetByKorisnickoIme(KorisnickoIme);
-            if(Vlasnik==null || Vlasnik.Lozinka.Equals(Lozinka) == false)
+            if (Vlasnik == null)
             {
                 return false;
             }
-            return true;
+            return Vlasnik.Lozinka.Equals(Lozinka);
+            
         }
 
     }

@@ -3,37 +3,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VeterinarskaStanica.BLL;
+using VeterinarskaStanica.DAL.Repository;
+using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
     public class TerminController : Controller
     {
         // GET: Termin
+        // Zatrazeni termini
         public ActionResult Index()
         {
-            return View();
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllByVlasnikId(Vlasik.Id);
+            return View(Termini);
+        }
+
+        public ActionResult Zatrazeni()
+        {
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllZatrazeniByVlasnikId(Vlasik.Id);
+            return View(Termini);
+        }
+
+        public ActionResult Odobreni()
+        {
+            VlasnikService VlasnikService = new VlasnikService();
+            string KorisnickoIme = User.Identity.Name;
+            var Vlasik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
+
+            var TerminService = new TerminService();
+            var Termini = TerminService.GetAllOdobreniByVlasnikId(Vlasik.Id);
+            return View(Termini);
+        }
+        // GET: Termin/Details/5
+        public ActionResult Otkazi(int id)
+        {
+            var TerminService = new TerminService();
+            Termin Termin = TerminService.GetById(id);
+            Termin.Status = StatusTermina.Otkazan;
+            TerminService.Update(Termin);
+            return RedirectToAction("Index"); ;
         }
 
         // GET: Termin/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            TerminService TerminService = new TerminService();
+            Termin Termin = TerminService.GetById(id);
+            return View(Termin);
         }
 
         // GET: Termin/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            TerminService TerminService = new TerminService();
+            ViewBag.IdVrstaTermina = new SelectList(TerminService.GetAllVrstaTermina(), "Id", "Naziv");
+            ViewBag.IdZivotinje = id;
             return View();
         }
 
         // POST: Termin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "Datum,Iskaz,Napomena,Opis,VrstaTermina_Id")] Termin Termin, int IdZivotinje)
         {
+
             try
             {
-                // TODO: Add insert logic here
+                var IdVrstaTermina = int.Parse(Request.Form.GetValues("IdVrstaTermina")[0]);
+                TerminService TerminService = new TerminService();
+                Termin.VrstaTermina = TerminService.GetVrstaTerminaById(IdVrstaTermina);
 
+                ZivotinjaService ZivotinjaService = new ZivotinjaService();
+                Termin.Zivotinja= ZivotinjaService.GetById(IdZivotinje);
+                Termin.Status = StatusTermina.Zatražen;
+
+                TerminService.Add(Termin);
                 return RedirectToAction("Index");
             }
             catch
@@ -77,7 +131,8 @@ namespace VeterinarskaStanica.Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                TerminService TerminService = new TerminService();
+                TerminService.Delete(id);
                 return RedirectToAction("Index");
             }
             catch

@@ -60,6 +60,11 @@ namespace VeterinarskaStanica.DAL.Repository
             return true;
         }
 
+        public VrstaTermina GetVrstaTerminaById(int idVrstaTermina)
+        {
+            return _session.Get<VrstaTermina>(idVrstaTermina);
+        }
+
         public bool Delete(int Id)
         {
             try
@@ -155,7 +160,7 @@ namespace VeterinarskaStanica.DAL.Repository
         {
             try
             {
-                _session.Update(Termin);
+                _session.SaveOrUpdate(Termin);
             }
             catch
             {
@@ -188,6 +193,28 @@ namespace VeterinarskaStanica.DAL.Repository
                 return false;
             }
             return true;
+        }
+
+        public List<VrstaTermina> GetAllVrstaTermina()
+        {
+            return _session.Query<VrstaTermina>().ToList();
+        }
+        public List<Termin> GetAllByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x => x.Zivotinja.Vlasnik.Id == idVlasnik).ToList();
+        }
+        public List<Termin> GetAllZatrazeniByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x=>x.Zivotinja.Vlasnik.Id==idVlasnik && x.Status== StatusTermina.Zatražen).ToList();
+        }
+        public List<Termin> GetAllOdobreniByVlasnikId(int idVlasnik)
+        {
+            return _session.Query<Termin>().Where(x => x.Zivotinja.Vlasnik.Id == idVlasnik && x.Status == StatusTermina.Odobren).OrderBy(x=>x.Datum).ToList();
+        }
+
+        public List<Termin> GetAllByIdZivotinja(int Id)
+        {
+            return _session.Query<Termin>().Where(x=>x.Zivotinja.Id==Id).ToList();
         }
     }
 }

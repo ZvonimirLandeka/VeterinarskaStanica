@@ -1,11 +1,12 @@
 ﻿@model VeterinarskaStanica.Model.Termin
 
 @{
-    ViewBag.Title = "TerminDetails";
+    ViewBag.Title = "Obriši termin";
 }
 
-<h2>TerminDetails</h2>
+<h2>Brisanje termina</h2>
 
+<h3>Jeste li sigurno da želite obrisati termin?</h3>
 <div>
     <h4>Termin</h4>
     <hr />
@@ -43,8 +44,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Vrati se na listu", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

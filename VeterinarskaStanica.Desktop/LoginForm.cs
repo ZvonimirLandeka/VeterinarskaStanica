@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VeterinarskaStanica.BLL;
 using System.Threading;
+using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.Desktop
 {
     public partial class LoginForm : Form
     {
         private readonly ZaposlenikService zaposlenikService;
+        private string KorisnickoIme { get { return Username.Text; } }
+        private string LozinkaHash { get { return Password.Text.GetHashCode().ToString(); } }
         public LoginForm()
         {
             InitializeComponent();
@@ -29,19 +32,16 @@ namespace VeterinarskaStanica.Desktop
             Password.Text = "1234";
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)
+        private void PokusajPrijave(object sender, EventArgs e)
         {          
-            string KorisnickoIme = Username.Text;
-            string LozinkaHash = Password.Text.GetHashCode().ToString();
-
             bool loginSuccess = zaposlenikService.CheckLogin(KorisnickoIme, LozinkaHash);
 
             if (loginSuccess)
             {
-                Thread t = new Thread(new ThreadStart(OpenApplication));
-
+                var prijavljeniZaposlenik = zaposlenikService.GetByKorisnickoIme(KorisnickoIme);
+                Thread t = new Thread(new ThreadStart(() =>  OtvoriAplikacijuZatvoriPrijavu(prijavljeniZaposlenik) ));
+                t.SetApartmentState(ApartmentState.STA);
                 t.Start();
-
                 Close();
             }
             else
@@ -50,9 +50,9 @@ namespace VeterinarskaStanica.Desktop
             }
         }
 
-        private void OpenApplication()
+        private void OtvoriAplikacijuZatvoriPrijavu(Zaposlenik prijavljeniZaposlenik)
         {
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(prijavljeniZaposlenik));
         }
     }
 }

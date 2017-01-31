@@ -1,0 +1,47 @@
+﻿@model IEnumerable<VeterinarskaStanica.Model.Termin>
+
+@{
+    ViewBag.Title = "Termini";
+}
+
+<h2>Termini</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Zivotinja.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VrstaTermina.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Napomena)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zivotinja.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VrstaTermina.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Napomena)
+        </td>
+
+        <td>
+            @Html.ActionLink("Detalji", "Details", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

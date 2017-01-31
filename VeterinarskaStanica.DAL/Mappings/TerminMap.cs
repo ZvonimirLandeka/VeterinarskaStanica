@@ -17,12 +17,13 @@ namespace VeterinarskaStanica.DAL
             Map(x => x.Iskaz);
             Map(x => x.Napomena);
             Map(x => x.Opis);
+            Map(x => x.Status);
             References(x => x.VrstaTermina);
             References(x => x.Zivotinja);
             References(x => x.Zaposlenik);
-            References(x => x.Status);
-            HasMany(x => x.Zahvati);
-            HasMany(x => x.Dokumenti);
+           
+            HasMany(x => x.Zahvati).Cascade.All();
+            HasMany(x => x.Dokumenti).Cascade.All();
 
         }
     }

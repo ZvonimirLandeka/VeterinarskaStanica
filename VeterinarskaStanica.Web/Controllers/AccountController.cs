@@ -44,14 +44,12 @@ namespace VeterinarskaStanica.Web.Controllers
             }
             AccountService AccountService = new AccountService();
             var exists = AccountService.CheckLogin(AccountModel.KorisnickoIme, AccountModel.Lozinka);
-            exists = true;
-            if (AccountModel.KorisnickoIme.Equals("baba"))
+            
+            if (exists)
             {
                 FormsAuthentication.SetAuthCookie(AccountModel.KorisnickoIme, false);
-                string dasd = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
                 return RedirectToAction("Index", "Home");
             }
-            string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
             HomeController HomeController = new HomeController();
             return RedirectToAction("Login", this);
 

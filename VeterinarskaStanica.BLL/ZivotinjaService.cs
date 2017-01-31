@@ -26,6 +26,12 @@ namespace VeterinarskaStanica.BLL
         {
             return repository.GetAll();
         }
+
+        public List<PasminaZivotinje> GetPasmineByIdVrsta(int Id)
+        {
+            ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
+            return ZivotinjaRepository.GetPasmineByIdVrste(Id);
+        }
         public bool Add(Zivotinja Zivotinja)
         {
             try
@@ -34,6 +40,7 @@ namespace VeterinarskaStanica.BLL
                 
                 using (var transaction = session.BeginTransaction())
                 {
+                    
                     repository.Add(Zivotinja);
                     
                     transaction.Commit();
@@ -106,6 +113,9 @@ namespace VeterinarskaStanica.BLL
             }
             return true;
         }
-
+        public List<Zivotinja> GetAllByVlasnikId(int IdVlasnik)
+        {
+            return repository.GetAllByVlasnikId(IdVlasnik);
+        }
     }
 }
