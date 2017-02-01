@@ -26,8 +26,8 @@ namespace VeterinarskaStanica.BLL
             using (var transaction = ActiveSession.BeginTransaction())
             {
                 Vlasnik Vlasnik = repository.GetByKorisnickoIme(KorisnickoIme);
-
-                if (Vlasnik?.Lozinka == Lozinka)
+                Lozinka= Lozinka.GetHashCode().ToString();
+                if (Vlasnik.Lozinka.Equals(Lozinka))
                 {
                     return true;
                 }

@@ -11,26 +11,29 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
-    function GetCity(_stateId) {
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaa");
+    function GetPasmine(id) {
+        
         var procemessage = "<option value='0'> Please wait...</option>";
         $("#ddlcity").html(procemessage).show();
-        var url = "/Zivotinja/GetPasmineByIdVrsta/";
+        var url = "/Zivotinja/GetPasmineByIdVrsta/"+id;
 
         $.ajax({
             url: url,
-            data: { stateid: _stateId },
+            data: { id: id },
             cache: false,
             type: "POST",
             success: function (data) {
-                var markup = "<option value='0'>Select City</option>";
+                
+                var markup = "<option value='0'>Izaberi pasminu</option>";
                 for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    
+                    markup += "<option value=" + data[x].Id + ">" + data[x].Naziv + "</option>";
                 }
-                $("#ddlcity").html(markup).show();
+                $("#IdPAsminaZivotinje").html(markup).show();
             },
             error: function (reponse) {
-                alert("error : " + reponse);
+                
+                alert("Nije uspio dohvat : " + JSON.parse(reponse));
             }
         });
 
@@ -46,7 +49,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Zivotinja</h4>
+        <h4>Životinja</h4>
         <hr />
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -65,13 +68,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatumSmrti, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatumSmrti, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.DatumSmrti, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Boja, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -81,30 +78,8 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrojCipa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BrojCipa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BrojCipa, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PolozajCipa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PolozajCipa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PolozajCipa, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            
-            @Html.LabelFor(model => model.DatumCipiranja, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatumCipiranja, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.DatumCipiranja, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Spol, "Spol", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -112,19 +87,19 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.VrstaZivotinje, "IdVrstaZivotinje", htmlAttributes: new { @class = "control-label col-md-2", @onchange = "javascript:alert()" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.VrstaZivotinje, "Vrsta životinje", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdVrstaZivotinje", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdVrstaZivotinje", null, htmlAttributes: new { @class = "form-control", @onchange = "javascript:GetPasmine(this.value);" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.PasminaZivotinje, "IdPAsminaZivotinje", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PasminaZivotinje, "PAsmina životinje", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdPAsminaZivotinje", null, htmlAttributes: new { @class = "form-control" })
 
             </div>
-        </div>*@
+        </div>
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.Dokumenti, "Dokumenti", htmlAttributes: new { @class = "control-label col-md-2", @onchange = "javascript:alert();" })
@@ -161,4 +136,8 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+@using (Html.BeginForm("FolderChange", "ControllerName", FormMethod.Post, new { id = "ediFilesForm" }))
+{
+    ////your code
 }

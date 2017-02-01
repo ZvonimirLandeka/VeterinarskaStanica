@@ -37,9 +37,9 @@ namespace VeterinarskaStanica.Web.Controllers
         {
             var service = new ZivotinjaService();
             var pasmine = service.GetPasmineByIdVrsta(id);
-
-            SelectList slist = new SelectList(pasmine, "Id", "Naziv", 0);
-            return Json(slist);
+                
+            var json= Json(pasmine);
+            return json;
         }
         
         // GET: Zivotinja/Details/5
@@ -77,7 +77,12 @@ namespace VeterinarskaStanica.Web.Controllers
             string KorisnickoIme = User.Identity.Name;
             var Vlasnik = VlasnikService.GetIdByKorisnickoIme(KorisnickoIme);
             Zivotinja.Vlasnik = Vlasnik;
+            var IdVrstaZivotinje = int.Parse(Request.Form.GetValues("IdVrstaZivotinje")[0]);
+            var IdPasminaZivotinje = int.Parse(Request.Form.GetValues("IdPasminaZivotinje")[0]);
 
+            ZivotinjaService ZivotinjaService = new ZivotinjaService();
+            Zivotinja.VrstaZivotinje = ZivotinjaService.GetVrstaZivotinjeById(IdVrstaZivotinje);
+            Zivotinja.PasminaZivotinje = ZivotinjaService.GetPasminaZivotinjeById(IdPasminaZivotinje);
             var zivotinje = service.Add(Zivotinja);
             return RedirectToAction("Index");
             //ovo dolje je bio pokusaj dokumenata
@@ -92,11 +97,11 @@ namespace VeterinarskaStanica.Web.Controllers
                     var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
                     file.SaveAs(path);
                 }
-                var IdVrstaZivotinje = int.Parse(Request.Form.GetValues("IdVrstaZivotinje")[0]);
-                var IdPasminaZivotinje = int.Parse(Request.Form.GetValues("IdPasminaZivotinje")[0]);
-                ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
-                Zivotinja.VrstaZivotinje = ZivotinjaRepository.GetVrstaZivotinjeById(IdVrstaZivotinje);
-                Zivotinja.PasminaZivotinje = ZivotinjaRepository.GetPasminaZivotinjeById(IdPasminaZivotinje);
+                //var IdVrstaZivotinje = int.Parse(Request.Form.GetValues("IdVrstaZivotinje")[0]);
+                //var IdPasminaZivotinje = int.Parse(Request.Form.GetValues("IdPasminaZivotinje")[0]);
+                //ZivotinjaRepository ZivotinjaRepository = new ZivotinjaRepository();
+                //Zivotinja.VrstaZivotinje = ZivotinjaRepository.GetVrstaZivotinjeById(IdVrstaZivotinje);
+                //Zivotinja.PasminaZivotinje = ZivotinjaRepository.GetPasminaZivotinjeById(IdPasminaZivotinje);
                 //var service = new ZivotinjaService();
                 //var zivotinje = service.Add(Zivotinja);
                 return RedirectToAction("Index");

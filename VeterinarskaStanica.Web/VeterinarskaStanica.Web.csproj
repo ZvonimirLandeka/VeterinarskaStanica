@@ -250,6 +250,7 @@
     <Content Include="Views\Zivotinja\View.cshtml" />
     <Content Include="Views\Termin\Odobreni.cshtml" />
     <Content Include="Views\Termin\Zatrazeni.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
