@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.NaslovnicaTab = new System.Windows.Forms.TabPage();
+            this.OsvjeziButton = new System.Windows.Forms.Button();
             this.UrediZatrazeniTermin = new System.Windows.Forms.Button();
             this.UrediDanasnjiTermin = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.TerminiTab = new System.Windows.Forms.TabPage();
             this.VlasniciFilterCombobox = new System.Windows.Forms.ComboBox();
             this.VrijemeTermin = new System.Windows.Forms.DateTimePicker();
+            this.terminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -74,6 +76,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
+            this.vlasnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -100,6 +103,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PolozajCipa = new System.Windows.Forms.TextBox();
+            this.zivotinjaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -124,6 +128,7 @@
             this.OIBLabel = new System.Windows.Forms.Label();
             this.AdresaLabel = new System.Windows.Forms.Label();
             this.Lozinka = new System.Windows.Forms.TextBox();
+            this.zaposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SpolLabel = new System.Windows.Forms.Label();
             this.PrezimeLabel = new System.Windows.Forms.Label();
             this.KorisnickoIme = new System.Windows.Forms.TextBox();
@@ -135,21 +140,24 @@
             this.Ime = new System.Windows.Forms.TextBox();
             this.SearchZaposlenik = new System.Windows.Forms.TextBox();
             this.ZaposleniciList = new System.Windows.Forms.ListBox();
-            this.OsvjeziButton = new System.Windows.Forms.Button();
-            this.terminBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vlasnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zivotinjaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zaposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ZahvatiList = new System.Windows.Forms.ListBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.zahvatBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabControl.SuspendLayout();
             this.NaslovnicaTab.SuspendLayout();
             this.TerminiTab.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.ZivotinjaTab.SuspendLayout();
-            this.ZaposleniciTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).BeginInit();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).BeginInit();
+            this.ZivotinjaTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).BeginInit();
+            this.ZaposleniciTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahvatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -182,6 +190,16 @@
             this.NaslovnicaTab.TabIndex = 4;
             this.NaslovnicaTab.Text = "Naslovnica";
             this.NaslovnicaTab.UseVisualStyleBackColor = true;
+            // 
+            // OsvjeziButton
+            // 
+            this.OsvjeziButton.Location = new System.Drawing.Point(375, 17);
+            this.OsvjeziButton.Name = "OsvjeziButton";
+            this.OsvjeziButton.Size = new System.Drawing.Size(99, 37);
+            this.OsvjeziButton.TabIndex = 96;
+            this.OsvjeziButton.Text = "Osvježi";
+            this.OsvjeziButton.UseVisualStyleBackColor = true;
+            this.OsvjeziButton.Click += new System.EventHandler(this.OsvjeziTermine);
             // 
             // UrediZatrazeniTermin
             // 
@@ -245,23 +263,29 @@
             this.TerminiTab.Controls.Add(this.label23);
             this.TerminiTab.Controls.Add(this.label21);
             this.TerminiTab.Controls.Add(this.SearchTermin);
+            this.TerminiTab.Controls.Add(this.ZahvatiList);
             this.TerminiTab.Controls.Add(this.TerminiList);
             this.TerminiTab.Controls.Add(this.ObrisiTerminButton);
             this.TerminiTab.Controls.Add(this.UrediTerminButton);
             this.TerminiTab.Controls.Add(this.Datum);
             this.TerminiTab.Controls.Add(this.label14);
+            this.TerminiTab.Controls.Add(this.label28);
             this.TerminiTab.Controls.Add(this.label15);
+            this.TerminiTab.Controls.Add(this.label27);
             this.TerminiTab.Controls.Add(this.label16);
             this.TerminiTab.Controls.Add(this.StatusLabel);
+            this.TerminiTab.Controls.Add(this.label26);
             this.TerminiTab.Controls.Add(this.label17);
             this.TerminiTab.Controls.Add(this.label18);
             this.TerminiTab.Controls.Add(this.label19);
             this.TerminiTab.Controls.Add(this.label20);
+            this.TerminiTab.Controls.Add(this.textBox18);
             this.TerminiTab.Controls.Add(this.Iskaz);
             this.TerminiTab.Controls.Add(this.Zaposlenik);
             this.TerminiTab.Controls.Add(this.VrstaTermina);
             this.TerminiTab.Controls.Add(this.StatusTermina);
             this.TerminiTab.Controls.Add(this.Zivotinja);
+            this.TerminiTab.Controls.Add(this.textBox17);
             this.TerminiTab.Controls.Add(this.Opis);
             this.TerminiTab.Controls.Add(this.Napomena);
             this.TerminiTab.Location = new System.Drawing.Point(4, 22);
@@ -289,15 +313,19 @@
             this.VrijemeTermin.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.terminBindingSource, "Datum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.VrijemeTermin.Enabled = false;
             this.VrijemeTermin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.VrijemeTermin.Location = new System.Drawing.Point(621, 306);
+            this.VrijemeTermin.Location = new System.Drawing.Point(620, 164);
             this.VrijemeTermin.Name = "VrijemeTermin";
             this.VrijemeTermin.Size = new System.Drawing.Size(133, 20);
             this.VrijemeTermin.TabIndex = 96;
             // 
+            // terminBindingSource
+            // 
+            this.terminBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Termin);
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(618, 290);
+            this.label22.Location = new System.Drawing.Point(617, 148);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(41, 13);
             this.label22.TabIndex = 94;
@@ -334,7 +362,7 @@
             this.TerminiList.FormattingEnabled = true;
             this.TerminiList.Location = new System.Drawing.Point(6, 93);
             this.TerminiList.Name = "TerminiList";
-            this.TerminiList.Size = new System.Drawing.Size(369, 563);
+            this.TerminiList.Size = new System.Drawing.Size(369, 576);
             this.TerminiList.TabIndex = 91;
             this.TerminiList.SelectedIndexChanged += new System.EventHandler(this.TerminOdabran);
             // 
@@ -364,7 +392,7 @@
             // 
             this.Datum.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.terminBindingSource, "Datum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Datum.Enabled = false;
-            this.Datum.Location = new System.Drawing.Point(442, 306);
+            this.Datum.Location = new System.Drawing.Point(441, 164);
             this.Datum.Name = "Datum";
             this.Datum.Size = new System.Drawing.Size(168, 20);
             this.Datum.TabIndex = 87;
@@ -372,7 +400,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(439, 290);
+            this.label14.Location = new System.Drawing.Point(438, 148);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 75;
@@ -381,7 +409,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(439, 462);
+            this.label15.Location = new System.Drawing.Point(439, 299);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(32, 13);
             this.label15.TabIndex = 76;
@@ -390,7 +418,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(440, 340);
+            this.label16.Location = new System.Drawing.Point(439, 198);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(28, 13);
             this.label16.TabIndex = 77;
@@ -399,7 +427,7 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(440, 163);
+            this.StatusLabel.Location = new System.Drawing.Point(439, 21);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(37, 13);
             this.StatusLabel.TabIndex = 78;
@@ -408,7 +436,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(442, 578);
+            this.label17.Location = new System.Drawing.Point(439, 393);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 13);
             this.label17.TabIndex = 79;
@@ -417,7 +445,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(440, 203);
+            this.label18.Location = new System.Drawing.Point(439, 61);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(47, 13);
             this.label18.TabIndex = 81;
@@ -426,7 +454,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(439, 244);
+            this.label19.Location = new System.Drawing.Point(438, 102);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(59, 13);
             this.label19.TabIndex = 80;
@@ -435,7 +463,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(592, 163);
+            this.label20.Location = new System.Drawing.Point(591, 21);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(31, 13);
             this.label20.TabIndex = 82;
@@ -444,16 +472,17 @@
             // Iskaz
             // 
             this.Iskaz.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Iskaz", true));
-            this.Iskaz.Location = new System.Drawing.Point(442, 478);
+            this.Iskaz.Location = new System.Drawing.Point(441, 315);
             this.Iskaz.Multiline = true;
             this.Iskaz.Name = "Iskaz";
-            this.Iskaz.Size = new System.Drawing.Size(312, 97);
+            this.Iskaz.ReadOnly = true;
+            this.Iskaz.Size = new System.Drawing.Size(312, 71);
             this.Iskaz.TabIndex = 86;
             // 
             // Zaposlenik
             // 
             this.Zaposlenik.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Zaposlenik", true));
-            this.Zaposlenik.Location = new System.Drawing.Point(442, 260);
+            this.Zaposlenik.Location = new System.Drawing.Point(441, 118);
             this.Zaposlenik.Name = "Zaposlenik";
             this.Zaposlenik.ReadOnly = true;
             this.Zaposlenik.Size = new System.Drawing.Size(312, 20);
@@ -462,7 +491,7 @@
             // VrstaTermina
             // 
             this.VrstaTermina.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "VrstaTermina", true));
-            this.VrstaTermina.Location = new System.Drawing.Point(595, 179);
+            this.VrstaTermina.Location = new System.Drawing.Point(594, 37);
             this.VrstaTermina.Name = "VrstaTermina";
             this.VrstaTermina.ReadOnly = true;
             this.VrstaTermina.Size = new System.Drawing.Size(159, 20);
@@ -471,7 +500,7 @@
             // StatusTermina
             // 
             this.StatusTermina.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Status", true));
-            this.StatusTermina.Location = new System.Drawing.Point(442, 179);
+            this.StatusTermina.Location = new System.Drawing.Point(441, 37);
             this.StatusTermina.Name = "StatusTermina";
             this.StatusTermina.ReadOnly = true;
             this.StatusTermina.Size = new System.Drawing.Size(138, 20);
@@ -480,7 +509,7 @@
             // Zivotinja
             // 
             this.Zivotinja.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Zivotinja", true));
-            this.Zivotinja.Location = new System.Drawing.Point(443, 219);
+            this.Zivotinja.Location = new System.Drawing.Point(442, 77);
             this.Zivotinja.Name = "Zivotinja";
             this.Zivotinja.ReadOnly = true;
             this.Zivotinja.Size = new System.Drawing.Size(311, 20);
@@ -489,18 +518,20 @@
             // Opis
             // 
             this.Opis.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Opis", true));
-            this.Opis.Location = new System.Drawing.Point(443, 356);
+            this.Opis.Location = new System.Drawing.Point(441, 214);
             this.Opis.Multiline = true;
             this.Opis.Name = "Opis";
-            this.Opis.Size = new System.Drawing.Size(311, 103);
+            this.Opis.ReadOnly = true;
+            this.Opis.Size = new System.Drawing.Size(311, 78);
             this.Opis.TabIndex = 83;
             // 
             // Napomena
             // 
             this.Napomena.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terminBindingSource, "Napomena", true));
-            this.Napomena.Location = new System.Drawing.Point(445, 594);
+            this.Napomena.Location = new System.Drawing.Point(442, 409);
             this.Napomena.Multiline = true;
             this.Napomena.Name = "Napomena";
+            this.Napomena.ReadOnly = true;
             this.Napomena.Size = new System.Drawing.Size(309, 60);
             this.Napomena.TabIndex = 73;
             // 
@@ -631,6 +662,10 @@
             this.textBox10.Size = new System.Drawing.Size(302, 20);
             this.textBox10.TabIndex = 85;
             this.textBox10.UseSystemPasswordChar = true;
+            // 
+            // vlasnikBindingSource
+            // 
+            this.vlasnikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Vlasnik);
             // 
             // label10
             // 
@@ -896,6 +931,10 @@
             this.PolozajCipa.Size = new System.Drawing.Size(216, 20);
             this.PolozajCipa.TabIndex = 70;
             // 
+            // zivotinjaBindingSource
+            // 
+            this.zivotinjaBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zivotinja);
+            // 
             // textBox9
             // 
             this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zivotinjaBindingSource, "DatumSmrti", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "D"));
@@ -1142,6 +1181,10 @@
             this.Lozinka.TabIndex = 7;
             this.Lozinka.UseSystemPasswordChar = true;
             // 
+            // zaposlenikBindingSource
+            // 
+            this.zaposlenikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
+            // 
             // SpolLabel
             // 
             this.SpolLabel.AutoSize = true;
@@ -1241,31 +1284,65 @@
             this.ZaposleniciList.TabIndex = 0;
             this.ZaposleniciList.SelectedIndexChanged += new System.EventHandler(this.ZaposlenikOdabran);
             // 
-            // OsvjeziButton
+            // ZahvatiList
             // 
-            this.OsvjeziButton.Location = new System.Drawing.Point(375, 17);
-            this.OsvjeziButton.Name = "OsvjeziButton";
-            this.OsvjeziButton.Size = new System.Drawing.Size(99, 37);
-            this.OsvjeziButton.TabIndex = 96;
-            this.OsvjeziButton.Text = "Osvježi";
-            this.OsvjeziButton.UseVisualStyleBackColor = true;
-            this.OsvjeziButton.Click += new System.EventHandler(this.OsvjeziTermine);
+            this.ZahvatiList.FormattingEnabled = true;
+            this.ZahvatiList.Location = new System.Drawing.Point(393, 496);
+            this.ZahvatiList.Name = "ZahvatiList";
+            this.ZahvatiList.Size = new System.Drawing.Size(156, 173);
+            this.ZahvatiList.TabIndex = 91;
+            this.ZahvatiList.SelectedIndexChanged += new System.EventHandler(this.ZahvatOdabran);
             // 
-            // terminBindingSource
+            // label26
             // 
-            this.terminBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Termin);
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(390, 480);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(43, 13);
+            this.label26.TabIndex = 79;
+            this.label26.Text = "Zahvati";
             // 
-            // vlasnikBindingSource
+            // textBox17
             // 
-            this.vlasnikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Vlasnik);
+            this.textBox17.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zahvatBindingSource, "Naziv", true));
+            this.textBox17.Location = new System.Drawing.Point(570, 496);
+            this.textBox17.Multiline = true;
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ReadOnly = true;
+            this.textBox17.Size = new System.Drawing.Size(238, 16);
+            this.textBox17.TabIndex = 83;
             // 
-            // zivotinjaBindingSource
+            // textBox18
             // 
-            this.zivotinjaBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zivotinja);
+            this.textBox18.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.zahvatBindingSource, "Napomena", true));
+            this.textBox18.Location = new System.Drawing.Point(570, 531);
+            this.textBox18.Multiline = true;
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
+            this.textBox18.Size = new System.Drawing.Size(239, 138);
+            this.textBox18.TabIndex = 86;
             // 
-            // zaposlenikBindingSource
+            // label27
             // 
-            this.zaposlenikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(568, 480);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 13);
+            this.label27.TabIndex = 77;
+            this.label27.Text = "Naziv";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(568, 515);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 13);
+            this.label28.TabIndex = 76;
+            this.label28.Text = "Napomena";
+            // 
+            // zahvatBindingSource
+            // 
+            this.zahvatBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zahvat);
             // 
             // MainForm
             // 
@@ -1280,16 +1357,17 @@
             this.NaslovnicaTab.PerformLayout();
             this.TerminiTab.ResumeLayout(false);
             this.TerminiTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).EndInit();
             this.ZivotinjaTab.ResumeLayout(false);
             this.ZivotinjaTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).EndInit();
             this.ZaposleniciTab.ResumeLayout(false);
             this.ZaposleniciTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vlasnikBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahvatBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1407,5 +1485,12 @@
         private System.Windows.Forms.Button UrediZatrazeniTermin;
         private System.Windows.Forms.Button UrediDanasnjiTermin;
         private System.Windows.Forms.Button OsvjeziButton;
+        private System.Windows.Forms.ListBox ZahvatiList;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.BindingSource zahvatBindingSource;
     }
 }

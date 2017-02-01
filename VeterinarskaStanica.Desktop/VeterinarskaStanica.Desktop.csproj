@@ -139,6 +139,7 @@
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Termin1.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Vlasnik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.VrstaZivotinje.datasource" />
+    <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zahvat.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zaposlenik.datasource" />
     <None Include="Properties\DataSources\VeterinarskaStanica.Model.Zivotinja.datasource" />
     <None Include="Properties\Settings.settings">

@@ -19,5 +19,10 @@ namespace VeterinarskaStanica.Model
         {
 
         }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

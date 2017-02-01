@@ -347,6 +347,7 @@ namespace VeterinarskaStanica.Desktop
             if (AktivniTermin != null)
             {
                 terminBindingSource.DataSource = AktivniTermin;
+                ZahvatiList.DataSource = AktivniTermin.Zahvati;
 
                 UrediTerminButton.Enabled = true;
                 ObrisiTerminButton.Enabled = true;
@@ -355,6 +356,18 @@ namespace VeterinarskaStanica.Desktop
             {
                 UrediTerminButton.Enabled = false;
                 ObrisiTerminButton.Enabled = false;
+            }
+        }
+
+        private void ZahvatOdabran(object sender, EventArgs e)
+        {
+            if (AktivniTermin.Zahvati != null && AktivniTermin.Zahvati.Count > 0)
+            {
+                zahvatBindingSource.DataSource = ZahvatiList.SelectedItem as Zahvat;
+            }
+            else
+            {
+                zahvatBindingSource.DataSource = null;
             }
         }
         #endregion
