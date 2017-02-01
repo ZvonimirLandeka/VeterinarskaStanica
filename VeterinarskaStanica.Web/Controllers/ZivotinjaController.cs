@@ -58,11 +58,12 @@ namespace VeterinarskaStanica.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ZivotinjaRepository zr = new ZivotinjaRepository();
+
+            ZivotinjaService zr = new ZivotinjaService();
             
 
             ViewBag.IdVrstaZivotinje = new SelectList(zr.GetAllVrstaZivotinje(), "Id", "Naziv");
-            ViewBag.IdPasminaZivotinje = new SelectList(zr.GetAllPasminaZivotinje(), "Id", "Naziv");
+            ViewBag.IdPasminaZivotinje = new SelectList(zr.GetAllPasminaZivotinjeByVrstaZivotinje(zr.GetAllVrstaZivotinje()[0]), "Id", "Naziv");
             ViewBag.Spol= new SelectList(Enum.GetValues(typeof(Spol)));
             return View();
         }
