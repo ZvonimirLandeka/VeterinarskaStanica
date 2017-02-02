@@ -54,7 +54,7 @@ namespace VeterinarskaStanica.Desktop
         private TerminService terminService;
         private List<Model.Termin> DohvaceniTermini;
         private BindingList<Model.Termin> Termini;
-        private TerminForm AktivniTermin
+        private Model.Termin AktivniTermin
         {
             get
             {

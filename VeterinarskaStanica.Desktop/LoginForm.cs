@@ -23,7 +23,7 @@ namespace VeterinarskaStanica.Desktop
             InitializeComponent();
 
             zaposlenikService = new ZaposlenikService();
-            DebugAutoLogin();
+            //DebugAutoLogin();
         }
 
         private void DebugAutoLogin()
