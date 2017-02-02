@@ -92,7 +92,6 @@
     <Compile Include="Repository\VlasnikRepository.cs" />
     <Compile Include="Repository\ZaposlenikRepository.cs" />
     <Compile Include="Repository\ZivotinjaRepository.cs" />
-    <Compile Include="Visak\KorisnickiRacunMap.cs" />
     <Compile Include="Mappings\DokumentMap.cs" />
     <Compile Include="Mappings\BolestMap.cs" />
     <Compile Include="NHibernateHelper.cs" />

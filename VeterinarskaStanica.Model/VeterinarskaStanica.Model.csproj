@@ -55,7 +55,6 @@
     <Compile Include="Repositories\IZivotinjaRepository.cs" />
     <Compile Include="Repositories\IVlasnikRepository.cs" />
     <Compile Include="Repositories\IZaposlenikRepository.cs" />
-    <Compile Include="Visak\KorisnickiRacun.cs" />
     <Compile Include="Model\Lijek.cs" />
     <Compile Include="Model\Osoba.cs" />
     <Compile Include="Model\PasminaZivotinje.cs" />
@@ -70,6 +69,7 @@
     <Compile Include="Model\Zivotinja.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

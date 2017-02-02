@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VeterinarskaStanica.Model.BazniEntitet" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BazniEntitet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Bolest" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Bolest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Dokument" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Dokument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Lijek" Collapsed="true">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Lijek.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Osoba" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACABIAAEAAAgAAAAAAgAAAACAAAAAAgAAAQ=</HashCode>
+      <FileName>Model\Osoba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.PasminaZivotinje" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PasminaZivotinje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Termin" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAGAAIIAAAEBAAAAAAABAACAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Model\Termin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Vlasnik" Collapsed="true">
+    <Position X="18.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Vlasnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.VrstaTermina" Collapsed="true">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\VrstaTermina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.VrstaZahvata" Collapsed="true">
+    <Position X="11.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\VrstaZahvata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.VrstaZaposlenika" Collapsed="true">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\VrstaZaposlenika.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.VrstaZivotinje" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\VrstaZivotinje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Zahvat" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABAAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Zahvat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Zaposlenik" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Zaposlenik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinarskaStanica.Model.Zivotinja" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQAAAAAQAFAAAEAUCAEEQAAAACAAAAAAgAAAA=</HashCode>
+      <FileName>Model\Zivotinja.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="VeterinarskaStanica.Model.Repositories.ITerminRepository" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAeYAgAAAAICAAAAAAAABEAAAQEAAJAAEgEAEIAAAYA=</HashCode>
+      <FileName>Repositories\ITerminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VeterinarskaStanica.Model.Repositories.IVlasnikRepository" Collapsed="true">
+    <Position X="10.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAQAAAAAAAAAACAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\IVlasnikRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VeterinarskaStanica.Model.Repositories.IZaposlenikRepository" Collapsed="true">
+    <Position X="8.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AA4AAAAAAwAAAAAAAAAQCAAAAEEAAAQAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\IZaposlenikRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VeterinarskaStanica.Model.Repositories.IZivotinjaRepository" Collapsed="true">
+    <Position X="10.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAEQAgAAAAAABBAAEgAMEBkAQBAAAgAAAoAIAoA=</HashCode>
+      <FileName>Repositories\IZivotinjaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="VeterinarskaStanica.Model.Spol" Collapsed="true">
+    <Position X="13.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Model\Spol.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VeterinarskaStanica.Model.StatusTermina" Collapsed="true">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAEgAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\StatusTermina.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
