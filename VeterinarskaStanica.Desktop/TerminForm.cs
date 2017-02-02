@@ -15,11 +15,11 @@ namespace VeterinarskaStanica.Desktop
     public partial class TerminForm : Form
     {
         private TerminService terminService;
-        private Termin AktivniTermin;
+        private Model.Termin AktivniTermin;
         private Zahvat UredjivaniZahvat;
-        private IList<Zahvat> ZahvatiNaTerminu { get { return (terminBindingSource.DataSource as Termin).Zahvati; } }
+        private IList<Zahvat> ZahvatiNaTerminu { get { return (terminBindingSource.DataSource as Model.Termin).Zahvati; } }
         private BindingList<Zahvat> ZahvatiNaTerminuBindingList;
-        public TerminForm(Termin termin)
+        public TerminForm(Model.Termin termin)
         {
             InitializeComponent();
 

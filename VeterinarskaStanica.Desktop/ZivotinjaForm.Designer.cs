@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Pasmina = new System.Windows.Forms.ComboBox();
+            this.zivotinjaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DatumCipiranja = new System.Windows.Forms.DateTimePicker();
             this.DatumSmrti = new System.Windows.Forms.DateTimePicker();
             this.DatumRodenja = new System.Windows.Forms.DateTimePicker();
@@ -51,7 +52,6 @@
             this.Boja = new System.Windows.Forms.TextBox();
             this.Ime = new System.Windows.Forms.TextBox();
             this.Vrsta = new System.Windows.Forms.ComboBox();
-            this.zivotinjaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vrstaZivotinjeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,6 +68,10 @@
             this.Pasmina.Name = "Pasmina";
             this.Pasmina.Size = new System.Drawing.Size(144, 21);
             this.Pasmina.TabIndex = 55;
+            // 
+            // zivotinjaBindingSource
+            // 
+            this.zivotinjaBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zivotinja);
             // 
             // DatumCipiranja
             // 
@@ -254,10 +258,6 @@
             this.Vrsta.TabIndex = 54;
             this.Vrsta.SelectedIndexChanged += new System.EventHandler(this.VrstaChanged);
             // 
-            // zivotinjaBindingSource
-            // 
-            this.zivotinjaBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zivotinja);
-            // 
             // vrstaZivotinjeBindingSource
             // 
             this.vrstaZivotinjeBindingSource.DataSource = typeof(VeterinarskaStanica.Model.VrstaZivotinje);
@@ -310,7 +310,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Ime);
             this.Name = "ZivotinjaForm";
-            this.Text = "ZivotinjaForm";
+            this.Text = "Životinja";
             ((System.ComponentModel.ISupportInitialize)(this.zivotinjaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vrstaZivotinjeBindingSource)).EndInit();
             this.ResumeLayout(false);

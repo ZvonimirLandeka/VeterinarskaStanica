@@ -365,7 +365,7 @@
             this.Controls.Add(this.Opis);
             this.Controls.Add(this.Napomena);
             this.Name = "TerminForm";
-            this.Text = "TerminForm";
+            this.Text = "Termin";
             ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahvatBindingSource)).EndInit();
             this.ResumeLayout(false);

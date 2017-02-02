@@ -32,6 +32,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SpremiPromjeneButton = new System.Windows.Forms.Button();
             this.Spol = new System.Windows.Forms.ComboBox();
+            this.zaposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LozinkaLabel = new System.Windows.Forms.Label();
             this.KorisnickoImeLabel = new System.Windows.Forms.Label();
             this.OIBLabel = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.Adresa = new System.Windows.Forms.TextBox();
             this.Prezime = new System.Windows.Forms.TextBox();
             this.Ime = new System.Windows.Forms.TextBox();
-            this.zaposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +78,10 @@
             this.Spol.Name = "Spol";
             this.Spol.Size = new System.Drawing.Size(121, 21);
             this.Spol.TabIndex = 13;
+            // 
+            // zaposlenikBindingSource
+            // 
+            this.zaposlenikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
             // 
             // LozinkaLabel
             // 
@@ -192,10 +196,6 @@
             this.Ime.Size = new System.Drawing.Size(289, 20);
             this.Ime.TabIndex = 11;
             // 
-            // zaposlenikBindingSource
-            // 
-            this.zaposlenikBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zaposlenik);
-            // 
             // ZaposlenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,7 +218,7 @@
             this.Controls.Add(this.Prezime);
             this.Controls.Add(this.Ime);
             this.Name = "ZaposlenikForm";
-            this.Text = "ZaposlenikForm";
+            this.Text = "Zaposlenik";
             ((System.ComponentModel.ISupportInitialize)(this.zaposlenikBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
