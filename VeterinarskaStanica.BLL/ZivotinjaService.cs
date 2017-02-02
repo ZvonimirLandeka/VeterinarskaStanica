@@ -113,6 +113,17 @@ namespace VeterinarskaStanica.BLL
             }
             return true;
         }
+
+        public PasminaZivotinje GetPasminaZivotinjeById(int idPasminaZivotinje)
+        {
+            return repository.GetPasminaZivotinjeById(idPasminaZivotinje);
+        }
+
+        public VrstaZivotinje GetVrstaZivotinjeById(int idVrstaZivotinje)
+        {
+            return repository.GetVrstaZivotinjeById(idVrstaZivotinje);
+        }
+
         public List<Zivotinja> GetAllByVlasnikId(int IdVlasnik)
         {
             return repository.GetAllByVlasnikId(IdVlasnik);

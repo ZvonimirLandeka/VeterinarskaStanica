@@ -42,8 +42,8 @@ namespace VeterinarskaStanica.Web.Controllers
             {
                 return View();
             }
-            AccountService AccountService = new AccountService();
-            var exists = AccountService.CheckLogin(AccountModel.KorisnickoIme, AccountModel.Lozinka);
+            VlasnikService VlasnikService = new VlasnikService();
+            var exists = VlasnikService.CheckLogin(AccountModel.KorisnickoIme, AccountModel.Lozinka);
             
             if (exists)
             {
@@ -53,6 +53,40 @@ namespace VeterinarskaStanica.Web.Controllers
             HomeController HomeController = new HomeController();
             return RedirectToAction("Login", this);
 
+        }
+
+
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Register(string returnUrl)
+        {
+            
+            return View();
+        }
+
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(Vlasnik Vlasnik)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            VlasnikService VlasnikService = new VlasnikService();
+            var PostojeciVlasnik = VlasnikService.GetIdByKorisnickoIme(Vlasnik.KorisnickoIme);
+            if (PostojeciVlasnik!=null)
+            {
+                return View();
+            }
+            
+            VlasnikService.Add(Vlasnik);
+            return RedirectToAction("Login");
         }
 
 

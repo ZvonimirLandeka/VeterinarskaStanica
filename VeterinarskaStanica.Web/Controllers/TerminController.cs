@@ -9,10 +9,12 @@ using VeterinarskaStanica.Model;
 
 namespace VeterinarskaStanica.Web.Controllers
 {
+
     public class TerminController : Controller
     {
         // GET: Termin
         // Zatrazeni termini
+        [Authorize]
         public ActionResult Index()
         {
             VlasnikService VlasnikService = new VlasnikService();
@@ -23,7 +25,7 @@ namespace VeterinarskaStanica.Web.Controllers
             var Termini = TerminService.GetAllByVlasnikId(Vlasik.Id);
             return View(Termini);
         }
-
+        [Authorize]
         public ActionResult Zatrazeni()
         {
             VlasnikService VlasnikService = new VlasnikService();
@@ -34,7 +36,7 @@ namespace VeterinarskaStanica.Web.Controllers
             var Termini = TerminService.GetAllZatrazeniByVlasnikId(Vlasik.Id);
             return View(Termini);
         }
-
+        [Authorize]
         public ActionResult Odobreni()
         {
             VlasnikService VlasnikService = new VlasnikService();
@@ -46,6 +48,7 @@ namespace VeterinarskaStanica.Web.Controllers
             return View(Termini);
         }
         // GET: Termin/Details/5
+        [Authorize]
         public ActionResult Otkazi(int id)
         {
             var TerminService = new TerminService();
@@ -56,6 +59,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Termin/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             TerminService TerminService = new TerminService();
@@ -64,6 +68,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Termin/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             TerminService TerminService = new TerminService();
@@ -74,6 +79,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Termin/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Datum,Iskaz,Napomena,Opis,VrstaTermina_Id")] Termin Termin, int IdZivotinje)
         {
 
@@ -97,6 +103,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Termin/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             return View();
@@ -104,6 +111,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Termin/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -119,6 +127,7 @@ namespace VeterinarskaStanica.Web.Controllers
         }
 
         // GET: Termin/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();
@@ -126,6 +135,7 @@ namespace VeterinarskaStanica.Web.Controllers
 
         // POST: Termin/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

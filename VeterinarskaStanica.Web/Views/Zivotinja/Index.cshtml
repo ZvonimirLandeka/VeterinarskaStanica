@@ -15,11 +15,12 @@
             @Html.DisplayNameFor(model => model.Ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DatumRodenja)
+            @Html.DisplayNameFor(model => model.VrstaZivotinje.Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DatumSmrti)
+            @Html.DisplayNameFor(model => model.Spol)
         </th>
+ 
         <th>
             @Html.DisplayNameFor(model => model.Boja)
         </th>
@@ -33,7 +34,10 @@
             @Html.DisplayFor(modelItem => item.Ime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DatumRodenja)
+            @Html.DisplayFor(modelItem => item.VrstaZivotinje.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spol)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Boja)
