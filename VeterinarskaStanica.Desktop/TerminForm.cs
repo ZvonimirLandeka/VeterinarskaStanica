@@ -16,6 +16,9 @@ namespace VeterinarskaStanica.Desktop
     {
         private TerminService terminService;
         private Termin AktivniTermin;
+        private Zahvat UredjivaniZahvat;
+        private IList<Zahvat> ZahvatiNaTerminu { get { return (terminBindingSource.DataSource as Termin).Zahvati; } }
+        private BindingList<Zahvat> ZahvatiNaTerminuBindingList;
         public TerminForm(Termin termin)
         {
             InitializeComponent();
@@ -38,7 +41,23 @@ namespace VeterinarskaStanica.Desktop
             if (AktivniTermin == null)
                 return;
 
+            if (AktivniTermin.Zahvati == null || AktivniTermin.Zahvati.Count == 0)
+            {
+                AktivniTermin.Zahvati = new List<Zahvat>();
+            }
+            else
+            {
+                OmoguciUredjivanjeZahvata(true);
+            }
+
             terminBindingSource.DataSource = AktivniTermin;
+
+            ZahvatiNaTerminuBindingList = new BindingList<Zahvat>(AktivniTermin.Zahvati);
+
+            ZahvatiList.DataSource = ZahvatiNaTerminuBindingList;
+
+            ZahvatNaziv.DataBindings.Add("Text", ZahvatiNaTerminuBindingList, "Naziv");
+            ZahvatNapomena.DataBindings.Add("Text", ZahvatiNaTerminuBindingList, "Napomena");
 
             Status.SelectedItem = AktivniTermin.Status;
             Vrsta.SelectedItem = AktivniTermin.VrstaTermina;
@@ -47,11 +66,55 @@ namespace VeterinarskaStanica.Desktop
                 Datum.Value = AktivniTermin.Datum.Value;
                 Vrijeme.Value = AktivniTermin.Datum.Value;
             }
+        }
+
+        private void NoviZahvat(object sender, EventArgs e)
+        {
+            var noviZahvat = new Zahvat() { Naziv = "Unesi naziv" };
+            zahvatBindingSource.DataSource = noviZahvat;
+            ZahvatiNaTerminuBindingList.Add(noviZahvat);
+            ZahvatiList.SelectedItem = noviZahvat;
+
+            ZahvatNaziv.Focus();
+
+            OmoguciUredjivanjeZahvata(true);
+        }
+
+        private void SpremiZahvat(object sender, EventArgs e)
+        {
+            var zahvat = zahvatBindingSource.DataSource as Zahvat;
+            ZahvatiNaTerminuBindingList.Remove(UredjivaniZahvat);
+            ZahvatiNaTerminuBindingList.Add(zahvatBindingSource.DataSource as Zahvat);
+        }
+
+        private void ObrisiZahvat(object sender, EventArgs e)
+        {   
+            if(ZahvatiList.Items.Count > 0)
+            {
+                var zahvat = ZahvatiList.SelectedItem as Zahvat;
+                ZahvatiNaTerminuBindingList.Remove(zahvat);
+            }
+        }
+
+        private void ZahvatOdabran(object sender, EventArgs e)
+        {
+            if (AktivniTermin.Zahvati != null && AktivniTermin.Zahvati.Count > 0)
+            {
+                zahvatBindingSource.DataSource = ZahvatiList.SelectedItem as Zahvat;
+                UredjivaniZahvat = ZahvatiList.SelectedItem as Zahvat;
+                OmoguciUredjivanjeZahvata(true);
+            }
             else
             {
-                Datum.Text = "Unesi datum";
-                Vrijeme.Text = "Unesi vrijeme";
+                zahvatBindingSource.DataSource = new Zahvat();
+                OmoguciUredjivanjeZahvata(false);
             }
+        }
+
+        private void OmoguciUredjivanjeZahvata(bool stanje)
+        {
+            ZahvatNapomena.Enabled = stanje;
+            ZahvatNaziv.Enabled = stanje;
         }
 
         private void Spremi(object sender, EventArgs e)
@@ -82,6 +145,14 @@ namespace VeterinarskaStanica.Desktop
         {
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void AzurirajZahvat(object sender, EventArgs e)
+        {
+            var zahvat = ZahvatiList.SelectedItem as Zahvat;
+            ZahvatiList.DataSource = null;
+            ZahvatiList.DataSource = ZahvatiNaTerminuBindingList;
+            ZahvatiList.SelectedItem = zahvat;
         }
     }
 }

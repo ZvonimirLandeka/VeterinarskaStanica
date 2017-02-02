@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Vrsta = new System.Windows.Forms.ComboBox();
+            this.terminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Datum = new System.Windows.Forms.DateTimePicker();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SpremiPromjeneButton = new System.Windows.Forms.Button();
@@ -47,10 +48,19 @@
             this.Zivotinja = new System.Windows.Forms.TextBox();
             this.Opis = new System.Windows.Forms.TextBox();
             this.Napomena = new System.Windows.Forms.TextBox();
-            this.terminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.Vrijeme = new System.Windows.Forms.DateTimePicker();
+            this.ZahvatiList = new System.Windows.Forms.ListBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.ZahvatNapomena = new System.Windows.Forms.TextBox();
+            this.zahvatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ZahvatNaziv = new System.Windows.Forms.TextBox();
+            this.ObrisiZahvatButton = new System.Windows.Forms.Button();
+            this.NoviZahvatButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahvatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Vrsta
@@ -64,6 +74,10 @@
             this.Vrsta.TabIndex = 72;
             this.Vrsta.ValueMember = "Id";
             // 
+            // terminBindingSource
+            // 
+            this.terminBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Termin);
+            // 
             // Datum
             // 
             this.Datum.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.terminBindingSource, "Datum", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "D"));
@@ -74,7 +88,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(249, 573);
+            this.CancelButton.Location = new System.Drawing.Point(514, 516);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 70;
@@ -84,7 +98,7 @@
             // 
             // SpremiPromjeneButton
             // 
-            this.SpremiPromjeneButton.Location = new System.Drawing.Point(13, 573);
+            this.SpremiPromjeneButton.Location = new System.Drawing.Point(15, 516);
             this.SpremiPromjeneButton.Name = "SpremiPromjeneButton";
             this.SpremiPromjeneButton.Size = new System.Drawing.Size(121, 23);
             this.SpremiPromjeneButton.TabIndex = 69;
@@ -218,10 +232,6 @@
             this.Napomena.Size = new System.Drawing.Size(309, 60);
             this.Napomena.TabIndex = 55;
             // 
-            // terminBindingSource
-            // 
-            this.terminBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Termin);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -242,11 +252,98 @@
             this.Vrijeme.Size = new System.Drawing.Size(133, 20);
             this.Vrijeme.TabIndex = 71;
             // 
+            // ZahvatiList
+            // 
+            this.ZahvatiList.FormattingEnabled = true;
+            this.ZahvatiList.Location = new System.Drawing.Point(349, 159);
+            this.ZahvatiList.Name = "ZahvatiList";
+            this.ZahvatiList.Size = new System.Drawing.Size(239, 147);
+            this.ZahvatiList.TabIndex = 97;
+            this.ZahvatiList.SelectedIndexChanged += new System.EventHandler(this.ZahvatOdabran);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(348, 356);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 13);
+            this.label28.TabIndex = 92;
+            this.label28.Text = "Napomena";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(348, 312);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 13);
+            this.label27.TabIndex = 93;
+            this.label27.Text = "Naziv";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(346, 143);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(43, 13);
+            this.label26.TabIndex = 94;
+            this.label26.Text = "Zahvati";
+            // 
+            // ZahvatNapomena
+            // 
+            this.ZahvatNapomena.Enabled = false;
+            this.ZahvatNapomena.Location = new System.Drawing.Point(350, 372);
+            this.ZahvatNapomena.Multiline = true;
+            this.ZahvatNapomena.Name = "ZahvatNapomena";
+            this.ZahvatNapomena.Size = new System.Drawing.Size(239, 129);
+            this.ZahvatNapomena.TabIndex = 96;
+            // 
+            // zahvatBindingSource
+            // 
+            this.zahvatBindingSource.DataSource = typeof(VeterinarskaStanica.Model.Zahvat);
+            // 
+            // ZahvatNaziv
+            // 
+            this.ZahvatNaziv.Enabled = false;
+            this.ZahvatNaziv.Location = new System.Drawing.Point(350, 328);
+            this.ZahvatNaziv.Name = "ZahvatNaziv";
+            this.ZahvatNaziv.Size = new System.Drawing.Size(238, 20);
+            this.ZahvatNaziv.TabIndex = 95;
+            this.ZahvatNaziv.TextChanged += new System.EventHandler(this.AzurirajZahvat);
+            this.ZahvatNaziv.Leave += new System.EventHandler(this.AzurirajZahvat);
+            // 
+            // ObrisiZahvatButton
+            // 
+            this.ObrisiZahvatButton.Location = new System.Drawing.Point(474, 107);
+            this.ObrisiZahvatButton.Name = "ObrisiZahvatButton";
+            this.ObrisiZahvatButton.Size = new System.Drawing.Size(115, 23);
+            this.ObrisiZahvatButton.TabIndex = 99;
+            this.ObrisiZahvatButton.Text = "Obriši zahvat";
+            this.ObrisiZahvatButton.UseVisualStyleBackColor = true;
+            this.ObrisiZahvatButton.Click += new System.EventHandler(this.ObrisiZahvat);
+            // 
+            // NoviZahvatButton
+            // 
+            this.NoviZahvatButton.Location = new System.Drawing.Point(349, 107);
+            this.NoviZahvatButton.Name = "NoviZahvatButton";
+            this.NoviZahvatButton.Size = new System.Drawing.Size(115, 23);
+            this.NoviZahvatButton.TabIndex = 99;
+            this.NoviZahvatButton.Text = "Novi zahvat";
+            this.NoviZahvatButton.UseVisualStyleBackColor = true;
+            this.NoviZahvatButton.Click += new System.EventHandler(this.NoviZahvat);
+            // 
             // TerminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 608);
+            this.ClientSize = new System.Drawing.Size(601, 550);
+            this.Controls.Add(this.NoviZahvatButton);
+            this.Controls.Add(this.ObrisiZahvatButton);
+            this.Controls.Add(this.ZahvatiList);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.ZahvatNapomena);
+            this.Controls.Add(this.ZahvatNaziv);
             this.Controls.Add(this.Vrsta);
             this.Controls.Add(this.Vrijeme);
             this.Controls.Add(this.Datum);
@@ -270,6 +367,7 @@
             this.Name = "TerminForm";
             this.Text = "TerminForm";
             ((System.ComponentModel.ISupportInitialize)(this.terminBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahvatBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +396,14 @@
         private System.Windows.Forms.BindingSource terminBindingSource;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker Vrijeme;
+        private System.Windows.Forms.ListBox ZahvatiList;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox ZahvatNapomena;
+        private System.Windows.Forms.TextBox ZahvatNaziv;
+        private System.Windows.Forms.Button ObrisiZahvatButton;
+        private System.Windows.Forms.BindingSource zahvatBindingSource;
+        private System.Windows.Forms.Button NoviZahvatButton;
     }
 }

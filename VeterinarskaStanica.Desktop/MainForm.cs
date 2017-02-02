@@ -284,16 +284,16 @@ namespace VeterinarskaStanica.Desktop
         }
         private void DohvatiTermine()
         {
-            var stari = AktivniTermin;
+            //var stari = AktivniTermin;
             DohvaceniVlasnici = vlasnikService.GetAll();
-            DohvaceniTermini = terminService.GetAll();
+            DohvaceniTermini = terminService.GetAll().OrderByDescending(x => x.Datum).ToList();
             FiltrirajTermine();
 
-            if (stari != null)
-            {
-                TerminiList.SelectedItem = Termini.FirstOrDefault(x => x.Id == stari.Id);
-                TerminOdabran(null, null);
-            }
+            //if (stari != null)
+            //{
+            //    //TerminiList.SelectedItem = Termini.FirstOrDefault(x => x.Id == stari.Id);
+            //    TerminOdabran(null, null);
+            //}
 
             VlasniciFilterCombobox.DataSource = DohvaceniVlasnici;
             VlasniciFilterCombobox.SelectedIndex = -1;
