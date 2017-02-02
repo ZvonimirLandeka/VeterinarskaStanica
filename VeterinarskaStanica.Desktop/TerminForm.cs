@@ -19,11 +19,13 @@ namespace VeterinarskaStanica.Desktop
         private Zahvat UredjivaniZahvat;
         private IList<Zahvat> ZahvatiNaTerminu { get { return (terminBindingSource.DataSource as Model.Termin).Zahvati; } }
         private BindingList<Zahvat> ZahvatiNaTerminuBindingList;
-        public TerminForm(Model.Termin termin)
+        public TerminForm(Model.Termin termin, Zaposlenik prijavljeniZaposlenik)
         {
             InitializeComponent();
 
             AktivniTermin = termin;
+
+            AktivniTermin.Zaposlenik = prijavljeniZaposlenik;
 
             InicijalizirajFormu();
         }

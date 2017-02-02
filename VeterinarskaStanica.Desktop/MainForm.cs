@@ -320,7 +320,7 @@ namespace VeterinarskaStanica.Desktop
         private void DodajTermin(object sender, EventArgs e)
         {
             var NoviTermin = new Model.Termin() { Zivotinja = AktivnaZivotinja, Zaposlenik = PrijavljeniZaposlenik };
-            var TerminForm = new TerminForm(NoviTermin);
+            var TerminForm = new TerminForm(NoviTermin, PrijavljeniZaposlenik);
             var result = TerminForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
@@ -329,7 +329,7 @@ namespace VeterinarskaStanica.Desktop
         }
         private void UrediTermin(object sender, EventArgs e)
         {
-            var TerminForm = new TerminForm(AktivniTermin);
+            var TerminForm = new TerminForm(AktivniTermin, PrijavljeniZaposlenik);
             var result = TerminForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
@@ -375,7 +375,7 @@ namespace VeterinarskaStanica.Desktop
         #region Naslovnica
         private void DohvatiNaslovnicu()
         {
-            var DanasnjiTermini = terminService.GetAll().Where(x => x.Zaposlenik.Id == PrijavljeniZaposlenik.Id && x.Datum.HasValue && x.Datum.Value.Date == DateTime.Now.Date && x.Status == Model.StatusTermina.Odobren).ToList();
+            var DanasnjiTermini = terminService.GetAll().Where(x => x.Zaposlenik?.Id == PrijavljeniZaposlenik.Id && x.Datum.HasValue && x.Datum.Value.Date == DateTime.Now.Date && x.Status == Model.StatusTermina.Odobren).ToList();
             DanasnjiTerminiList.DataSource = DanasnjiTermini;
 
             var ZatrazeniTermini = terminService.GetAll().Where(x => x.Status == Model.StatusTermina.Zatražen).ToList();
@@ -386,7 +386,7 @@ namespace VeterinarskaStanica.Desktop
         {
             var OdabraniZatrazeniTermin = ZatrazeniTerminiList.SelectedItem as Model.Termin;
 
-            var TerminForm = new TerminForm(OdabraniZatrazeniTermin);
+            var TerminForm = new TerminForm(OdabraniZatrazeniTermin, PrijavljeniZaposlenik);
             var result = TerminForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
@@ -398,7 +398,7 @@ namespace VeterinarskaStanica.Desktop
         {
             var OdabraniDanasnjiTermin = DanasnjiTerminiList.SelectedItem as Model.Termin;
 
-            var TerminForm = new TerminForm(OdabraniDanasnjiTermin);
+            var TerminForm = new TerminForm(OdabraniDanasnjiTermin, PrijavljeniZaposlenik);
             var result = TerminForm.ShowDialog(this);
             if (result == DialogResult.OK)
             {
